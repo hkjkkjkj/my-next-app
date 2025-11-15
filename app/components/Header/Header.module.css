@@ -1,0 +1,98 @@
+/* app/components/Header/Header.module.css */
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between; /* Đẩy 2 nhóm (trái, phải) ra 2 bên */
+  align-items: center;
+  padding: 16px 32px;
+  background-color: #121212; /* Nền tối */
+  border-bottom: 1px solid #2A2A2A; /* Đường viền mờ bên dưới */
+  height: 70px;
+  color: #FAFAFA; /* Màu chữ trắng */
+}
+
+/* --- Phần bên trái --- */
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Khoảng cách giữa các mục: Logo, Nav, Search */
+}
+
+.logo {
+  font-size: 1.5rem; /* 24px */
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 20px; /* Khoảng cách giữa các link: Store, Support... */
+}
+
+.navLink {
+  color: #AAAAAA; /* Màu xám cho link không active */
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #FAFAFA; /* Trắng khi hover */
+}
+
+/* --- Thanh tìm kiếm --- */
+.searchBar {
+  display: flex;
+  align-items: center;
+  background-color: #202020; /* Nền ô search */
+  border-radius: 20px; /* Bo tròn */
+  padding: 8px 12px;
+  min-width: 250px;
+}
+
+.searchIcon {
+  color: #AAAAAA;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.searchInput {
+  background: none;
+  border: none;
+  outline: none;
+  color: #FAFAFA;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.searchInput::placeholder {
+  color: #AAAAAA;
+}
+
+/* --- Phần bên phải --- */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Khoảng cách giữa các mục: Wishlist, Cart... */
+}
+
+.userBalance {
+  color: #AAAAAA;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.downloadButton {
+  background-color: #0078F2; /* Màu xanh dương (giống trong ảnh) */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.downloadButton:hover {
+  background-color: #005EC2; /* Xanh đậm hơn khi hover */
+}

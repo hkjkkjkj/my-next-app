@@ -1,0 +1,22 @@
+/* app/HomePage.module.css */
+
+.pageContainer {
+  /* Căn lề 32px giống Header/Nav */
+  padding: 24px 32px;
+  
+  /* Tạo bố cục Lưới */
+  display: grid;
+  /* Cột 1 (Hero) sẽ chiếm 3 phần, Cột 2 (Sidebar) chiếm 1 phần */
+  grid-template-columns: 4fr 1fr; /* Tỉ lệ 4:1 (sidebar hẹp hơn) */
+  gap: 24px;
+}
+
+/* Phần chính (chứa Hero) */
+.mainContent {
+  /* không cần style gì thêm */
+}
+
+/* Phần sidebar */
+.sidebar {
+  /* không cần style gì thêm */
+}

@@ -1,0 +1,81 @@
+/* app/games/GamesPage.module.css */
+
+/* Style cho toàn bộ trang */
+.pageContainer {
+  font-family: Arial, sans-serif; /* Thêm font chữ cho dễ nhìn */
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto; /* Căn giữa trang */
+}
+
+/* Tiêu đề "Danh Sách Game" */
+.title {
+  font-size: 2rem; /* 32px */
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+/* Lưới chứa các thẻ game */
+.grid {
+  display: grid;
+  /* Mặc định 1 cột */
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Responsive: 2 cột trên tablet */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: 3 cột trên desktop */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Style cho một Game Card --- */
+
+.card {
+  border: 1px solid #e5e7eb; /* Màu xám nhạt */
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.cardTitle {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  color: #111827; /* Màu đen đậm */
+}
+
+.cardPrice {
+  font-size: 1.1rem; /* 18px */
+  color: #374151; /* Màu xám đậm */
+  margin-top: 8px;
+}
+
+.cardButton {
+  margin-top: 16px;
+  background-color: #3b82f6; /* Màu xanh dương */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cardButton:hover {
+  background-color: #2563eb; /* Màu xanh đậm hơn */
+}

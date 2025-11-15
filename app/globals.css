@@ -1,26 +1,32 @@
-@import "tailwindcss";
+/* app/globals.css */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Reset CSS cơ bản */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Đây là màu nền tối giống Epic Store */
+  background-color: #121212;
+  
+  /* Màu chữ mặc định là màu trắng nhạt */
+  color: #FAFAFA;
+  
+  /* Font chữ chung (Bạn có thể đổi sang font khác nếu muốn) */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+/* Định dạng chung cho link */
+a {
+  color: inherit; /* Link sẽ có màu giống chữ thường */
+  text-decoration: none; /* Bỏ gạch chân */
 }

@@ -1,0 +1,61 @@
+/* app/components/Sidebar/Sidebar.module.css */
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Khoảng cách giữa các thẻ game */
+  margin: 24px -155px;
+  width: 220px;
+  height: 100%;
+}
+
+/* --- Style cho một thẻ game nhỏ --- */
+.gameCard {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 16px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.gameCard:hover {
+  background-color: #202020; /* Nền mờ khi hover */
+}
+
+.gameImage {
+  width: 48px;
+  height: 64px;
+  border-radius: 4px;
+  object-fit: cover;
+  background-color: #333; /* Màu nền tạm thời cho ảnh */
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.gameTitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #FAFAFA;
+}
+
+.gameExtra {
+  font-size: 0.8rem;
+  color: #AAAAAA;
+  margin-top: 4px;
+}
+
+.savingsCard .gameImage {
+  width: 64px; /* Ảnh to hơn */
+  height: 64px;
+}
+
+.savingsCard .gameTitle {
+  font-size: 1rem;
+  font-weight: 600;
+}
