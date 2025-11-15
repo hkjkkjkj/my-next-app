@@ -1,14 +1,14 @@
 // app/components/Navigation/Navigation.tsx
 import styles from './Navigation.module.css';
+import { FaSearch } from 'react-icons/fa'; // <-- 1. Import icon
 
 export default function Navigation() {
   return (
     <nav className={styles.navContainer}>
+      
+      {/* 2. Phần link (như cũ) */}
       <ul className={styles.navList}>
         <li>
-          {/* Tạm thời chúng ta sẽ thêm class 'active'
-              cho link "Discover" để xem trước 
-          */}
           <a href="/" className={`${styles.navLink} ${styles.active}`}>
             Discover
           </a>
@@ -24,6 +24,17 @@ export default function Navigation() {
           </a>
         </li>
       </ul>
+
+      {/* 3. Thêm thanh tìm kiếm vào đây */}
+      <div className={styles.searchBar}>
+        <FaSearch className={styles.searchIcon} /> 
+        <input 
+          type="text" 
+          placeholder="Search store" 
+          className={styles.searchInput} 
+        />
+      </div>
+
     </nav>
   );
 }

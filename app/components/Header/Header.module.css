@@ -6,7 +6,6 @@
   align-items: center;
   padding: 16px 32px;
   background-color: #121212; /* Nền tối */
-  border-bottom: 1px solid #2A2A2A; /* Đường viền mờ bên dưới */
   height: 70px;
   color: #FAFAFA; /* Màu chữ trắng */
 }
@@ -40,34 +39,6 @@
   color: #FAFAFA; /* Trắng khi hover */
 }
 
-/* --- Thanh tìm kiếm --- */
-.searchBar {
-  display: flex;
-  align-items: center;
-  background-color: #202020; /* Nền ô search */
-  border-radius: 20px; /* Bo tròn */
-  padding: 8px 12px;
-  min-width: 250px;
-}
-
-.searchIcon {
-  color: #AAAAAA;
-  margin-right: 8px;
-  font-weight: bold;
-}
-
-.searchInput {
-  background: none;
-  border: none;
-  outline: none;
-  color: #FAFAFA;
-  font-size: 0.9rem;
-  width: 100%;
-}
-
-.searchInput::placeholder {
-  color: #AAAAAA;
-}
 
 /* --- Phần bên phải --- */
 .rightSection {

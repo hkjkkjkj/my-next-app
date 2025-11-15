@@ -1,0 +1,11 @@
+.heroContainer {
+  position: relative; /* Cần cho việc định vị nội dung */
+  border-radius: 12px;
+  overflow: hidden; /* Đảm bảo ảnh nền bo góc */
+  width: 945px;
+  height: 545px; /* Chiều cao của khối hero */
+  margin: 24px 150px; /* Khoảng cách với Header và lề */
+  display: flex;
+  align-items: flex-end; /* Căn nội dung xuống dưới */
+  padding: 40px;
+}

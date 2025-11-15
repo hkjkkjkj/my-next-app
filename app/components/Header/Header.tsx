@@ -1,6 +1,5 @@
 // app/components/Header/Header.tsx
 import styles from './Header.module.css';
-import { FaSearch } from 'react-icons/fa';
 
 export default function Header() {
   return (
@@ -18,18 +17,6 @@ export default function Header() {
           <a href="#" className={styles.navLink}>Distribute</a>
         </nav>
 
-        {/* Thanh tìm kiếm */}
-        <div className={styles.searchBar}>
-          
-          {/* Thay thế '?' bằng component icon */}
-          <FaSearch className={styles.searchIcon} /> 
-
-          <input 
-            type="text" 
-            placeholder="Search store" 
-            className={styles.searchInput} 
-          />
-        </div>
       </div>
 
       {/* --- PHẦN BÊN PHẢI --- */}

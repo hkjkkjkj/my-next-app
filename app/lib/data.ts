@@ -7,7 +7,7 @@ export interface SidebarGame {
   id: string;
   title: string;
   extra: string;      // "Base Game", "Event", v.v.
-  image: string;
+  imageUrl: string;
 }
 
 // Định nghĩa cho banner Hero chính
@@ -20,6 +20,7 @@ export interface HeroBanner {
   showWishlistButton: boolean;
   showPreviewButton: boolean;
   logoUrl: string;
+  thumbnailUrl: string;
 }
 
 // Định nghĩa cho một game đầy đủ (dùng cho trang /games sau này)
@@ -46,6 +47,7 @@ export const heroData: HeroBanner[] = [
     showWishlistButton: true,
     showPreviewButton: false,
     logoUrl: "/logos/where-winds-meet.png",
+    thumbnailUrl: "/thumbnails/where-winds-meet.png",
   },
   { 
     title: "ARC<br/>RAIDERS",
@@ -56,7 +58,19 @@ export const heroData: HeroBanner[] = [
     showWishlistButton: false,
     showPreviewButton: true,
     logoUrl: "/logos/arc-raiders.png",
+    thumbnailUrl: "/thumbnails/arc-raiders.jpg",
   },
+  {
+    title: "GOG OF WAR: RAGNAROK",
+    date: "AVAILABLE NOW",
+    description: "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters. It is in this harsh, unforgiving world that he must fight to survive… and teach his son to do the same.",
+    buttonText: "Buy Now",
+    imageUrl: "/images/god-of-war.jpg",
+    showWishlistButton: false,
+    showPreviewButton: true,
+    logoUrl: "/logos/god-of-war.jpg",
+    thumbnailUrl: "/thumbnails/god-of-war.jpg",
+  }
 ];
 
 // Dữ liệu cho Sidebar
@@ -65,32 +79,32 @@ export const sidebarGames: SidebarGame[] = [
     id: 'fortnite',
     title: 'Fortnite',
     extra: 'Base Game',
-    image: 'images/fortnite.jpg', 
-  },
-  {
-    id: 'savings',
-    title: 'Epic Savings',
-    extra: 'Event',
-    image: 'images/epic-savings.jpg', 
+    imageUrl: '/images/fortnite.jpg', 
   },
   {
     id: 'anno',
     title: 'ARC RAIDERS',
     extra: 'Base Game',
-    image: 'images/arc-raiders.jpg', 
+    imageUrl: '/thumbnails/arc-raiders.jpg', 
   },
   {
     id: 'marvel-rivals',
     title: 'Marvel Rivals',
     extra: 'Coming Soon',
-    image: 'images/marvel-rivals.jpg', 
+    imageUrl: '/images/marvel-rivals.jpg', 
   },
   {
     id: 'cyberpunk',
     title: 'Cyberpunk 2077',
     extra: 'Coming Soon',
-    image: 'images/cyberpunk.jpg', 
+    imageUrl: '/images/cyberpunk.jpg', 
   },
+  {
+    id: 'where-winds-meet',
+    title: 'WHERE WINDS MEET',
+    extra: 'Coming Soon',
+    imageUrl: '/images/where-winds-meet.jpg', 
+  }
 ];
 
 // Dữ liệu cho trang /games (danh sách game chính)
