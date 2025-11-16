@@ -1,0 +1,173 @@
+/* app/components/DiscoverSection/DiscoverSection.module.css */
+
+/* Định nghĩa biến (phải khớp với JS) */
+:root {
+  --card-gap: 16px;
+  --epic-dark-gray: #2a2a2a;
+  --epic-dim-gray: #AAAAAA;
+  --epic-light-gray: #FAFAFA;
+}
+
+/* PHẦN DISCOVER (Từ snippet của bạn + max-width) */
+.discoverSection {
+  padding: 28px;
+  border-radius: 28px;
+  background: #121212;
+  backdrop-filter: blur(8px);
+  border: #121212;
+  box-shadow: #121212;
+  
+  /* Giới hạn kích thước từ snippet của bạn */
+  max-width: 1100px;
+  margin: 48px auto 0; /* margin-top và căn giữa */
+}
+
+/* PHẦN HEADER (Style "kính mờ" cũ) */
+.discoverHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.discoverEyebrow {
+  color: #9ea6b5;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.discoverTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f5f7fb;
+}
+.discoverControls {
+  display: flex;
+  gap: 12px;
+}
+.arrowButton {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f7fb;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.arrowButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.arrowButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* PHẦN SLIDER (Style "kính mờ" cũ) */
+.sliderViewport {
+  overflow: hidden;
+}
+.sliderTrack {
+  display: flex;
+  gap: var(--card-gap); /* Dùng biến CSS */
+  transition: transform 0.1s ease-in-out;
+}
+
+/* PHẦN CARD (Từ snippet của bạn) */
+.discoverCard {
+  /* Công thức 5 card hoàn hảo từ snippet của bạn */
+  flex: 0 0 calc((100% - 4 * var(--card-gap)) / 5);
+  min-width: 0; /* Thêm dòng này để flex-basis hoạt động */
+  
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px; /* <-- Bo góc LỚN (20px) */
+  overflow: hidden; /* Phải có để "cắt" bo góc */
+  gap: 16px;
+  scroll-snap-align: start;
+  box-sizing: border-box; /* Thêm dòng này để sửa lỗi box-sizing */
+}
+
+.discoverImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.discoverImage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Hiệu ứng lớp phủ từ snippet của bạn */
+.discoverImageWrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.discoverCard:hover .discoverImageWrapper::after {
+  opacity: 1;
+}
+
+/* Nút Wishlist từ snippet của bạn */
+.wishlistBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s ease, opacity 0.2s ease;
+  transform: scale(0);
+  opacity: 0;
+  border: none; /* Thêm để đảm bảo là nút */
+  cursor: pointer; /* Thêm */
+}
+.discoverCard:hover .wishlistBtn {
+  transform: scale(1);
+  opacity: 1;
+}
+.wishlistBtn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* PHẦN INFO (Từ snippet của bạn) */
+.discoverInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gameCategory {
+  color: var(--epic-dim-gray);
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.discoverTitleText {
+  color: var(--epic-light-gray);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0;
+}
+.discoverPrice {
+  color: var(--epic-light-gray);
+  font-size: 15px;
+  margin: 0;
+}

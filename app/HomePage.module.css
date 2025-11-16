@@ -1,13 +1,14 @@
 /* app/HomePage.module.css */
 
+/* 1. Lớp này BÂY GIỜ CHỈ cung cấp PADDING */
 .pageContainer {
-  /* Căn lề 32px giống Header/Nav */
   padding: 24px 32px;
-  
-  /* Tạo bố cục Lưới */
+  /* Bỏ 'display: grid' và 'gap' ra khỏi đây */
+}
+
+.gridContainer {
   display: grid;
-  /* Cột 1 (Hero) sẽ chiếm 3 phần, Cột 2 (Sidebar) chiếm 1 phần */
-  grid-template-columns: 4fr 1fr; /* Tỉ lệ 4:1 (sidebar hẹp hơn) */
+  grid-template-columns: 3fr 1fr;
   gap: 24px;
 }
 

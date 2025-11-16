@@ -1,41 +1,45 @@
 // app/components/Sidebar/Sidebar.tsx
+"use client"; 
+
 import styles from './Sidebar.module.css';
-// Bước 1: Import dữ liệu từ file tập trung
-// (Đường dẫn '../../lib/data' là đi ra 2 cấp thư mục)
-import { sidebarGames } from '../../lib/data';
+import { sidebarGames } from '../../../lib/data';
+// 1. Xóa import 'useHeroSlider'
 
-// Bước 2: XÓA 'const sidebarGames = [...]' đã từng ở đây.
+// 2. Định nghĩa kiểu dữ liệu cho props
+interface SidebarProps {
+  currentSlide: number;
+  handleThumbnailClick: (index: number) => void;
+}
 
-export default function Sidebar() {
+// 3. Nhận props làm tham số
+export default function Sidebar({ currentSlide, handleThumbnailClick }: SidebarProps) {
+  
+  // 4. Xóa logic gọi 'useHeroSlider'
+
   return (
     <aside className={styles.sidebarContainer}>
-      
-      {/* Bước 3: Đoạn code map này vẫn hoạt động y hệt
-          vì nó đang dùng 'sidebarGames' được import vào 
-      */}
-      {sidebarGames.map((game) => {
-        // Xử lý thẻ đặc biệt 'Epic Savings'
-        if (game.id === 'savings') {
-          return (
-            <div key={game.id} className={`${styles.gameCard} ${styles.savingsCard}`}>
-              <div 
-                className={styles.gameImage} 
-                style={{ backgroundImage: `url(${game.imageUrl})` }}
-              ></div>
-              <div className={styles.gameInfo}>
-                <span className={styles.gameTitle}>{game.title}</span>
-              </div>
-            </div>
-          );
-        }
+      {sidebarGames.map((game, index) => {
+        // 5. Dùng 'currentSlide' từ props
+        const isActive = index === currentSlide;
 
-        // Các thẻ game bình thường
         return (
-          <div key={game.id} className={styles.gameCard}>
-            <div 
+          <div 
+            key={game.id} 
+            className={`${styles.gameCard} ${isActive ? styles.gameCardActive : ''}`}
+            // 6. Dùng 'handleThumbnailClick' từ props
+            onClick={() => handleThumbnailClick(index)}
+          >
+            {isActive && (
+              <div 
+                className={styles.progressBar}
+                key={currentSlide} 
+              ></div>
+            )}
+            <img 
+              src={game.imageUrl || game.imageUrl}
+              alt={game.title}
               className={styles.gameImage}
-              style={{ backgroundImage: `url(${game.imageUrl})` }}
-            ></div>
+            />
             <div className={styles.gameInfo}>
               <span className={styles.gameTitle}>{game.title}</span>
               <span className={styles.gameExtra}>{game.extra}</span>
