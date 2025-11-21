@@ -4,13 +4,19 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './TopNewReleases.module.css'; // Import file CSS riêng của component này
 import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
-import { mainGameList as games, Game } from '../../../lib/data';
+import { Game } from '../../../lib/data';
 
 // Hằng số cấu hình giống DiscoverSection
 const VISIBLE_COUNT = 5; // Hiển thị 5 game
 const CARD_GAP = 24;     // Khoảng cách giữa các thẻ (Lưu ý: TopNewReleases thường rộng hơn Discover chút, tôi để 24px cho thoáng)
 
-export default function TopNewReleases() {
+// Interface cho props
+interface TopNewReleasesProps {
+    title: string;
+    games: Game[];
+}
+
+export default function TopNewReleases({ title, games }: TopNewReleasesProps) {
     // LOGIC GIỐNG DISCOVER SECTION
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardWidth, setCardWidth] = useState(0);
@@ -52,7 +58,7 @@ export default function TopNewReleases() {
 
             <div className={styles.headerRow}>
                 <div className={styles.titleGroup}>
-                    <h2 className={styles.title}>Top New Releases</h2>
+                    <h2 className={styles.title}>{title}</h2>
                     {/* Icon mũi tên nhỏ bên cạnh title */}
                     <svg className={styles.titleIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
