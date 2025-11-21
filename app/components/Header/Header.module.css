@@ -2,33 +2,33 @@
 
 .headerContainer {
   display: flex;
-  justify-content: space-between; /* Đẩy 2 nhóm (trái, phải) ra 2 bên */
+  justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  background-color: #121212; /* Nền tối */
+  background-color: #121212;
   height: 70px;
-  color: #FAFAFA; /* Màu chữ trắng */
+  color: #FAFAFA;
 }
 
 /* --- Phần bên trái --- */
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 24px; /* Khoảng cách giữa các mục: Logo, Nav, Search */
+  gap: 24px;
 }
 
 .logo {
-  font-size: 1.5rem; /* 24px */
+  font-size: 1.5rem; 
   font-weight: bold;
 }
 
 .nav {
   display: flex;
-  gap: 20px; /* Khoảng cách giữa các link: Store, Support... */
+  gap: 20px;
 }
 
 .navLink {
-  color: #AAAAAA; /* Màu xám cho link không active */
+  color: #AAAAAA;
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
@@ -36,7 +36,7 @@
 }
 
 .navLink:hover {
-  color: #FAFAFA; /* Trắng khi hover */
+  color: #FAFAFA;
 }
 
 
@@ -44,7 +44,7 @@
 .rightSection {
   display: flex;
   align-items: center;
-  gap: 24px; /* Khoảng cách giữa các mục: Wishlist, Cart... */
+  gap: 24px;
 }
 
 .userBalance {
@@ -54,7 +54,7 @@
 }
 
 .downloadButton {
-  background-color: #0078F2; /* Màu xanh dương (giống trong ảnh) */
+  background-color: #0078F2; 
   color: white;
   border: none;
   border-radius: 5px;
@@ -65,5 +65,5 @@
 }
 
 .downloadButton:hover {
-  background-color: #005EC2; /* Xanh đậm hơn khi hover */
+  background-color: #005EC2; 
 }

@@ -7,7 +7,7 @@ export default function Header() {
       
       {/* --- PHẦN BÊN TRÁI --- */}
       <div className={styles.leftSection}>
-        {/* Logo (chữ tạm) */}
+
         <div className={styles.logo}>GAME STORE</div>
 
         {/* Nav chính */}

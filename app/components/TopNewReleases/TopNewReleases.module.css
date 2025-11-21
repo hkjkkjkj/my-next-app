@@ -1,0 +1,213 @@
+/* app/components/TopNewReleases/TopNewReleases.module.css */
+
+:root {
+    --card-gap: 24px;
+    /* TopNewReleases có khoảng cách rộng hơn chút (24px) so với Discover (16px) */
+    --epic-dim-gray: #9ca3af;
+    --epic-light-gray: #f5f5f5;
+}
+
+.section {
+    padding: 40px 0;
+    /* Không padding trái phải ở container ngoài */
+    background: #121212;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 16px;
+    /* Padding cho header để thẳng hàng với content */
+}
+
+.titleGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.titleGroup:hover {
+    opacity: 0.8;
+}
+
+.title {
+    font-size: 22px;
+    /* Cỡ chữ tiêu đề nhỏ hơn Discover chút */
+    font-weight: 700;
+    color: #f5f7fb;
+    margin: 0;
+}
+
+.titleIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+}
+
+.arrowButton {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #333;
+    /* Nền xám đậm */
+    color: #fbfbfb;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.arrowButton:hover:not(:disabled) {
+    background: #444;
+}
+
+.arrowButton:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* SLIDER VIEWPORT */
+.sliderViewport {
+    overflow: hidden;
+    padding: 0 16px;
+    /* Padding để thẻ đầu/cuối không dính lề màn hình */
+}
+
+.sliderTrack {
+    display: flex;
+    gap: var(--card-gap);
+    transition: transform 0.4s ease-in-out;
+    /* Thời gian trượt mượt mà */
+    width: 100%;
+}
+
+/* CARD STYLE */
+.card {
+    /* Width sẽ được gán inline style từ JS, nhưng set min-width để an toàn */
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    gap: 12px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    /* Ảnh dọc */
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #2a2a2a;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.2s;
+}
+
+/* Hiệu ứng Hover Overlay */
+.imageWrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.card:hover .imageWrapper::after {
+    opacity: 1;
+}
+
+/* Nút Wishlist (+) */
+.wishlistBtn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: scale(0);
+    opacity: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.card:hover .wishlistBtn {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.wishlistBtn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* INFO */
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.category {
+    color: var(--epic-dim-gray);
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.gameTitle {
+    color: var(--epic-light-gray);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    line-height: 1.4;
+
+    /* Cắt chữ nếu quá dài */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #333;
+    color: #e5e5e5;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    align-self: flex-start;
+}
+
+.price {
+    color: var(--epic-light-gray);
+    font-size: 14px;
+    margin: 0;
+}

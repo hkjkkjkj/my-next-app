@@ -1,0 +1,152 @@
+/* FreeGamesSection.module.css */
+
+/* Section nằm trong layout chính, nhưng có màu nền riêng biệt cho khối này */
+.section {
+    background-color: #121212;
+    /* Màu nền web chính */
+    padding: 40px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Khối bao bọc nội dung Free Games (Card to bên ngoài) */
+.cardWrapper {
+    background-color: #2a2a2a;
+    /* Màu nền xám sáng hơn nền web */
+    border-radius: 12px;
+    padding: 52px;
+}
+
+/* === HEADER (Icon + Title + Button) === */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.titleGroup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+    object-fit: contain;
+}
+
+.viewMoreBtn {
+    background-color: transparent;
+    border: 1px solid #646363;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.viewMoreBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === GRID LAYOUT === */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        /* Mobile 1 cột */
+    }
+
+    .cardWrapper {
+        padding: 16px;
+    }
+}
+
+/* === GAME CARD === */
+.card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s;
+}
+
+.card:hover .image {
+    opacity: 0.9;
+}
+
+/* Thanh trạng thái (Free Now / Coming Soon) */
+.statusBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Màu xanh cho game đang miễn phí */
+.statusBlue {
+    background-color: #0074e4;
+}
+
+/* Màu đen cho game sắp ra mắt */
+.statusBlack {
+    background-color: #000000;
+}
+
+/* Thông tin game bên dưới */
+.gameTitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    margin: 0 0 4px 0;
+}
+
+.gameDate {
+    font-size: 14px;
+    color: #9ca3af;
+    /* Xám nhạt */
+    margin: 0;
+}

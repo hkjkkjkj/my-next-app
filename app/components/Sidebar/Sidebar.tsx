@@ -1,5 +1,5 @@
 // app/components/Sidebar/Sidebar.tsx
-"use client"; 
+"use client";
 
 import styles from './Sidebar.module.css';
 import { sidebarGames } from '../../../lib/data';
@@ -13,7 +13,7 @@ interface SidebarProps {
 
 // 3. Nhận props làm tham số
 export default function Sidebar({ currentSlide, handleThumbnailClick }: SidebarProps) {
-  
+
   // 4. Xóa logic gọi 'useHeroSlider'
 
   return (
@@ -23,19 +23,19 @@ export default function Sidebar({ currentSlide, handleThumbnailClick }: SidebarP
         const isActive = index === currentSlide;
 
         return (
-          <div 
-            key={game.id} 
+          <div
+            key={game.id}
             className={`${styles.gameCard} ${isActive ? styles.gameCardActive : ''}`}
             // 6. Dùng 'handleThumbnailClick' từ props
             onClick={() => handleThumbnailClick(index)}
           >
             {isActive && (
-              <div 
+              <div
                 className={styles.progressBar}
-                key={currentSlide} 
+                key={currentSlide}
               ></div>
             )}
-            <img 
+            <img
               src={game.imageUrl || game.imageUrl}
               alt={game.title}
               className={styles.gameImage}
