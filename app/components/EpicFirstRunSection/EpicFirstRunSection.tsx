@@ -11,14 +11,14 @@ const PADDING_X = 32; // Tổng padding trái (16) + phải (16) của sliderVie
 
 export default function EpicFirstRunSection() {
     const games = [
-        { id: 1, title: "Atlas Wars", category: "Base Game", price: "Free", image: "https://cdn1.epicgames.com/spt-assets/atlas-wars.jpg" },
-        { id: 2, title: "Countrytale 2010", category: "Base Game", price: "₫209,000", image: "https://cdn1.epicgames.com/spt-assets/countrytale.jpg" },
-        { id: 3, title: "Super Miaoyin", category: "Base Game", price: "₫26,000", image: "https://cdn1.epicgames.com/spt-assets/miaoyin.jpg" },
-        { id: 4, title: "Space Road: Elite", category: "Base Game", price: "₫84,000", image: "https://cdn1.epicgames.com/spt-assets/space-road.jpg" },
-        { id: 5, title: "Stellar Subterranean", category: "Base Game", price: "Free", image: "https://cdn1.epicgames.com/spt-assets/stellar.jpg" },
-        { id: 6, title: "Another Game", category: "Base Game", price: "₫100,000", image: "https://cdn1.epicgames.com/spt-assets/placeholder6.jpg" },
-        { id: 7, title: "Epic Game 7", category: "Base Game", price: "Free", image: "https://cdn1.epicgames.com/spt-assets/placeholder7.jpg" },
-        { id: 8, title: "Epic Game 8", category: "Base Game", price: "₫50,000", image: "https://cdn1.epicgames.com/spt-assets/placeholder8.jpg" },
+        { id: 1, title: "Reanimal", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/reanimal.png" },
+        { id: 2, title: "Felix The Reaper", category: "Base Game", price: "₫209,000", image: "/epic-form-epic-first-run/felix-the-reaper.png" },
+        { id: 3, title: "Vampire: The Masquerade® - Bloodlines™ 2", category: "Base Game", price: "₫1,375,000", image: "/epic-form-epic-first-run/vampire-the-masquerade.jpg" },
+        { id: 4, title: "Hell is Us", category: "Base Game", price: "₫1,190,000", image: "/epic-form-epic-first-run/hell-is-us.png" },
+        { id: 5, title: "Batman™ Arkham Knight", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/batman-arkham-knight.png" },
+        { id: 6, title: "OCTOPATH TRAVELER™", category: "Base Game", price: "₫1,200,000", image: "/epic-form-epic-first-run/octopath-traveler.jpg" },
+        { id: 7, title: "Back 4 Blood: Standard Edition", category: "Base Game", price: "₫1,470,000", image: "/epic-form-epic-first-run/back-4-blood.jpg" },
+        { id: 8, title: "NARAKA: BLADEPOINT", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/naraka-bladepoint.jpg" },
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
