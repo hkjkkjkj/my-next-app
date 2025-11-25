@@ -1,0 +1,209 @@
+/* app/components/NewReleasesList/NewReleasesList.module.css */
+
+.section {
+    background-color: #121212;
+    padding: 40px 0;
+    color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Layout 3 cột */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+
+/* Cột có đường kẻ dọc bên phải */
+.column {
+    padding: 0 24px;
+    border-right: 1px solid #2a2a2a;
+}
+
+.column:first-child {
+    padding-left: 0;
+}
+
+.column:last-child {
+    padding-right: 0;
+    border-right: none;
+}
+
+/* HEADER CỦA CỘT */
+.columnHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.columnHeader:hover {
+    opacity: 0.8;
+}
+
+.columnTitle {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff;
+}
+
+.headerIcon {
+    width: 14px;
+    height: 14px;
+    color: #f5f5f5;
+}
+
+/* DANH SÁCH ITEMS */
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.item {
+    display: flex;
+    gap: 16px;
+    text-decoration: none;
+    color: inherit;
+    padding: 8px;
+    border-radius: 8px;
+    margin-left: -8px;
+    transition: background-color 0.2s;
+}
+
+.item:hover {
+    background-color: #262626;
+}
+
+/* ẢNH THUMBNAIL (Dọc) */
+.imageWrapper {
+    width: 64px;
+    height: 85px;
+    /* Tỉ lệ khoảng 3:4 */
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* THÔNG TIN CHI TIẾT */
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+.gameTitle {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+    color: #f5f5f5;
+
+    /* Cắt dòng nếu tên quá dài */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* SLIDER */
+.sliderViewport {
+    overflow: hidden;
+    padding: 0 16px;
+    /* Padding này cần thiết để tránh thẻ bị cắt sát lề */
+}
+
+.sliderTrack {
+    display: flex;
+    /* Bắt buộc dùng Flex cho Slider */
+    gap: var(--card-gap);
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+}
+
+.card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    /* Không set width ở đây, width sẽ được JS tính toán */
+}
+
+/* BADGES */
+.tagsRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badgeGray {
+    background-color: #333;
+    color: #f5f5f5;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.badgeBlue {
+    background-color: #0074e4;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+/* GIÁ TIỀN & NGÀY THÁNG */
+.subText {
+    font-size: 13px;
+    color: #9ca3af;
+    margin: 0;
+}
+
+.priceRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.originalPrice {
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-size: 13px;
+}
+
+.finalPrice {
+    color: #f5f5f5;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .column {
+        padding: 0;
+        border-right: none;
+    }
+}

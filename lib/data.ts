@@ -1,5 +1,7 @@
 // lib/data.ts
 
+import PromosSection from "@/app/components/PromosSection/PromosSection";
+
 // --- ĐỊNH NGHĨA CÁC KIỂU DỮ LIỆU ---
 
 // Định nghĩa cho một game trong sidebar (hoặc danh sách game nhỏ)
@@ -23,8 +25,8 @@ export interface HeroBanner {
   logoUrl: string;
 }
 
-// Định nghĩa cho một game đầy đủ (dùng cho trang /games sau này)
-export interface Game {
+// Định nghĩa cho một Discover Section
+export interface DiscoverItem {
   id: string;
   name: string;
   imageUrl: string;
@@ -68,6 +70,60 @@ export interface FreeItem {
   buttonText: string;
   hasIcon?: boolean;
 }
+
+// Định nghĩa cho một Promos
+export interface PromosItem {
+  id: string;
+  title: string;
+  image: string;
+  tag?: string;
+  type: 'game' | 'promo';
+  buttonText?: string;
+  description: string;
+}
+
+
+// Định nghĩa cho Featured Game Banner
+export interface FeaturedGame {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  image: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+}
+
+// Định nghĩa cho một Trending
+export interface TrendingItem {
+  id: string,
+  title: string,
+  category: string,
+  price: string,
+  image: string
+}
+
+// Định nghĩa cho GameItem (dùng chung cho FeaturedLists và NewReleasesList)
+export interface GameItem {
+  id: number;
+  title: string;
+  image: string;
+  price?: string;
+  originalPrice?: string;
+  discount?: string;
+  badge?: string;
+  availability?: string;
+}
+
+// Định nghĩa cho Top New Releases
+export interface TopNewReleases {
+  id: string;
+  title: string;
+  category: string;
+  price: string;
+  image: string;
+}
+
 
 // --- DỮ LIỆU GIẢ CỦA BẠN ---
 
@@ -142,7 +198,7 @@ export const sidebarGames: SidebarGame[] = [
     id: 'arc-raiders',
     title: 'ARC RAIDERS',
     extra: 'Base Game',
-    imageUrl: '/thumbnails/arc-raiders.jpg',
+    imageUrl: '/thumbnails/arc-raiders.png',
   },
   {
     id: 'marvel-rivals',
@@ -166,7 +222,7 @@ export const sidebarGames: SidebarGame[] = [
 
 
 // Dữ liệu cho trang /games (danh sách game chính)
-export const mainGameList: Game[] = [
+export const mainGameList: DiscoverItem[] = [
   {
     id: 'mouse-p-i-for-hire',
     name: 'Mouse: P.I. for Hire',
@@ -331,3 +387,212 @@ export const freeData: FreeItem[] = [
 
   },
 ]
+
+// Dữ liệu cho trang/promos
+export const promoData: PromosItem[] = [
+  {
+    id: 'holiday-sale-2025',
+    title: 'Holiday Sale 2025',
+    image: '/images/holiday-sale.jpg',
+    type: 'promo',
+    description: 'Save up to 75% on selected titles this holiday season.',
+    buttonText: 'Learn More'
+  },
+  {
+    id: 'free-game-week',
+    title: 'Free Game of the Week',
+    image: '/images/free-game.jpg',
+    type: 'promo',
+    description: 'Claim your free game now before it expires.',
+    buttonText: 'Claim Now'
+  },
+]
+
+// Dữ liệu cho Featured Lists
+export const topSellers: GameItem[] = [
+  { id: 1, title: "ARC Raiders", price: "₫745,944", image: "/thumbnails/arc-raiders.png" }, // Thay ảnh thật
+  { id: 2, title: "Cyberpunk 2077", price: "₫971,000", image: "/thumbnails/cyberpunk.png" },
+  { id: 3, title: "Battlefield™ 6", price: "₫1,299,000", image: "/thumbnails/battlefield.png" },
+  { id: 4, title: "Red Dead Redemption 2", price: "₫1,359,000", image: "/thumbnails/red-dead-redemption-2.png" },
+  { id: 5, title: "REMATCH", price: "₫385,000", image: "/thumbnails/rematch.png" },
+];
+
+// Dữ liệu Cột 2: Most Played
+export const mostPlayed: GameItem[] = [
+  { id: 1, title: "Fortnite", price: "Free", image: "/thumbnails/fortnite.png" },
+  { id: 2, title: "Rocket League®", price: "Free", image: "/thumbnails/rocket-league.png" },
+  { id: 3, title: "Grand Theft Auto V Enhanced", price: "₫683,000", image: "/thumbnails/gta5.png" },
+  { id: 4, title: "Genshin Impact", price: "Free", image: "/thumbnails/genshin.png" },
+  { id: 5, title: "Crosshair X", price: "₫52,000", image: "/thumbnails/crosshair.png" },
+];
+
+// Dữ liệu Cột 3: Top Upcoming
+export const topUpcoming: GameItem[] = [
+  { id: 1, title: "Subnautica 2", availability: "Coming Soon", image: "/thumbnails/subnautica2.png" },
+  { id: 2, title: "Hogwarts Legacy", price: "₫1.299.000", image: "/thumbnails/hogwarts-legacy.jpg" },
+  { id: 3, title: "Split Fiction", availability: "Coming Soon", image: "/thumbnails/split-fiction.png" },
+  { id: 4, title: "Jurassic Park: Survival", availability: "Coming Soon", image: "/thumbnails/jurassic.png" },
+  { id: 5, title: "Resident Evil Requiem", availability: "Available 02/27/26", image: "/thumbnails/re.jpg" },
+];
+
+// Dữ liệu cho Featured Game Banner
+export const featuredGame: FeaturedGame[] = [
+  {
+    id: 'cronos-the-new-dawn',
+    title: "CRONOS: The New Dawn",
+    description: "A whole new breed of survival horror emerges with Cronos: The New Dawn.",
+    price: "₫970,000",
+    image: "/images/cronos-the-new-dawn.jpg", // Bạn thay link ảnh thật vào đây
+    ctaPrimary: "Buy Now",
+    ctaSecondary: "Add to Wishlist"
+  },
+];
+
+// Dữ liệu cho Trending Section
+export const trendingGames: TrendingItem[] = [
+  {
+    id: 'lords-of-the-fallen-ii',
+    title: 'Lords of the Fallen II',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/trending/lords-of-the-fallen-ii.png',
+  },
+  {
+    id: 'the-wolf-among-us-2',
+    title: 'The Wolf Among Us 2',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/trending/the-wolf-among-us-2.png',
+  },
+  {
+    id: 'arknights-endfield',
+    title: 'Arknights: Endfield',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/trending/arknights-endfield.png',
+  },
+  {
+    id: 'assassins-creed-valhalla',
+    title: 'Assassin\'s Creed® Valhalla',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/trending/assassins-creed-valhalla.png',
+  },
+  {
+    id: 'the-legend-of-zelda-tears-of-the-kingdom',
+    title: 'The Legend of Zelda: Tears of the Kingdom',
+    category: 'DLC',
+    price: 'Coming Soon',
+    image: '/trending/the-legend-of-zelda-tears-of-the-kingdom.png',
+  },
+  {
+    id: 'the-legend-of-zelda-tears-of-the-kingdom',
+    title: 'The Legend of Zelda: Tears of the Kingdom',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/trending/the-legend-of-zelda-tears-of-the-kingdom.jpg',
+  },
+];
+
+// Dữ liệu cho trang/new-releases-list
+// CỘT 1: NEW RELEASES
+export const newReleases: GameItem[] = [
+  { id: 1, title: "INAZUMA ELEVEN: Victory Road", image: "/new-releases-list/inazuma.jpg", badge: "Now On Epic", price: "₫1,200,000" },
+  { id: 2, title: "Constance", image: "/new-releases-list/constance.png", badge: "Now On Epic", price: "Free" },
+  { id: 3, title: "Dispatch", image: "/new-releases-list/dispatch.jpg", price: "₫300,000" },
+  { id: 4, title: "DOOM: The Dark Ages", image: "/new-releases-list/doom.png", badge: "Now On Epic", price: "₫1,200,000" },
+  { id: 5, title: "Mouthwashing", image: "/new-releases-list/mouthwashing.png", badge: "Now On Epic", price: "Free" },
+];
+
+// CỘT 2: TOP PLAYER RATED
+export const topRated: GameItem[] = [
+  { id: 1, title: "KINGDOM HEARTS III + Re Mind...", image: "/new-releases-list/kh3.png", price: "₫1,250,000" },
+  { id: 2, title: "Goat Simulator 3", image: "/new-releases-list/goat3.png", discount: "-60%", originalPrice: "₫385,000", price: "₫154,000" },
+  { id: 3, title: "Hades II", image: "/new-releases-list/hades2.jpg", price: "₫385,000" },
+  { id: 4, title: "Clair Obscur: Expedition 33", image: "/new-releases-list/clair.png", price: "₫770,000" },
+  { id: 5, title: "Titanfall® 2: Ultimate Edition", image: "/new-releases-list/titanfall2.png", discount: "-85%", originalPrice: "₫700,000", price: "₫105,000" },
+];
+
+// CỘT 3: COMING SOON
+export const comingSoon: GameItem[] = [
+  { id: 1, title: "Project Motor Racing", image: "/new-releases-list/motor.png", availability: "Available 11/25/25", price: "₫860,000" },
+  { id: 2, title: "Subnautica 2", image: "/new-releases-list/subnautica2.png", availability: "Available 11/26/25" },
+  { id: 3, title: "Slay the Spire 2", image: "/new-releases-list/slay.jpg", availability: "Available 11/27/25" },
+  { id: 4, title: "Lost Ember: Rekindled Edition", image: "/new-releases-list/lostember.png", availability: "Available 11/27/25" },
+  { id: 5, title: "PUBG: BLINDSPOT", image: "/new-releases-list/blur.png", availability: "Available Nov 2025" },
+];
+
+// Dữ liệu cho trang/top-new-releases
+export const topNewReleases: TopNewReleases[] = [
+  {
+    id: 'lords-of-the-fallen-ii',
+    title: 'Lords of the Fallen II',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/trending/lords-of-the-fallen-ii.png',
+  },
+  {
+    id: 'the-legend-of-zelda-tears-of-the-kingdom',
+    title: 'The Legend of Zelda: Tears of the Kingdom',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/top-new-releases/the-legend-of-zelda-tears-of-the-kingdom.png',
+  },
+  {
+    id: 'assassins-creed-valhalla',
+    title: 'Assassin\'s Creed® Valhalla',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/trending/assassins-creed-valhalla.png',
+  },
+  {
+    id: 'crystal-of-atlantean',
+    title: 'Crystal of Atlantean',
+    category: 'Base Game',
+    price: 'Coming Soon',
+    image: '/top-new-releases/crystal-of-atlantean.png',
+  },
+  {
+    id: 'celeste-1',
+    title: 'Celeste',
+    category: 'Base Game',
+    price: 'Free',
+    image: '/top-new-releases/celeste.png',
+  },
+  {
+    id: 'rusty-lake-hotel',
+    title: 'Rusty Lake Hotel',
+    category: 'Base Game',
+    price: 'Free',
+    image: '/top-new-releases/rusty-lake-hotel.png',
+  },
+  {
+    id: 'when-the-past-was-around',
+    title: 'When The Past Was Around',
+    category: 'Base Game',
+    price: 'Free',
+    image: '/top-new-releases/when-the-past-was-around.png',
+  },
+  {
+    id: 'the-hunter-call-of-the-wild',
+    title: 'theHunter: Call of the Wild™',
+    category: 'Base Game',
+    price: 'Free',
+    image: '/top-new-releases/the-hunter-call-of-the-wild.png',
+  },
+  {
+    id: 'florence',
+    title: 'Florence',
+    category: 'Base Game',
+    price: 'Free',
+    image: '/top-new-releases/florence.png',
+  },
+  {
+    id: 'stray',
+    title: 'Stray',
+    category: 'Base Game',
+    price: 'Free',
+    image: '/top-new-releases/stray.jpg',
+  },
+
+];

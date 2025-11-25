@@ -13,6 +13,12 @@ import NewsSection from './components/NewsSection/NewsSection';
 import DealsSection from './components/DealsSection/DealsSection';
 import FreeGamesSection from './components/FreeGamesSection/FreeGamesSection';
 import TopNewReleases from './components/TopNewReleases/TopNewReleases';
+import PromosSection from './components/PromosSection/PromosSection';
+import FeaturedLists from './components/FeaturedLists/FeaturedLists';
+import FeaturedGameBanner from './components/FeaturedGameBanner/FeaturedGameBanner';
+import TrendingSection from './components/TrendingSection/TrendingSection';
+import NewReleasesList from './components/NewReleasesList/NewReleasesList';
+import EpicFirstRunSection from './components/EpicFirstRunSection/EpicFirstRunSection';
 // 2. XÓA Bất kỳ import nào đến 'GameRow' (nếu có)
 
 export default function HomePage() {
@@ -43,11 +49,17 @@ export default function HomePage() {
       </div>
 
       {/* 3. GỌI component MỚI TẠI ĐÂY */}
-      <DiscoverSection title="Discover Something New" games={mainGameList} />
+      <DiscoverSection />
       <NewsSection />
       <DealsSection />
       <FreeGamesSection title="Free Games" />
-      <TopNewReleases title="Top New Releases" games={mainGameList} />
+      <TopNewReleases />
+      <PromosSection />
+      <FeaturedLists />
+      <FeaturedGameBanner />
+      <TrendingSection />
+      <NewReleasesList />
+      <EpicFirstRunSection />
     </main>
   );
 }

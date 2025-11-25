@@ -1,6 +1,6 @@
 // app/games/page.tsx
 import styles from './GamesPage.module.css'; // <-- Bước 1: Import file CSS
-
+import { mainGameList, Game } from '@/lib/data';
 // Dữ liệu giả
 const mockGames = [
   { id: 1, name: 'Cyberpunk 2077', price: '59.99$' },

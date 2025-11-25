@@ -1,0 +1,116 @@
+/* app/components/FeaturedGameBanner/FeaturedGameBanner.module.css */
+
+.section {
+    background-color: #121212;
+    padding: 40px 0;
+    color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Layout Grid: Ảnh chiếm nhiều hơn (1.6 phần), Text chiếm ít hơn (1 phần) */
+.grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 64px;
+    /* Khoảng cách rộng giữa ảnh và chữ cho thoáng */
+    align-items: center;
+    /* Căn giữa nội dung theo chiều dọc */
+}
+
+/* Responsive: Mobile xếp chồng */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+/* --- PHẦN HÌNH ẢNH --- */
+.imageWrapper {
+    width: 100%;
+    border-radius: 12px;
+    /* Bo góc mềm mại */
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- PHẦN NỘI DUNG --- */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #9ca3af;
+    margin: 0 0 24px 0;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 500;
+    color: #f5f5f5;
+    margin: 0 0 32px 0;
+}
+
+/* --- NHÓM BUTTON --- */
+.buttonGroup {
+    display: flex;
+    gap: 12px;
+}
+
+.btnPrimary {
+    background-color: #4bb1ff;
+    color: black;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 200;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: background-color 0.2s;
+}
+
+.btnPrimary:hover {
+    background-color: #7ebefe;
+}
+
+.btnSecondary {
+    background-color: #262626;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 200;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: background-color 0.2s;
+}
+
+.btnSecondary:hover {
+    background-color: #333;
+}

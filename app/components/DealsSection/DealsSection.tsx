@@ -1,7 +1,7 @@
 //app/components/DealSection/DealSection.tsx
 import React from 'react';
 import styles from './DealsSection.module.css';
-import { dealsData } from '../../../lib/data';
+import { dealsData } from '@/lib/data';
 
 const DealsSection = () => {
     return (

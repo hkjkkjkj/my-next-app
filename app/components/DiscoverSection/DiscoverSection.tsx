@@ -1,20 +1,16 @@
-// app/components/DiscoverSection/DiscoverSection.tsx
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import styles from './DiscoverSection.module.css'; 
-import { mainGameList, Game } from '../../../lib/data'; 
-import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa'; 
+import styles from './DiscoverSection.module.css';
+import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
+import { mainGameList } from '@/lib/data';
 
 const VISIBLE_COUNT = 5;
-const CARD_GAP = 16; 
+const CARD_GAP = 24; // Matches --card-gap in CSS
+const PADDING_X = 32; // Total padding left (16) + right (16) of sliderViewport
 
-interface DiscoverSectionProps {
-  title: string;
-  games: Game[];
-}
+export default function DiscoverSection() {
 
-export default function DiscoverSection({ title, games }: DiscoverSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -22,8 +18,12 @@ export default function DiscoverSection({ title, games }: DiscoverSectionProps) 
   useEffect(() => {
     const updateCardWidth = () => {
       if (!viewportRef.current) return;
+
       const viewportWidth = viewportRef.current.offsetWidth;
-      const width = (viewportWidth - CARD_GAP * (VISIBLE_COUNT - 1)) / VISIBLE_COUNT;
+      // Trừ đi padding để lấy không gian thực tế chứa thẻ. Trừ thêm 1px để tránh lỗi làm tròn sub-pixel gây cắt thẻ cuối.
+      const availableWidth = viewportWidth - PADDING_X - 1;
+      const width = (availableWidth - CARD_GAP * (VISIBLE_COUNT - 1)) / VISIBLE_COUNT;
+
       setCardWidth(width);
     };
 
@@ -51,17 +51,19 @@ export default function DiscoverSection({ title, games }: DiscoverSectionProps) 
 
   return (
     <section className={styles.discoverSection}>
-      
+      {/* Header */}
       <div className={styles.discoverHeaderRow}>
-        <div>
-          <p className={styles.discoverEyebrow}>Curated Picks</p>
+        <div className={styles.titleWrapper}>
           <h2 className={styles.discoverTitle}>Discover Something New</h2>
+          <svg className={styles.discoverTitleIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
         </div>
+
         <div className={styles.discoverControls}>
           <button
             type="button"
             className={styles.arrowButton}
-            aria-label="Xem game trước"
             onClick={handlePrev}
             disabled={!canGoPrev}
           >
@@ -70,7 +72,6 @@ export default function DiscoverSection({ title, games }: DiscoverSectionProps) 
           <button
             type="button"
             className={styles.arrowButton}
-            aria-label="Xem game tiếp theo"
             onClick={handleNext}
             disabled={!canGoNext}
           >
@@ -79,6 +80,7 @@ export default function DiscoverSection({ title, games }: DiscoverSectionProps) 
         </div>
       </div>
 
+      {/* Slider */}
       <div className={styles.sliderViewport} ref={viewportRef}>
         <div
           className={styles.sliderTrack}
@@ -88,19 +90,23 @@ export default function DiscoverSection({ title, games }: DiscoverSectionProps) 
             <div
               key={game.id}
               className={styles.discoverCard}
+              style={{ width: `${cardWidth}px`, flex: `0 0 ${cardWidth}px` }}
             >
               <div className={styles.discoverImageWrapper}>
-                <img src={game.imageUrl} alt={game.name} className={styles.discoverImage} />
-                
-                <a href="#" className={styles.wishlistBtn} aria-label="Add to Wishlist">
+                <img
+                  src={game.imageUrl}
+                  alt={game.name}
+                  className={styles.discoverImage}
+                  onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=Discover"; }}
+                />
+                <button className={styles.wishlistBtn} aria-label="Add to Wishlist">
                   <FaPlus />
-                </a>
+                </button>
               </div>
-              
+
               <div className={styles.discoverInfo}>
                 <span className={styles.gameCategory}>{game.category}</span>
                 <h3 className={styles.discoverTitleText}>{game.name}</h3>
-                
                 <p className={styles.discoverPrice}>{game.currentPrice}</p>
               </div>
             </div>

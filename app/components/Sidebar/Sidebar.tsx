@@ -2,7 +2,7 @@
 "use client";
 
 import styles from './Sidebar.module.css';
-import { sidebarGames } from '../../../lib/data';
+import { sidebarGames } from '@/lib/data';
 // 1. Xóa import 'useHeroSlider'
 
 // 2. Định nghĩa kiểu dữ liệu cho props

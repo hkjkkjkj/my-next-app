@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './NewSection.module.css'; // Import file CSS vừa tạo
-import { newsList } from '../../../lib/data';
+import { newsList } from '@/lib/data';
 
 const NewsSection = () => {
     return (

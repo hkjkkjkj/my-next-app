@@ -16,10 +16,10 @@ body {
 body {
   /* Đây là màu nền tối giống Epic Store */
   background-color: #121212;
-  
+
   /* Màu chữ mặc định là màu trắng nhạt */
   color: #FAFAFA;
-  
+
   /* Font chữ chung (Bạn có thể đổi sang font khác nếu muốn) */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
@@ -27,6 +27,8 @@ body {
 
 /* Định dạng chung cho link */
 a {
-  color: inherit; /* Link sẽ có màu giống chữ thường */
-  text-decoration: none; /* Bỏ gạch chân */
+  color: inherit;
+  /* Link sẽ có màu giống chữ thường */
+  text-decoration: none;
+  /* Bỏ gạch chân */
 }
