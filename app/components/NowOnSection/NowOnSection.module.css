@@ -1,0 +1,210 @@
+/**
+ * NowOnSection.module.css
+ */
+
+:root {
+    --card-gap: 24px;
+    --epic-dim-gray: #9ca3af;
+    --epic-light-gray: #f5f5f5;
+    --epic-gold: #dcb35d;
+    /* Màu vàng của vương miện */
+}
+
+.section {
+    padding: 40px 0;
+    background: #121212;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 16px;
+}
+
+.titleGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.titleGroup:hover {
+    opacity: 0.8;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f5f7fb;
+    margin: 0;
+}
+
+.titleIcon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.titleGroup:hover .titleIcon {
+    transform: translateX(4px);
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+}
+
+.arrowButton {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #333;
+    color: #fbfbfb;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.arrowButton:hover:not(:disabled) {
+    background: #444;
+}
+
+.arrowButton:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* SLIDER VIEWPORT */
+.sliderViewport {
+    overflow: hidden;
+    padding: 0 16px;
+    /* Padding trái phải tổng cộng 32px */
+}
+
+.sliderTrack {
+    display: flex;
+    gap: var(--card-gap);
+    transition: transform 0.4s ease-in-out;
+    width: 100%;
+}
+
+/* CARD STYLE */
+.card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    gap: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
+
+    /* QUAN TRỌNG: Ngăn thẻ bị co lại */
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    /* Ảnh dọc */
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #2a2a2a;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.2s;
+}
+
+.card:hover .image {
+    filter: brightness(1.1);
+}
+
+/* Nút Wishlist (+) */
+.wishlistBtn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: scale(0);
+    opacity: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.card:hover .wishlistBtn {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* INFO */
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.category {
+    color: var(--epic-dim-gray);
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.gameTitle {
+    color: var(--epic-light-gray);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* BADGE "FIRST RUN" */
+.NowOnBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #2a2a2a;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #f5f5f5;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+.crownIcon {
+    color: var(--epic-gold);
+    width: 12px;
+    height: 12px;
+}
+
+.price {
+    color: var(--epic-light-gray);
+    font-size: 14px;
+    margin: 0;
+}

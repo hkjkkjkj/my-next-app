@@ -1,16 +1,16 @@
-// app/components/EpicFirstRunSection/EpicFirstRunSection.tsx
+// app/components/NowOnSection/NowOnSection.tsx
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import styles from './EpicFirstRunSection.module.css';
+import styles from './NowOnSection.module.css';
 import { FaChevronLeft, FaChevronRight, FaPlus, FaCrown } from 'react-icons/fa';
-import { epicFirstRun } from '@/lib/data';
+import { nowOn } from '@/lib/data';
 
 const VISIBLE_COUNT = 5;
 const CARD_GAP = 24;
 const PADDING_X = 32; // Tổng padding trái (16) + phải (16) của sliderViewport
 
-export default function EpicFirstRunSection() {
+export default function NowOnSection() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardWidth, setCardWidth] = useState(0);
@@ -39,7 +39,7 @@ export default function EpicFirstRunSection() {
         };
     }, []);
 
-    const maxIndex = Math.max(0, epicFirstRun.length - VISIBLE_COUNT);
+    const maxIndex = Math.max(0, nowOn.length - VISIBLE_COUNT);
     const canGoPrev = currentIndex > 0;
     const canGoNext = currentIndex < maxIndex;
 
@@ -59,7 +59,7 @@ export default function EpicFirstRunSection() {
             {/* Header */}
             <div className={styles.headerRow}>
                 <div className={styles.titleGroup}>
-                    <h2 className={styles.title}>Featured from Epic First Run</h2>
+                    <h2 className={styles.title}>Now On The Epic Games Store</h2>
                     <svg className={styles.titleIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
@@ -91,7 +91,7 @@ export default function EpicFirstRunSection() {
                     className={styles.sliderTrack}
                     style={{ transform: `translateX(${translateX}px)` }}
                 >
-                    {epicFirstRun.map((game) => (
+                    {nowOn.map((game) => (
                         <div
                             key={game.id}
                             className={styles.card}

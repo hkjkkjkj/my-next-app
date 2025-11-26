@@ -103,7 +103,7 @@ export interface TrendingItem {
   image: string
 }
 
-// Định nghĩa cho GameItem (dùng chung cho FeaturedLists và NewReleasesList)
+// Định nghĩa cho GameItem (dùng chung cho FeaturedLists và NewReleasesList và TopLists)
 export interface GameItem {
   id: number;
   title: string;
@@ -124,6 +124,23 @@ export interface TopNewReleases {
   image: string;
 }
 
+// Định nghĩa cho EpicFirstRun
+export interface EpicFirstRun {
+  id: string;
+  title: string;
+  image: string;
+  price: string;
+  category: string;
+}
+
+// Định nghĩa cho NowOn
+export interface NowOn {
+  id: string;
+  title: string;
+  image: string;
+  price: string;
+  category: string;
+}
 
 // --- DỮ LIỆU GIẢ CỦA BẠN ---
 
@@ -595,4 +612,90 @@ export const topNewReleases: TopNewReleases[] = [
     image: '/top-new-releases/stray.jpg',
   },
 
+];
+
+// Dữ liệu cho trang/top-lists (Top Add-Ons, Top Free to Play, Top Demos)
+
+// CỘT 1: TOP ADD-ONS
+export const topAddOns: GameItem[] = [
+  { id: 1, title: "Oneiric Shard x6480", image: "/top-lists/oneiric.png", price: "₫2,199,000" },
+  { id: 2, title: "The Diamond Diva Pack", image: "/top-lists/diva.png", price: "₫78,000" },
+  { id: 3, title: "Polar Legends Pack", image: "/top-lists/polar.png", price: "₫389,000" },
+  { id: 4, title: "Agency Renegades Pack", image: "/top-lists/agency.png", price: "₫354,200" },
+  { id: 5, title: "Rocket League® - Season 20...", image: "/top-lists/rocket-season.png", price: "₫347,000" },
+];
+
+// CỘT 2: TOP FREE TO PLAY
+export const topFreeToPlay: GameItem[] = [
+  { id: 1, title: "Fortnite", image: "/top-lists/fortnite.png", price: "Free" },
+  { id: 2, title: "Rocket League®", image: "/top-lists/rocket-league.png", price: "Free" },
+  { id: 3, title: "Genshin Impact", image: "/top-lists/genshin.png", price: "Free" },
+  { id: 4, title: "Honkai: Star Rail", image: "/top-lists/honkai.png", price: "Free" },
+  { id: 5, title: "Zenless Zone Zero", image: "/top-lists/zenless.png", price: "Free" },
+];
+
+// CỘT 3: TOP DEMOS
+export const topDemos: GameItem[] = [
+  { id: 1, title: "Half Sword Demo", image: "/top-lists/half-sword.png", price: "" }, // Demo thường không để giá hoặc Free
+  { id: 2, title: "Cloudheim Demo", image: "/top-lists/cloudheim.png", price: "" },
+  { id: 3, title: "XOCIETY Playtest", image: "/top-lists/xociety.png", price: "" },
+  { id: 4, title: "Truck World: Driving School", image: "/top-lists/truck-world.png", price: "" },
+  { id: 5, title: "Wilder World - Super Early...", image: "/top-lists/wilder-world.png", price: "" },
+];
+
+// Dữ liệu cho EpicFirstRunSection
+export const epicFirstRun: EpicFirstRun[] = [
+  { id: "reanimal", title: "Reanimal", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/reanimal.png" },
+  { id: "felix-the-reaper", title: "Felix The Reaper", category: "Base Game", price: "₫209,000", image: "/epic-form-epic-first-run/felix-the-reaper.png" },
+  { id: "vampire-the-masquerade-bloodlines-2", title: "Vampire: The Masquerade® - Bloodlines™ 2", category: "Base Game", price: "₫1,375,000", image: "/epic-form-epic-first-run/vampire-the-masquerade.jpg" },
+  { id: "hell-is-us", title: "Hell is Us", category: "Base Game", price: "₫1,190,000", image: "/epic-form-epic-first-run/hell-is-us.png" },
+  { id: "batman-arkham-knight", title: "Batman™ Arkham Knight", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/batman-arkham-knight.png" },
+  { id: "octopath-traveler", title: "OCTOPATH TRAVELER™", category: "Base Game", price: "₫1,200,000", image: "/epic-form-epic-first-run/octopath-traveler.jpg" },
+  { id: "back-4-blood-standard-edition", title: "Back 4 Blood: Standard Edition", category: "Base Game", price: "₫1,470,000", image: "/epic-form-epic-first-run/back-4-blood.jpg" },
+  { id: "naraka-bladepoint", title: "NARAKA: BLADEPOINT", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/naraka-bladepoint.jpg" },
+];
+
+// Dữ liệu cho NowOnSection
+export const nowOn: NowOn[] = [
+  { id: "reanimal", title: "Reanimal", category: "Base Game", price: "Free", image: "/now-on/reanimal.png" },
+  { id: "felix-the-reaper", title: "Felix The Reaper", category: "Base Game", price: "₫209,000", image: "/now-on/felix-the-reaper.png" },
+  { id: "vampire-the-masquerade-bloodlines-2", title: "Vampire: The Masquerade® - Bloodlines™ 2", category: "Base Game", price: "₫1,375,000", image: "/now-on/vampire-the-masquerade.jpg" },
+  { id: "hell-is-us", title: "Hell is Us", category: "Base Game", price: "₫1,190,000", image: "/now-on/hell-is-us.png" },
+  { id: "batman-arkham-knight", title: "Batman™ Arkham Knight", category: "Base Game", price: "Free", image: "/now-on/batman-arkham-knight.png" },
+  { id: "octopath-traveler", title: "OCTOPATH TRAVELER™", category: "Base Game", price: "₫1,200,000", image: "/now-on/octopath-traveler.jpg" },
+  { id: "back-4-blood-standard-edition", title: "Back 4 Blood: Standard Edition", category: "Base Game", price: "₫1,470,000", image: "/now-on/back-4-blood.jpg" },
+  { id: "naraka-bladepoint", title: "NARAKA: BLADEPOINT", category: "Base Game", price: "Free", image: "/now-on/naraka-bladepoint.jpg" },
+];
+
+// Định nghĩa cho Store Promotions Section
+export interface StorePromotionItem {
+  id: string;
+  title: string;
+  description: string;
+  buttonText: string;
+  image: string;
+}
+
+export const storePromotions: StorePromotionItem[] = [
+  {
+    id: "sales-specials",
+    title: "Sales & Specials",
+    description: "Save big on hit titles and hidden gems. There's always something on sale at the Epic Games Store!",
+    buttonText: "Browse",
+    image: "/store-promotions/sales-specials.jpg", // Placeholder
+  },
+  {
+    id: "free-games",
+    title: "Free Games",
+    description: "Explore free and free-to-play games from our collection. Come back every Thursday for a new free game!",
+    buttonText: "Play Now",
+    image: "/store-promotions/free-games.jpg", // Placeholder
+  },
+  {
+    id: "apps",
+    title: "Apps",
+    description: "Enjoy some of the best Apps for music, gaming, creating, and more!",
+    buttonText: "Browse",
+    image: "/store-promotions/apps.jpg", // Placeholder
+  },
 ];

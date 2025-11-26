@@ -19,6 +19,9 @@ import FeaturedGameBanner from './components/FeaturedGameBanner/FeaturedGameBann
 import TrendingSection from './components/TrendingSection/TrendingSection';
 import NewReleasesList from './components/NewReleasesList/NewReleasesList';
 import EpicFirstRunSection from './components/EpicFirstRunSection/EpicFirstRunSection';
+import TopListsSection from './components/TopListsSection/TopListsSection';
+import NowOnSection from './components/NowOnSection/NowOnSection';
+import StorePromotionsSection from './components/StorePromotionsSection/StorePromotionsSection';
 // 2. XÓA Bất kỳ import nào đến 'GameRow' (nếu có)
 
 export default function HomePage() {
@@ -60,6 +63,9 @@ export default function HomePage() {
       <TrendingSection />
       <NewReleasesList />
       <EpicFirstRunSection />
+      <TopListsSection />
+      <NowOnSection />
+      <StorePromotionsSection />
     </main>
   );
 }
