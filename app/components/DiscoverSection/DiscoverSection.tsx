@@ -1,13 +1,16 @@
+// app/components/DiscoverSection/DiscoverSection.tsx
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './DiscoverSection.module.css';
 import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
 import { mainGameList } from '@/lib/data';
+import Link from 'next/link'; // [1] Import thêm Link
 
 const VISIBLE_COUNT = 5;
-const CARD_GAP = 24; // Matches --card-gap in CSS
-const PADDING_X = 32; // Total padding left (16) + right (16) of sliderViewport
+// [2] Sửa lại thành 16 để khớp với file CSS (nếu CSS bạn để 16px)
+const CARD_GAP = 24;
+const PADDING_X = 32;
 
 export default function DiscoverSection() {
 
@@ -20,7 +23,7 @@ export default function DiscoverSection() {
       if (!viewportRef.current) return;
 
       const viewportWidth = viewportRef.current.offsetWidth;
-      // Trừ đi padding để lấy không gian thực tế chứa thẻ. Trừ thêm 1px để tránh lỗi làm tròn sub-pixel gây cắt thẻ cuối.
+      // Trừ padding và 1px sub-pixel
       const availableWidth = viewportWidth - PADDING_X - 1;
       const width = (availableWidth - CARD_GAP * (VISIBLE_COUNT - 1)) / VISIBLE_COUNT;
 
@@ -87,10 +90,17 @@ export default function DiscoverSection() {
           style={{ transform: `translateX(${translateX}px)` }}
         >
           {mainGameList.map((game) => (
-            <div
+            // [3] Thay thẻ div bằng Link và trỏ tới slug
+            <Link
+              href={`/p/${game.slug || '#'}`} // Dùng slug từ data
               key={game.id}
               className={styles.discoverCard}
-              style={{ width: `${cardWidth}px`, flex: `0 0 ${cardWidth}px` }}
+              // Thêm minWidth để đảm bảo thẻ không bị trình duyệt ép nhỏ lại
+              style={{
+                width: `${cardWidth}px`,
+                minWidth: `${cardWidth}px`,
+                flex: `0 0 ${cardWidth}px`
+              }}
             >
               <div className={styles.discoverImageWrapper}>
                 <img
@@ -99,7 +109,15 @@ export default function DiscoverSection() {
                   className={styles.discoverImage}
                   onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=Discover"; }}
                 />
-                <button className={styles.wishlistBtn} aria-label="Add to Wishlist">
+                {/* Nút thêm wishlist cần preventDefault để không kích hoạt Link cha */}
+                <button
+                  className={styles.wishlistBtn}
+                  aria-label="Add to Wishlist"
+                  onClick={(e) => {
+                    e.preventDefault(); // Chặn sự kiện click lan ra thẻ Link
+                    alert(`Added ${game.name} to Wishlist!`);
+                  }}
+                >
                   <FaPlus />
                 </button>
               </div>
@@ -109,7 +127,7 @@ export default function DiscoverSection() {
                 <h3 className={styles.discoverTitleText}>{game.name}</h3>
                 <p className={styles.discoverPrice}>{game.currentPrice}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './NowOnSection.module.css';
-import { FaChevronLeft, FaChevronRight, FaPlus, FaCrown } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
 import { nowOn } from '@/lib/data';
 
 const VISIBLE_COUNT = 5;
@@ -11,7 +11,6 @@ const CARD_GAP = 24;
 const PADDING_X = 32; // Tổng padding trái (16) + phải (16) của sliderViewport
 
 export default function NowOnSection() {
-
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardWidth, setCardWidth] = useState(0);
     const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -114,10 +113,8 @@ export default function NowOnSection() {
                                 <span className={styles.category}>{game.category}</span>
                                 <h3 className={styles.gameTitle}>{game.title}</h3>
 
-                                {/* Badge First Run */}
-                                <div className={styles.firstRunBadge}>
-                                    <FaCrown className={styles.crownIcon} />
-                                    <span>First Run</span>
+                                <div className={styles.NowOnBadge}>
+                                    <span>Now On</span>
                                 </div>
 
                                 <p className={styles.price}>{game.price}</p>

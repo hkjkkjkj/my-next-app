@@ -4,16 +4,47 @@ import PromosSection from "@/app/components/PromosSection/PromosSection";
 
 // --- ĐỊNH NGHĨA CÁC KIỂU DỮ LIỆU ---
 
-// Định nghĩa cho một game trong sidebar (hoặc danh sách game nhỏ)
-export interface SidebarGame {
+export interface SpecDetail {
+  os: string;
+  cpu: string;
+  memory: string;
+  gpu: string;
+  dx?: string;
+  storage: string;
+  notes?: string;
+}
+
+export interface GameSpecs {
+  minimum: SpecDetail;
+  recommended: SpecDetail;
+}
+
+export interface GameDetailsMixin {
+  slug?: string;          // URL thân thiện (quan trọng để link chạy)
+  heroImage?: string;     // Ảnh banner ngang lớn
+  developer?: string;
+  publisher?: string;
+  releaseDate?: string;
+  description?: string;
+  specs?: GameSpecs;
+  gallery?: string[];
+  loginAccounts?: string;
+  languages?: {
+    audio?: string;
+    text?: string;
+  };
+}
+
+// Định nghĩa cho một game trong sidebar (hoặc danh sách game nhỏ) và kế thừa từ GameDetailsMixin
+export interface SidebarGame extends GameDetailsMixin {
   id: string;
   title: string;
   extra: string;      // "Base Game", "Event", v.v.
   imageUrl: string;
 }
 
-// Định nghĩa cho banner Hero chính
-export interface HeroBanner {
+// Định nghĩa cho banner Hero chính và kế thừa từ GameDetailsMixin
+export interface HeroBanner extends GameDetailsMixin {
   id: string;
   title: string;
   date: string;
@@ -25,19 +56,20 @@ export interface HeroBanner {
   logoUrl: string;
 }
 
-// Định nghĩa cho một Discover Section
-export interface DiscoverItem {
+// Định nghĩa cho một Discover Section và kế thừa từ GameDetailsMixin
+export interface DiscoverItem extends GameDetailsMixin {
   id: string;
-  name: string;
+  title: string;
   imageUrl: string;
   category: string;
   currentPrice: string;
   originalPrice?: string;
   discountPercentage?: string;
+  logoUrl?: string;
 }
 
-// Định nghĩa cho một tin tức (dùng cho trang /news sau này)
-export interface News {
+// Định nghĩa cho một tin tức (dùng cho trang /news sau này) và kế thừa từ GameDetailsMixin
+export interface News extends GameDetailsMixin {
   id: string;
   title: string;
   date: string;
@@ -60,8 +92,8 @@ export interface DealItem {
   buttonText?: string;
 }
 
-// Định nghĩa cho một Free games
-export interface FreeItem {
+// Định nghĩa cho một Free games và kế thừa từ GameDetailsMixin
+export interface FreeItem extends GameDetailsMixin {
   id: string;
   title: string;
   date: string;
@@ -83,8 +115,8 @@ export interface PromosItem {
 }
 
 
-// Định nghĩa cho Featured Game Banner
-export interface FeaturedGame {
+// Định nghĩa cho Featured Game Banner và kế thừa từ GameDetailsMixin
+export interface FeaturedGame extends GameDetailsMixin {
   id: string;
   title: string;
   description: string;
@@ -94,8 +126,8 @@ export interface FeaturedGame {
   ctaSecondary: string;
 }
 
-// Định nghĩa cho một Trending
-export interface TrendingItem {
+// Định nghĩa cho một Trending và kế thừa từ GameDetailsMixin
+export interface TrendingItem extends GameDetailsMixin {
   id: string,
   title: string,
   category: string,
@@ -103,8 +135,8 @@ export interface TrendingItem {
   image: string
 }
 
-// Định nghĩa cho GameItem (dùng chung cho FeaturedLists và NewReleasesList và TopLists)
-export interface GameItem {
+// Định nghĩa cho GameItem (dùng chung cho FeaturedLists và NewReleasesList và TopLists) và kế thừa từ GameDetailsMixin
+export interface GameItem extends GameDetailsMixin {
   id: number;
   title: string;
   image: string;
@@ -115,8 +147,8 @@ export interface GameItem {
   availability?: string;
 }
 
-// Định nghĩa cho Top New Releases
-export interface TopNewReleases {
+// Định nghĩa cho Top New Releases và kế thừa từ GameDetailsMixin
+export interface TopNewReleases extends GameDetailsMixin {
   id: string;
   title: string;
   category: string;
@@ -124,8 +156,8 @@ export interface TopNewReleases {
   image: string;
 }
 
-// Định nghĩa cho EpicFirstRun
-export interface EpicFirstRun {
+// Định nghĩa cho EpicFirstRun và kế thừa từ GameDetailsMixin
+export interface EpicFirstRun extends GameDetailsMixin {
   id: string;
   title: string;
   image: string;
@@ -133,8 +165,8 @@ export interface EpicFirstRun {
   category: string;
 }
 
-// Định nghĩa cho NowOn
-export interface NowOn {
+// Định nghĩa cho NowOn và kế thừa từ GameDetailsMixin
+export interface NowOn extends GameDetailsMixin {
   id: string;
   title: string;
   image: string;
@@ -144,11 +176,12 @@ export interface NowOn {
 
 // --- DỮ LIỆU GIẢ CỦA BẠN ---
 
-// Dữ liệu cho Hero Section (Epic Savings)
+// Sửa lại Dữ liệu cho Hero Section (Epic Savings) 
 export const heroData: HeroBanner[] = [
   {
     id: 'where-winds-meet',
-    title: "WHERE<br/>WINDS MEET",
+    slug: 'where-winds-meet-main',
+    title: "WHERE WINDS MEET",
     date: "OUT NOW",
     description: "Write your own Wuxia legend in the winds of a fractured dynasty as you explore an epic open world RPG.",
     buttonText: "Save Now",
@@ -156,9 +189,33 @@ export const heroData: HeroBanner[] = [
     showWishlistButton: true,
     showPreviewButton: false,
     logoUrl: "/logos/where-winds-meet.png",
+    // chi tiết bổ sung
+    heroImage: "/images/where-winds-meet.png",
+    developer: "Where Winds Meet",
+    publisher: "Where Winds Meet",
+    releaseDate: "2022-01-01",
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/where-winds-meet.png", "/images/where-winds-meet.png", "/images/where-winds-meet.png"],
+
   },
   {
     id: 'arc-raiders',
+    slug: 'arc-raiders-main',
     title: "ARC<br/>RAIDERS",
     date: "AVAILABLE NOW",
     description: "THE SURFACE IS CALLING. YOUR ADVENTURE <br/> STARTS NOW. Survival is an option, but <br/> thriving? That takes courage.",
@@ -167,9 +224,33 @@ export const heroData: HeroBanner[] = [
     showWishlistButton: false,
     showPreviewButton: true,
     logoUrl: "/logos/arc-raiders.png",
+    // chi tiết bổ sung
+    heroImage: "/images/arc-raiders.jpg",
+    developer: "Arc Raiders",
+    publisher: "Arc Raiders",
+    releaseDate: "2022-01-01",
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/arc-raiders.jpg", "/images/arc-raiders.jpg", "/images/arc-raiders.jpg"],
+
   },
   {
     id: 'marvel-rivals',
+    slug: 'marvel-rivals',
     title: "MARVEL<br/>RAIDERS",
     date: "AVAILABLE NOW",
     description: "THE SURFACE IS CALLING. YOUR ADVENTURE <br/> STARTS NOW. Survival is an option, but <br/> thriving? That takes courage.",
@@ -178,9 +259,33 @@ export const heroData: HeroBanner[] = [
     showWishlistButton: false,
     showPreviewButton: true,
     logoUrl: "/logos/marvel-rivals.jpg",
+    // chi tiết bổ sung
+    heroImage: "/images/marvel-rivals.jpg",
+    developer: "Marvel Rivals",
+    publisher: "Marvel Rivals",
+    releaseDate: "2022-01-01",
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/marvel-rivals.jpg", "/images/marvel-rivals.jpg", "/images/marvel-rivals.jpg"],
+
   },
   {
     id: 'cronos-the-new-dawn',
+    slug: 'cronos-the-new-dawn',
     title: "CRONOS<br/>THE NEW DAWN",
     date: "AVAILABLE NOW",
     description: "A whole new breed of survival horror emerges with Cronos: The New Dawn.",
@@ -189,9 +294,32 @@ export const heroData: HeroBanner[] = [
     showWishlistButton: false,
     showPreviewButton: true,
     logoUrl: "/logos/cronos-the-new-dawn.png",
+    // chi tiết bổ sung
+    heroImage: "/images/cronos-the-new-dawn.jpg",
+    developer: "Cronos The New Dawn",
+    publisher: "Cronos The New Dawn",
+    releaseDate: "2022-01-01",
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/cronos-the-new-dawn.jpg", "/images/cronos-the-new-dawn.jpg", "/images/cronos-the-new-dawn.jpg"],
   },
   {
     id: 'anno-117-pax-romana',
+    slug: 'anno-117-pax-romana',
     title: "ANNO 117: PAX ROMANA",
     date: "AVAILABLE NOW",
     description: "The world is on the brink of collapse. Only you can save it.",
@@ -200,6 +328,28 @@ export const heroData: HeroBanner[] = [
     showWishlistButton: false,
     showPreviewButton: true,
     logoUrl: "/logos/anno-117-pax-romana.png",
+    // chi tiết bổ sung
+    heroImage: "/images/anno-117-pax-romana.jpg",
+    developer: "Anno 117: Pax Romana",
+    publisher: "Anno 117: Pax Romana",
+    releaseDate: "2022-01-01",
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/anno-117-pax-romana.jpg", "/images/anno-117-pax-romana.jpg", "/images/anno-117-pax-romana.jpg"],
   }
 ];
 
@@ -238,79 +388,153 @@ export const sidebarGames: SidebarGame[] = [
 ];
 
 
-// Dữ liệu cho trang /games (danh sách game chính)
+// Dữ liệu cho trang /games (danh sách game chính) thêm slug và chi tiết
 export const mainGameList: DiscoverItem[] = [
   {
     id: 'mouse-p-i-for-hire',
-    name: 'Mouse: P.I. for Hire',
+    slug: 'mouse-p-i-for-hire',
+    title: 'Mouse: P.I. for Hire',
     imageUrl: "/game-covers/mouse-p-i-for-hire.png",
     category: "Base Game",
     currentPrice: "Free",
+    description: "Join Mouse P.I. in a noir-inspired adventure.",
+    developer: "Fumi Games",
+    publisher: "PlaySide",
+    releaseDate: "2025",
+    logoUrl: '/logos/mouse-p-i-for-hire.png',
+    specs: {
+      minimum: { os: "Win 10", cpu: "i5", memory: "8GB", gpu: "GTX 1050", storage: "20GB" },
+      recommended: { os: "Win 10", cpu: "i5", memory: "8GB", gpu: "GTX 1050", storage: "20GB" }
+    }
   },
   {
     id: 'arc-raiders-main',
-    name: 'ARC Raiders',
+    slug: 'arc-raiders-main',
+    title: 'ARC Raiders',
     imageUrl: "/game-covers/arc-raiders.jpg",
     category: "Base Game",
     currentPrice: "₫745,944",
   },
   {
     id: 'where-winds-meet-main',
-    name: 'Where Winds Meet',
+    slug: 'where-winds-meet-main',
+    title: 'Where Winds Meet',
     imageUrl: "/game-covers/where-winds-meet.png",
     category: "Base Game",
     currentPrice: "Free",
   },
   {
     id: 'jurassic-world-3',
-    name: 'Jurassic World Evolution 3',
+    slug: 'jurassic-world-evolution-3',
+    title: 'Jurassic World Evolution 3',
     imageUrl: "/game-covers/jurassic-world-3.jpg",
+    logoUrl: '/logos/jurassic-world-3.png',
     category: "Base Game",
     currentPrice: "₫980,000",
     originalPrice: "₫1,299,000",
     discountPercentage: "-25%",
+    developer: "Frontier Developments",
+    publisher: "Frontier Developments",
+    releaseDate: "Coming Soon",
+    specs: {
+      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
+      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
+    }
   },
   {
     id: 'the-midnight-walkers',
-    name: 'The Midnight Walkers',
+    slug: 'the-midnight-walkers',
+    title: 'The Midnight Walkers',
     imageUrl: "/game-covers/the-midnight-walkers.png",
     category: "Base Game",
+    logoUrl: '/logos/the-midnight-walkers.png',
     currentPrice: "Free",
+    developer: "PlaySide",
+    publisher: "PlaySide",
+    releaseDate: "Coming Soon",
+    specs: {
+      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
+      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
+    }
   },
   {
     id: 'cyberpunk',
-    name: 'Cyberpunk 2077',
+    slug: 'cyberpunk-2077',
+    title: 'Cyberpunk 2077',
     imageUrl: "/game-covers/cyberpunk.png",
     category: "Base Game",
+    logoUrl: '/logos/cyberpunk.png',
     currentPrice: "₫899,000",
+    developer: "CD Projekt Red",
+    publisher: "CD Projekt Red",
+    releaseDate: "Coming Soon",
+    specs: {
+      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
+      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
+    }
   },
   {
     id: 'black-ops-7',
-    name: 'Call of Duty®: Black Ops 7',
+    slug: 'black-ops-7',
+    title: 'Call of Duty®: Black Ops 7',
     imageUrl: "/game-covers/black-ops-7.png",
+    logoUrl: '/logos/black-ops-7.png',
     category: "Base Game",
     currentPrice: "₫1,999,000",
+    developer: "Activision",
+    publisher: "Activision",
+    releaseDate: "Coming Soon",
+    specs: {
+      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
+      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
+    }
   },
   {
     id: 'dying-light-the-beast',
-    name: 'Dying Light: The Beast',
+    slug: 'dying-light-the-beast',
+    title: 'Dying Light: The Beast',
     imageUrl: '/game-covers/dying-light-the-beast.png',
     category: 'Base Game',
     currentPrice: '₫1,999,000',
+    developer: 'Techland',
+    publisher: 'Techland',
+    releaseDate: 'Coming Soon',
+    specs: {
+      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
+      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
+    }
   },
   {
     id: 'resident-evil-requiem',
-    name: 'Resident Evil Requiem',
+    slug: 'resident-evil-requiem',
+    title: 'Resident Evil Requiem',
     imageUrl: '/game-covers/resident-evil-requiem.jpg',
+    logoUrl: '/logos/resident-evil-requiem.png',
     category: 'Base Game',
     currentPrice: '₫1,999,000',
+    developer: 'Techland',
+    publisher: 'Techland',
+    releaseDate: 'Coming Soon',
+    specs: {
+      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
+      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
+    }
   },
   {
     id: 'subnautica-2',
-    name: 'Subnautica 2',
+    slug: 'subnautica-2',
+    title: 'Subnautica 2',
     imageUrl: '/game-covers/subnautica-2.png',
+    logoUrl: '/logos/subnautica-2.png',
     category: 'Base Game',
     currentPrice: '₫1,999,000',
+    developer: 'Techland',
+    publisher: 'Techland',
+    releaseDate: 'Coming Soon',
+    specs: {
+      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
+      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
+    }
   }
 ];
 
@@ -699,3 +923,18 @@ export const storePromotions: StorePromotionItem[] = [
     image: "/store-promotions/apps.jpg", // Placeholder
   },
 ];
+
+// Hàm tìm kiếm game theo slug
+export function getGameBySlug(slug: string): any {
+
+  // Tìm trong heroData trước
+  const heroGame = heroData.find((g) => g.slug === slug);
+  if (heroGame) return heroGame;
+
+  // Tìm trong mainGameList trước
+  const mainGame = mainGameList.find((g) => g.slug === slug);
+  if (mainGame) return mainGame;
+
+  // Nếu không tìm thấy ở đâu
+  return null;
+}
