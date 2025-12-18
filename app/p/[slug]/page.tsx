@@ -146,9 +146,9 @@ export default function GameDetailPage({ params }: PageProps) {
                                 />
                             </div>
 
-                            <button className={styles.showMoreBtn}>
+                            {/* <button className={styles.showMoreBtn}>
                                 Show more <FaChevronDown />
-                            </button>
+                            </button> */}
                         </div>
 
                         {/* 6. ACHIEVEMENTS (Phần mới thêm) */}

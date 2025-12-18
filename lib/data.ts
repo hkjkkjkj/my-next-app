@@ -393,35 +393,99 @@ export const mainGameList: DiscoverItem[] = [
   {
     id: 'mouse-p-i-for-hire',
     slug: 'mouse-p-i-for-hire',
-    title: 'Mouse: P.I. for Hire',
-    imageUrl: "/game-covers/mouse-p-i-for-hire.png",
+    title: "Mouse: P.I. for Hire",
+    description: "Mouse: P.I. for Hire is a first-person action-adventure game where players take on the role of a private investigator in a futuristic city.",
+    imageUrl: "/images/mouse-p-i-for-hire.png",
     category: "Base Game",
     currentPrice: "Free",
-    description: "Join Mouse P.I. in a noir-inspired adventure.",
-    developer: "Fumi Games",
-    publisher: "PlaySide",
-    releaseDate: "2025",
-    logoUrl: '/logos/mouse-p-i-for-hire.png',
+    logoUrl: "/logos/mouse-p-i-for-hire.png",
+    // chi tiết bổ sung
+    heroImage: "/images/mouse-p-i-for-hire.png",
+    developer: "Mouse: P.I. for Hire",
+    publisher: "Mouse: P.I. for Hire",
+    releaseDate: "2022-01-01",
     specs: {
-      minimum: { os: "Win 10", cpu: "i5", memory: "8GB", gpu: "GTX 1050", storage: "20GB" },
-      recommended: { os: "Win 10", cpu: "i5", memory: "8GB", gpu: "GTX 1050", storage: "20GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/mouse-p-i-for-hire.png", "/images/mouse-p-i-for-hire.png", "/images/mouse-p-i-for-hire.png"],
   },
   {
-    id: 'arc-raiders-main',
-    slug: 'arc-raiders-main',
-    title: 'ARC Raiders',
-    imageUrl: "/game-covers/arc-raiders.jpg",
-    category: "Base Game",
-    currentPrice: "₫745,944",
-  },
-  {
-    id: 'where-winds-meet-main',
-    slug: 'where-winds-meet-main',
-    title: 'Where Winds Meet',
-    imageUrl: "/game-covers/where-winds-meet.png",
+    id: 'arc-raiders',
+    slug: 'arc-raiders',
+    title: "ARC RAIDERS",
+    description: "ARC Raiders is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/images/arc-raiders.png",
     category: "Base Game",
     currentPrice: "Free",
+    logoUrl: "/logos/arc-raiders.png",
+    // chi tiết bổ sung
+    heroImage: "/images/arc-raiders.png",
+    developer: "ARC Raiders",
+    publisher: "ARC Raiders",
+    releaseDate: "2022-01-01",
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/arc-raiders.png", "/images/arc-raiders.png", "/images/arc-raiders.png"],
+  },
+  {
+    id: 'where-winds-meet',
+    slug: 'where-winds-meet-main',
+    title: "WHERE WINDS MEET",
+    description: "Write your own Wuxia legend in the winds of a fractured dynasty as you explore an epic open world RPG.",
+    imageUrl: "/images/where-winds-meet.png",
+    category: "Base Game",
+    currentPrice: "Free",
+    logoUrl: "/logos/where-winds-meet.png",
+    // chi tiết bổ sung
+    heroImage: "/images/where-winds-meet.png",
+    developer: "Where Winds Meet",
+    publisher: "Where Winds Meet",
+    releaseDate: "2022-01-01",
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    gallery: ["/images/where-winds-meet.png", "/images/where-winds-meet.png", "/images/where-winds-meet.png"],
+
   },
   {
     id: 'jurassic-world-3',
