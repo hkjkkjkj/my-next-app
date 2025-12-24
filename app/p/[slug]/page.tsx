@@ -5,13 +5,14 @@ import styles from './GameDetail.module.css';
 import { getGameBySlug } from '@/lib/data';
 // Import đầy đủ các icon cần thiết
 import {
-    FaPlus, FaWindows, FaStar, FaShareAlt, FaFlag,
-    FaChevronDown, FaTrophy, FaArrowRight,
+    FaWindows, FaStar, FaShareAlt, FaFlag,
+    FaTrophy, FaArrowRight,
     FaGlobe, FaFacebookF, FaInstagram, FaDiscord,
     FaYoutube, FaRedditAlien, FaTwitter,
     FaRegBookmark,
     FaExternalLinkAlt
 } from 'react-icons/fa';
+import { TbShoppingCartHeart } from 'react-icons/tb';
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -24,10 +25,27 @@ export default function GameDetailPage({ params }: PageProps) {
     // 2. Lấy dữ liệu game
     const game = getGameBySlug(slug);
 
-    // 3. State quản lý ảnh/video đang hiển thị chính
-    const [activeMedia, setActiveMedia] = useState(game?.heroImage || game?.image);
+    // 3. Helper: Kiểm tra xem URL có phải là video không
+    const isVideo = (url: string | undefined) => {
+        if (!url) return false;
+        return url.endsWith('.mp4') || url.endsWith('.webm') || url.endsWith('.ogg');
+    };
 
-    // 4. Xử lý trường hợp không tìm thấy game
+    // 4. Xác định media ban đầu (Ưu tiên Video đầu tiên trong Gallery nếu có)
+    const initialMedia = (() => {
+        if (!game) return "";
+
+        // Tìm video đầu tiên trong gallery
+        const firstVideo = game.gallery?.find((item: string) => isVideo(item));
+
+        if (firstVideo) return firstVideo;
+        return game.heroImage || game.image;
+    })();
+
+    // 5. State quản lý ảnh/video đang hiển thị chính
+    const [activeMedia, setActiveMedia] = useState(initialMedia);
+
+    // 6. Xử lý trường hợp không tìm thấy game
     if (!game) {
         return (
             <div className={styles.container} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
@@ -72,32 +90,40 @@ export default function GameDetailPage({ params }: PageProps) {
 
                         {/* 1. Media Player (Ảnh/Video lớn) */}
                         <div className={styles.mediaWrapper}>
-                            <img
-                                src={activeMedia}
-                                alt={game.title}
-                                className={styles.mainMedia}
-                                onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/1200x675?text=No+Image"; }}
-                            />
+                            {isVideo(activeMedia) ? (
+                                <video
+                                    src={activeMedia}
+                                    className={styles.mainMedia}
+                                    controls
+                                    autoPlay
+                                    muted
+                                    loop
+                                />
+                            ) : (
+                                <img
+                                    src={activeMedia}
+                                    alt={game.title}
+                                    className={styles.mainMedia}
+                                    onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/1200x675?text=No+Image"; }}
+                                />
+                            )}
                         </div>
 
                         {/* 2. Gallery Thumbnails (Ảnh nhỏ) */}
                         {game.gallery && game.gallery.length > 0 && (
                             <div className={styles.galleryThumbnails}>
-                                {/* Ảnh Hero đầu tiên */}
-                                <div
-                                    className={`${styles.thumbnail} ${activeMedia === (game.heroImage || game.image) ? styles.active : ''}`}
-                                    onClick={() => setActiveMedia(game.heroImage || game.image)}
-                                >
-                                    <img src={game.heroImage || game.image} alt="Main" />
-                                </div>
                                 {/* Các ảnh trong gallery */}
-                                {game.gallery.map((img: string, index: number) => (
+                                {game.gallery.map((item: string, index: number) => (
                                     <div
                                         key={index}
-                                        className={`${styles.thumbnail} ${activeMedia === img ? styles.active : ''}`}
-                                        onClick={() => setActiveMedia(img)}
+                                        className={`${styles.thumbnail} ${activeMedia === item ? styles.active : ''}`}
+                                        onClick={() => setActiveMedia(item)}
                                     >
-                                        <img src={img} alt={`Gallery ${index}`} />
+                                        {isVideo(item) ? (
+                                            <video src={item} className={styles.mainMedia} muted style={{ objectFit: 'cover' }} /> // Thumbnail video
+                                        ) : (
+                                            <img src={item} alt={`Gallery ${index}`} />
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -113,17 +139,17 @@ export default function GameDetailPage({ params }: PageProps) {
                             <div className={styles.featureColumn}>
                                 <h3>Genres</h3>
                                 <div className={styles.featureTags}>
-                                    <span className={styles.featureTag}>Action</span>
-                                    <span className={styles.featureTag}>Open World</span>
-                                    <span className={styles.featureTag}>RPG</span>
+                                    {game.genre?.map((genre: string, index: number) => (
+                                        <span key={index} className={styles.featureTag}>{genre}</span>
+                                    ))}
                                 </div>
                             </div>
                             <div className={styles.featureColumn}>
                                 <h3>Features</h3>
                                 <div className={styles.featureTags}>
-                                    <span className={styles.featureTag}>Co-op</span>
-                                    <span className={styles.featureTag}>Controller Support</span>
-                                    <span className={styles.featureTag}>Single Player</span>
+                                    {game.features?.map((feature: string, index: number) => (
+                                        <span key={index} className={styles.featureTag}>{feature}</span>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -137,188 +163,189 @@ export default function GameDetailPage({ params }: PageProps) {
                             <p className={styles.aboutText}>
                                 In this world, freedom carries weight. Stir up mischief and face challenges, or take the noble route: befriend villagers, forge alliances, and carve your legacy as a Wuxia hero.
                             </p>
-
-                            <div className={styles.aboutBanner}>
-                                <img
-                                    src="/images/where-winds-meet-banner.jpg"
-                                    alt="Story Banner"
-                                    onError={(e) => (e.target as HTMLImageElement).src = "https://via.placeholder.com/800x200?text=Story+Banner"}
-                                />
-                            </div>
-
-                            {/* <button className={styles.showMoreBtn}>
-                                Show more <FaChevronDown />
-                            </button> */}
                         </div>
 
                         {/* 6. ACHIEVEMENTS (Phần mới thêm) */}
-                        <div className={styles.achievementsSection}>
-                            <h2 className={styles.sectionTitle}>Available Achievements</h2>
+                        {game.achievementsSection?.isShow && (
+                            <div className={styles.achievementsSection}>
+                                <h2 className={styles.sectionTitle}>{game.achievementsSection?.title}</h2>
+                                <p className={styles.sectionDescription}>{game.achievementsSection?.description}</p>
 
-                            <div className={styles.achievementGrid}>
-                                <div className={styles.achievementItem}>
-                                    <div className={styles.achievementIconWrapper}>
-                                        <img src="https://via.placeholder.com/64" alt="Icon" className={styles.achievementIcon} />
-                                    </div>
-                                    <div className={styles.achievementName}>Mighty Wolf R...</div>
-                                    <div className={styles.achievementXp}><FaTrophy color="#dcb35d" /> 30 XP</div>
+                                <div className={styles.achievementGrid}>
+                                    {game.achievementsSection?.items?.map((achievement: string, index: number) => (
+                                        <div key={index} className={styles.achievementItem}>
+                                            <div className={styles.achievementIconWrapper}>
+                                                <img
+                                                    src={game.achievementsSection?.imageAchievements?.[index] || "https://via.placeholder.com/64"}
+                                                    alt="Icon"
+                                                    className={styles.achievementIcon}
+                                                />
+                                            </div>
+                                            <div className={styles.achievementName}>{achievement}</div>
+                                            <div className={styles.achievementXp}><FaTrophy color="#dcb35d" /> {achievement} XP</div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className={styles.achievementItem}>
-                                    <div className={styles.achievementIconWrapper}>
-                                        <img src="https://via.placeholder.com/64" alt="Icon" className={styles.achievementIcon} />
-                                    </div>
-                                    <div className={styles.achievementName}>Broken Spear...</div>
-                                    <div className={styles.achievementXp}><FaTrophy color="#dcb35d" /> 15 XP</div>
-                                </div>
-                                <div className={styles.achievementItem}>
-                                    <div className={styles.achievementIconWrapper}>
-                                        <img src="https://via.placeholder.com/64" alt="Icon" className={styles.achievementIcon} />
-                                    </div>
-                                    <div className={styles.achievementName}>The First Find...</div>
-                                    <div className={styles.achievementXp}><FaTrophy color="#dcb35d" /> 15 XP</div>
-                                </div>
-                                <div className={styles.achievementItem}>
-                                    <div className={styles.achievementIconWrapper}>
-                                        <img src="https://via.placeholder.com/64" alt="Icon" className={styles.achievementIcon} />
-                                    </div>
-                                    <div className={styles.achievementName}>Past Secrets...</div>
-                                    <div className={styles.achievementXp}><FaTrophy color="#dcb35d" /> 15 XP</div>
-                                </div>
+
+                                <a href={game.achievementsSection?.viewAllLink} className={styles.viewAllLink}>
+                                    See all {game.achievementsSection?.items?.length} achievements <FaArrowRight size={12} />
+                                </a>
                             </div>
+                        )}
 
-                            <a href="#" className={styles.viewAllLink}>
-                                See all 34 achievements <FaArrowRight size={12} />
-                            </a>
-                        </div>
-
-                        {/* 7. FOLLOW US (Phần mới thêm) */}
                         <div className={styles.followUsSection}>
                             <h2 className={styles.sectionTitle}>Follow Us</h2>
-                            <div className={styles.socialBox}>
-                                <a href="#" className={styles.socialLink} aria-label="Website"><FaGlobe /></a>
-                                <a href="#" className={styles.socialLink} aria-label="Twitter"><FaTwitter /></a>
-                                <a href="#" className={styles.socialLink} aria-label="Facebook"><FaFacebookF /></a>
-                                <a href="#" className={styles.socialLink} aria-label="Instagram"><FaInstagram /></a>
-                                <a href="#" className={styles.socialLink} aria-label="Discord"><FaDiscord /></a>
-                                <a href="#" className={styles.socialLink} aria-label="Youtube"><FaYoutube /></a>
-                                <a href="#" className={styles.socialLink} aria-label="Reddit"><FaRedditAlien /></a>
-                            </div>
+                            {game.followSection?.isShow && game.followSection.links && (
+                                <div className={styles.socialBox}>
+                                    {game.followSection.links.map((link: any, index: number) => {
+                                        let Icon = FaGlobe;
+                                        switch (link.platform) {
+                                            case 'Facebook': Icon = FaFacebookF; break;
+                                            case 'Twitter': Icon = FaTwitter; break;
+                                            case 'Instagram': Icon = FaInstagram; break;
+                                            case 'Youtube': Icon = FaYoutube; break;
+                                            case 'Discord': Icon = FaDiscord; break;
+                                            case 'Reddit': Icon = FaRedditAlien; break;
+                                            case 'Website': Icon = FaGlobe; break;
+                                        }
+                                        return (
+                                            <a key={index} href={link.url} className={styles.socialLink} aria-label={link.platform} target="_blank" rel="noopener noreferrer">
+                                                <Icon />
+                                            </a>
+                                        );
+                                    })}
+                                </div>
+                            )}
                         </div>
 
-                        <div className={styles.reqSection}>
-                            <h2 className={styles.reqTitle}>{game.title} System Requirements</h2>
+                        {game.specs && (
+                            <div className={styles.reqSection}>
+                                <h2 className={styles.reqTitle}>{game.title} System Requirements</h2>
 
-                            <div className={styles.reqContainer}>
-                                {/* Tabs */}
-                                <div className={styles.reqTabs}>
-                                    <div className={styles.reqTab}>Windows</div>
-                                </div>
+                                <div className={styles.reqContainer}>
+                                    {/* Tabs */}
+                                    <div className={styles.reqTabs}>
+                                        <div className={styles.reqTab}>Windows</div>
+                                    </div>
 
-                                {/* Grid Cấu hình */}
-                                <div className={styles.reqGrid}>
+                                    {/* Grid Cấu hình */}
+                                    <div className={styles.reqGrid}>
 
-                                    {/* Cột Minimum */}
-                                    <div className={styles.reqColumn}>
-                                        <div className={styles.reqHeader}>Minimum</div>
+                                        {/* Cột Minimum */}
+                                        <div className={styles.reqColumn}>
+                                            <div className={styles.reqHeader}>Minimum</div>
 
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>OS version</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.minimum.os || game.specs?.os || "Windows 10 64-bit"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>CPU</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.minimum.cpu || game.specs?.cpu || "Intel Core i5"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>Memory</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.minimum.memory || game.specs?.memory || "8 GB"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>GPU</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.minimum.gpu || game.specs?.gpu || "NVIDIA GTX 1060"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>DirectX</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.minimum.directX || "DirectX 11"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>Storage</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.minimum.storage || game.specs?.storage || "50 GB"}</span>
-                                        </div>
-                                        {/* Notes riêng cho Minimum (như trong ảnh) */}
-                                        {game.systemRequirements?.minimum.notes && (
                                             <div className={styles.reqRow}>
-                                                <span className={styles.reqLabel}>Additional Notes</span>
-                                                <span className={styles.reqValue}>{game.systemRequirements.minimum.notes}</span>
+                                                <span className={styles.reqLabel}>OS version</span>
+                                                <span className={styles.reqValue}>{game.specs.minimum.os}</span>
+                                            </div>
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>CPU</span>
+                                                <span className={styles.reqValue}>{game.specs.minimum.cpu}</span>
+                                            </div>
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>Memory</span>
+                                                <span className={styles.reqValue}>{game.specs.minimum.memory}</span>
+                                            </div>
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>GPU</span>
+                                                <span className={styles.reqValue}>{game.specs.minimum.gpu}</span>
+                                            </div>
+                                            {game.specs.minimum.dx && (
+                                                <div className={styles.reqRow}>
+                                                    <span className={styles.reqLabel}>DirectX</span>
+                                                    <span className={styles.reqValue}>{game.specs.minimum.dx}</span>
+                                                </div>
+                                            )}
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>Storage</span>
+                                                <span className={styles.reqValue}>{game.specs.minimum.storage}</span>
+                                            </div>
+                                            {/* Notes riêng cho Minimum */}
+                                            {game.specs.minimum.notes && (
+                                                <div className={styles.reqRow}>
+                                                    <span className={styles.reqLabel}>Additional Notes</span>
+                                                    <span className={styles.reqValue}>{game.specs.minimum.notes}</span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Cột Recommended */}
+                                        <div className={styles.reqColumn}>
+                                            <div className={styles.reqHeader}>Recommended</div>
+
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>OS version</span>
+                                                <span className={styles.reqValue}>{game.specs.recommended.os}</span>
+                                            </div>
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>CPU</span>
+                                                <span className={styles.reqValue}>{game.specs.recommended.cpu}</span>
+                                            </div>
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>Memory</span>
+                                                <span className={styles.reqValue}>{game.specs.recommended.memory}</span>
+                                            </div>
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>GPU</span>
+                                                <span className={styles.reqValue}>{game.specs.recommended.gpu}</span>
+                                            </div>
+                                            {game.specs.recommended.dx && (
+                                                <div className={styles.reqRow}>
+                                                    <span className={styles.reqLabel}>DirectX</span>
+                                                    <span className={styles.reqValue}>{game.specs.recommended.dx}</span>
+                                                </div>
+                                            )}
+                                            <div className={styles.reqRow}>
+                                                <span className={styles.reqLabel}>Storage</span>
+                                                <span className={styles.reqValue}>{game.specs.recommended.storage}</span>
+                                            </div>
+                                            {game.specs.recommended.notes && (
+                                                <div className={styles.reqRow}>
+                                                    <span className={styles.reqLabel}>Additional Notes</span>
+                                                    <span className={styles.reqValue}>{game.specs.recommended.notes}</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Thông tin Footer (Login, Languages...) */}
+                                    <div className={styles.reqFooter}>
+
+                                        {/* Login Accounts */}
+                                        {game.loginAccounts && (
+                                            <div className={styles.reqFooterBlock}>
+                                                <span className={styles.reqFooterTitle}>Login Accounts Required</span>
+                                                <span className={styles.reqFooterText}>{game.loginAccounts}</span>
                                             </div>
                                         )}
-                                    </div>
 
-                                    {/* Cột Recommended */}
-                                    <div className={styles.reqColumn}>
-                                        <div className={styles.reqHeader}>Recommended</div>
+                                        {/* Languages */}
+                                        {game.languages && (
+                                            <div className={styles.reqFooterBlock}>
+                                                <span className={styles.reqFooterTitle}>Languages Supported</span>
+                                                {game.languages.audio && game.languages.audio !== "N/A" && (
+                                                    <span className={styles.reqFooterText}>Audio: {game.languages.audio}</span>
+                                                )}
+                                                {game.languages.text && (
+                                                    <span className={styles.reqFooterText}>Text: {game.languages.text}</span>
+                                                )}
+                                            </div>
+                                        )}
 
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>OS version</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.recommended.os || "Windows 10/11 64-bit"}</span>
+                                        {/* Copyright & Privacy */}
+                                        <div>
+                                            <div className={styles.copyrightText}>
+                                                {`© 2025 ${game.developer || "Developer"}, All Rights Reserved.`}
+                                            </div>
+                                            <a href="#" className={styles.privacyLink}>
+                                                Privacy Policy <FaExternalLinkAlt size={10} />
+                                            </a>
                                         </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>CPU</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.recommended.cpu || "Intel Core i7"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>Memory</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.recommended.memory || "16 GB"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>GPU</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.recommended.gpu || "NVIDIA RTX 2060"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>DirectX</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.recommended.directX || "DirectX 12"}</span>
-                                        </div>
-                                        <div className={styles.reqRow}>
-                                            <span className={styles.reqLabel}>Storage</span>
-                                            <span className={styles.reqValue}>{game.systemRequirements?.recommended.storage || "SSD Recommended"}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Thông tin Footer (Login, Languages...) */}
-                                <div className={styles.reqFooter}>
-
-                                    {/* Login Accounts */}
-                                    {game.loginAccount && (
-                                        <div className={styles.reqFooterBlock}>
-                                            <span className={styles.reqFooterTitle}>Login Accounts Required</span>
-                                            <span className={styles.reqFooterText}>{game.loginAccount}</span>
-                                        </div>
-                                    )}
-
-                                    {/* Languages */}
-                                    {game.languages && (
-                                        <div className={styles.reqFooterBlock}>
-                                            <span className={styles.reqFooterTitle}>Languages Supported</span>
-                                            {game.languages.audio !== "N/A" && (
-                                                <span className={styles.reqFooterText}>Audio: {game.languages.audio}</span>
-                                            )}
-                                            <span className={styles.reqFooterText}>Text: {game.languages.text}</span>
-                                        </div>
-                                    )}
-
-                                    {/* Copyright & Privacy */}
-                                    <div>
-                                        <div className={styles.copyrightText}>
-                                            {game.copyright || `© 2025 ${game.developer}, All Rights Reserved.`}
-                                        </div>
-                                        <a href="#" className={styles.privacyLink}>
-                                            Privacy Policy <FaExternalLinkAlt size={10} />
-                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        )}
 
                     </div>
 
@@ -345,10 +372,10 @@ export default function GameDetailPage({ params }: PageProps) {
                                     className={styles.ratingIcon}
                                 />
                                 <div className={styles.ratingInfo}>
-                                    <span className={styles.ratingAge}>12+</span>
-                                    <span className={styles.ratingDesc}>Moderate Violence</span>
+                                    <span className={styles.ratingAge}>{game.ageRating}</span>
+                                    <span className={styles.ratingDesc}>{game.descRating}</span>
                                     <div className={styles.ratingDivider}></div>
-                                    <span className={styles.ratingInteract}>Users Interact, In-Game Purchases (Includes Random Items)</span>
+                                    <span className={styles.ratingInteract}>{game.interactRating}</span>
                                 </div>
                             </div>
 
@@ -357,17 +384,41 @@ export default function GameDetailPage({ params }: PageProps) {
 
                             {/* 4. Giá tiền */}
                             <div className={styles.priceSection}>
-                                <div className={styles.priceText}>{game.price || "Free"}</div>
+                                <div className={styles.priceContainer}>
+                                    {(game.discount && game.originalPrice) ? (
+                                        <>
+                                            {/* Hiển thị Badge giảm giá (tự động thêm dấu - nếu thiếu) */}
+                                            <span className={styles.discountBadge}>
+                                                {game.discount.startsWith('-') ? game.discount : `-${game.discount}`}
+                                            </span>
+
+                                            {/* Giá gốc bị gạch ngang */}
+                                            <span className={styles.originalPrice}>
+                                                {game.originalPrice}
+                                            </span>
+
+                                            {/* Giá hiện tại */}
+                                            <span className={styles.discountedPrice}>
+                                                {game.currentPrice || game.price}
+                                            </span>
+                                        </>
+                                    ) : (
+                                        /* Trường hợp không giảm giá */
+                                        <span className={styles.finalPrice}>
+                                            {game.currentPrice || game.price || "Free"}
+                                        </span>
+                                    )}
+                                </div>
                                 <div className={styles.inAppNote}>May include in-app purchases</div>
                             </div>
 
                             {/* 5. Nút Get & Cart */}
                             <div className={styles.primaryActions}>
                                 <button className={styles.btnGet}>
-                                    {game.price === "Free" ? "Get" : "Buy Now"}
+                                    {game.price === game.currentPrice ? "Get" : "Buy Now"}
                                 </button>
                                 <button className={styles.btnCart} title="Add to Cart">
-                                    <FaPlus size={16} /> {/* Biểu tượng dấu cộng trong vòng tròn thường dùng cho Add to Cart */}
+                                    <TbShoppingCartHeart size={16} />
                                 </button>
                             </div>
 
@@ -378,6 +429,18 @@ export default function GameDetailPage({ params }: PageProps) {
 
                             {/* 7. Thông tin Meta */}
                             <div className={styles.metaList}>
+                                {game.currentPrice !== "Free" && (
+                                    <>
+                                        <div className={styles.metaRow}>
+                                            <span className={styles.metaLabel}>Epic Rewards</span>
+                                            <span className={styles.metaValue}>{game.epicRewards || "-"}</span>
+                                        </div>
+                                        <div className={styles.metaRow}>
+                                            <span className={styles.metaLabel}>Refund Type</span>
+                                            <span className={styles.metaValue}>{game.refundType || "-"}</span>
+                                        </div>
+                                    </>
+                                )}
                                 <div className={styles.metaRow}>
                                     <span className={styles.metaLabel}>Developer</span>
                                     <span className={styles.metaValue}>{game.developer || "-"}</span>

@@ -35,6 +35,24 @@ export interface GameDetailsMixin {
   };
 }
 
+export interface AchievementsSection {
+  isShow: boolean;
+  title: string;
+  items?: string[];
+  viewAllLink?: string;
+  imageAchievements?: string[];
+}
+
+export interface SocialLink {
+  platform: string; // "Facebook", "Twitter", "Instagram", "Youtube", "Website", "Discord", "Reddit"
+  url: string;
+}
+
+export interface FollowSection {
+  isShow: boolean;
+  title: string;
+  links?: SocialLink[];
+}
 // Định nghĩa cho một game trong sidebar (hoặc danh sách game nhỏ) và kế thừa từ GameDetailsMixin
 export interface SidebarGame extends GameDetailsMixin {
   id: string;
@@ -64,8 +82,17 @@ export interface DiscoverItem extends GameDetailsMixin {
   category: string;
   currentPrice: string;
   originalPrice?: string;
-  discountPercentage?: string;
+  discount?: string;
   logoUrl?: string;
+  ageRating?: string;
+  descRating?: string;
+  interactRating?: string;
+  epicRewards?: string;
+  refundType?: string;
+  genre?: string[];
+  features?: string[];
+  achievementsSection?: AchievementsSection;
+  followSection?: FollowSection;
 }
 
 // Định nghĩa cho một tin tức (dùng cho trang /news sau này) và kế thừa từ GameDetailsMixin
@@ -394,16 +421,25 @@ export const mainGameList: DiscoverItem[] = [
     id: 'mouse-p-i-for-hire',
     slug: 'mouse-p-i-for-hire',
     title: "Mouse: P.I. for Hire",
-    description: "Mouse: P.I. for Hire is a first-person action-adventure game where players take on the role of a private investigator in a futuristic city.",
-    imageUrl: "/images/mouse-p-i-for-hire.png",
+    description: "Join private investigator Jack Pepper on a guns blazing, jazz-fueled adventure in MOUSE: P.I. For Hire. MOUSE combines the charm of hand-drawn rubber hose animation inspired by the classic cartoons of the 1930’s with the adrenaline and action of an explosive first person shooter.",
+    imageUrl: "/game-covers/mouse-p-i-for-hire.png",
     category: "Base Game",
-    currentPrice: "Free",
+    currentPrice: "₫261,000",
+    originalPrice: "₫361,000",
+    discount: "23%",
     logoUrl: "/logos/mouse-p-i-for-hire.png",
     // chi tiết bổ sung
     heroImage: "/images/mouse-p-i-for-hire.png",
-    developer: "Mouse: P.I. for Hire",
-    publisher: "Mouse: P.I. for Hire",
+    developer: "Fumi Games",
+    publisher: "PlaySide",
     releaseDate: "2022-01-01",
+    epicRewards: "Earn 23% Back",
+    refundType: "Self-Refundable",
+    ageRating: "16+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
       minimum: {
         os: "Windows 10/11",
@@ -420,22 +456,51 @@ export const mainGameList: DiscoverItem[] = [
         storage: "50 GB available space"
       }
     },
-    gallery: ["/images/mouse-p-i-for-hire.png", "/images/mouse-p-i-for-hire.png", "/images/mouse-p-i-for-hire.png"],
+    achievementsSection: {
+      isShow: false,
+      title: "Available Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/mouse-p-i-for-hire.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://facebook.com/mousethegame" },
+        { platform: "Twitter", url: "https://twitter.com/mousethegame" },
+        { platform: "Instagram", url: "https://instagram.com/mousethegame" },
+        { platform: "Youtube", url: "https://youtube.com/@mousethegame" },
+        { platform: "Website", url: "https://mousethegame.com/" },
+        { platform: "Discord", url: "https://discord.com/mousethegame" },
+        { platform: "Reddit", url: "https://www.reddit.com/mousethegame" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/mouse-p-i-for-hire/video.mp4", "/images-discover-game/mouse-p-i-for-hire/mouse-p-i-for-hire-1.jpg", "/images-discover-game/mouse-p-i-for-hire/mouse-p-i-for-hire-2.jpg", "/images-discover-game/mouse-p-i-for-hire/mouse-p-i-for-hire-3.jpg", "/images-discover-game/mouse-p-i-for-hire/mouse-p-i-for-hire-4.jpg", "/images-discover-game/mouse-p-i-for-hire/mouse-p-i-for-hire-5.jpg"],
   },
   {
     id: 'arc-raiders',
     slug: 'arc-raiders',
     title: "ARC RAIDERS",
     description: "ARC Raiders is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
-    imageUrl: "/images/arc-raiders.png",
+    imageUrl: "/game-covers/arc-raiders.png",
     category: "Base Game",
-    currentPrice: "Free",
+    currentPrice: "₫596,755",
+    originalPrice: "₫745,944",
+    discount: "-20%",
     logoUrl: "/logos/arc-raiders.png",
     // chi tiết bổ sung
-    heroImage: "/images/arc-raiders.png",
-    developer: "ARC Raiders",
-    publisher: "ARC Raiders",
+    heroImage: "/images/arc-raiders.jpg",
+    developer: "Embark Studios",
+    publisher: "Embark Studios",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
       minimum: {
         os: "Windows 10/11",
@@ -452,22 +517,49 @@ export const mainGameList: DiscoverItem[] = [
         storage: "50 GB available space"
       }
     },
-    gallery: ["/images/arc-raiders.png", "/images/arc-raiders.png", "/images/arc-raiders.png"],
+    achievementsSection: {
+      isShow: true,
+      title: "Achievements",
+      items: ["Scavenger", "Escape Artist", "For Science!", "Heart of Gold"],
+      viewAllLink: "",
+      imageAchievements: ["/achievements/arc-raiders/arc-raiders-1.png", "/achievements/arc-raiders/arc-raiders-2.png", "/achievements/arc-raiders/arc-raiders-3.png", "/achievements/arc-raiders/arc-raiders-4.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/arcraiders" },
+        { platform: "Twitter", url: "https://twitter.com/ARCRaidersGame" },
+        { platform: "Instagram", url: "https://www.instagram.com/arcraiders" },
+        { platform: "Youtube", url: "https://youtube.com/arcraiders" },
+        { platform: "Website", url: "https://arcraiders.com/" },
+        { platform: "Discord", url: "https://discord.com/arcraiders" },
+        { platform: "Reddit", url: "https://www.reddit.com/arcraiders" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/arc-raiders/video.mp4", "/images-discover-game/arc-raiders/arc-raiders-1.jpg", "/images-discover-game/arc-raiders/arc-raiders-2.jpg", "/images-discover-game/arc-raiders/arc-raiders-3.jpg", "/images-discover-game/arc-raiders/arc-raiders-4.jpg", "/images-discover-game/arc-raiders/arc-raiders-5.jpg"],
   },
   {
     id: 'where-winds-meet',
-    slug: 'where-winds-meet-main',
+    slug: 'where-winds-meet',
     title: "WHERE WINDS MEET",
     description: "Write your own Wuxia legend in the winds of a fractured dynasty as you explore an epic open world RPG.",
-    imageUrl: "/images/where-winds-meet.png",
+    imageUrl: "/game-covers/where-winds-meet.png",
     category: "Base Game",
     currentPrice: "Free",
+    originalPrice: "",
+    discount: "",
     logoUrl: "/logos/where-winds-meet.png",
     // chi tiết bổ sung
     heroImage: "/images/where-winds-meet.png",
-    developer: "Where Winds Meet",
-    publisher: "Where Winds Meet",
+    developer: "Everstone Studio",
+    publisher: "NetEase Games",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     specs: {
       minimum: {
         os: "Windows 10/11",
@@ -484,121 +576,351 @@ export const mainGameList: DiscoverItem[] = [
         storage: "50 GB available space"
       }
     },
-    gallery: ["/images/where-winds-meet.png", "/images/where-winds-meet.png", "/images/where-winds-meet.png"],
+    achievementsSection: {
+      isShow: true,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/achievements/where-winds-meet/where-winds-meet-1.png", "/achievements/where-winds-meet/where-winds-meet-2.png", "/achievements/where-winds-meet/where-winds-meet-3.png", "/achievements/where-winds-meet/where-winds-meet-4.png", "/achievements/where-winds-meet/where-winds-meet-5.png"]
+    },
+    gallery: ["/video-for-discover-game/where-winds-meet-main/video.mp4", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-1.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-2.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-3.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-4.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-5.jpg"],
 
   },
   {
     id: 'jurassic-world-3',
-    slug: 'jurassic-world-evolution-3',
-    title: 'Jurassic World Evolution 3',
+    slug: 'jurassic-world-3',
+    title: "Jurassic World: Evolution 3",
+    description: "Jurassic World: Evolution 3 is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
     imageUrl: "/game-covers/jurassic-world-3.jpg",
-    logoUrl: '/logos/jurassic-world-3.png',
     category: "Base Game",
-    currentPrice: "₫980,000",
-    originalPrice: "₫1,299,000",
-    discountPercentage: "-25%",
+    currentPrice: "₫784,000",
+    originalPrice: "₫980,000",
+    discount: "-20%",
+    logoUrl: "/logos/jurassic-world-3.png",
+    // chi tiết bổ sung
+    heroImage: "/images/jurassic-world-3.png",
     developer: "Frontier Developments",
     publisher: "Frontier Developments",
-    releaseDate: "Coming Soon",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
-      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
-      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: true,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/achievements/jurassic-world-3/jurassic-world-3-1.png", "/achievements/jurassic-world-3/jurassic-world-3-2.png", "/achievements/jurassic-world-3/jurassic-world-3-3.png", "/achievements/jurassic-world-3/jurassic-world-3-4.png", "/achievements/jurassic-world-3/jurassic-world-3-5.png"]
+    },
+    gallery: ["/video-for-discover-game/jurassic-world-3/video.mp4", "/images-discover-game/jurassic-world-3/jurassic-world-3-1.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-2.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-3.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-4.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-5.jpg"],
   },
   {
     id: 'the-midnight-walkers',
     slug: 'the-midnight-walkers',
-    title: 'The Midnight Walkers',
+    title: "The Midnight Walkers",
+    description: "The Midnight Walkers is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
     imageUrl: "/game-covers/the-midnight-walkers.png",
     category: "Base Game",
-    logoUrl: '/logos/the-midnight-walkers.png',
-    currentPrice: "Free",
-    developer: "PlaySide",
-    publisher: "PlaySide",
-    releaseDate: "Coming Soon",
+    currentPrice: "Coming Soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/the-midnight-walkers.png",
+    // chi tiết bổ sung
+    heroImage: "/images/the-midnight-walkers.png",
+    developer: "Oneway Ticket Studio",
+    publisher: "Oneway Ticket Studio",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
-      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
-      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png"]
+    },
+    gallery: ["/video-for-discover-game/the-midnight-walkers/video.mp4", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-1.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-2.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-3.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-4.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-5.jpg"],
   },
   {
     id: 'cyberpunk',
     slug: 'cyberpunk-2077',
-    title: 'Cyberpunk 2077',
-    imageUrl: "/game-covers/cyberpunk.png",
+    title: "Cyberpunk 2077",
+    description: "Cyberpunk 2077 is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/game-covers/cyberpunk-2077.png",
     category: "Base Game",
-    logoUrl: '/logos/cyberpunk.png',
-    currentPrice: "₫899,000",
+    currentPrice: "₫339,850",
+    originalPrice: "₫971,000",
+    discount: "-65%",
+    logoUrl: "/logos/cyberpunk-2077.png",
+    // chi tiết bổ sung
+    heroImage: "/images/cyberpunk-2077.png",
     developer: "CD Projekt Red",
     publisher: "CD Projekt Red",
-    releaseDate: "Coming Soon",
+    epicRewards: "Earn 65% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
-      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
-      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: true,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/achievements/cyberpunk-2077/cyberpunk-2077-1.png", "/achievements/cyberpunk-2077/cyberpunk-2077-2.png", "/achievements/cyberpunk-2077/cyberpunk-2077-3.png", "/achievements/cyberpunk-2077/cyberpunk-2077-4.png", "/achievements/cyberpunk-2077/cyberpunk-2077-5.png"]
+    },
+    gallery: ["/video-for-discover-game/cyberpunk-2077/video.mp4", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-1.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-2.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-3.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-4.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-5.jpg"],
   },
   {
     id: 'black-ops-7',
     slug: 'black-ops-7',
-    title: 'Call of Duty®: Black Ops 7',
+    title: "Black Ops 7",
+    description: "Black Ops 7 is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
     imageUrl: "/game-covers/black-ops-7.png",
-    logoUrl: '/logos/black-ops-7.png',
     category: "Base Game",
-    currentPrice: "₫1,999,000",
-    developer: "Activision",
+    currentPrice: "₫979,650",
+    originalPrice: "₫1,399,500",
+    discount: "-30%",
+    logoUrl: "/logos/black-ops-7.png",
+    // chi tiết bổ sung
+    heroImage: "/images/black-ops-7.png",
+    developer: " Treyarch",
     publisher: "Activision",
-    releaseDate: "Coming Soon",
+    epicRewards: "Earn 30% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
-      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
-      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png"]
+    },
+    gallery: ["/video-for-discover-game/black-ops-7/video.mp4", "/images-discover-game/black-ops-7/black-ops-7-1.jpg", "/images-discover-game/black-ops-7/black-ops-7-2.jpg", "/images-discover-game/black-ops-7/black-ops-7-3.jpg", "/images-discover-game/black-ops-7/black-ops-7-4.jpg", "/images-discover-game/black-ops-7/black-ops-7-5.jpg"],
   },
   {
     id: 'dying-light-the-beast',
     slug: 'dying-light-the-beast',
-    title: 'Dying Light: The Beast',
-    imageUrl: '/game-covers/dying-light-the-beast.png',
-    category: 'Base Game',
-    currentPrice: '₫1,999,000',
-    developer: 'Techland',
-    publisher: 'Techland',
-    releaseDate: 'Coming Soon',
+    title: "Dying Light: The Beast",
+    description: "Dying Light: The Beast is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/game-covers/dying-light-the-beast.png",
+    category: "Base Game",
+    currentPrice: "₫792,000",
+    originalPrice: "₫990,000",
+    discount: "-20%",
+    logoUrl: "/logos/dying-light-the-beast.png",
+    // chi tiết bổ sung
+    heroImage: "/images/dying-light-the-beast.png",
+    developer: "Techland",
+    publisher: "Techland",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
-      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
-      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: true,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/achievements/dying-light-the-beast/dying-light-the-beast-1.png", "/achievements/dying-light-the-beast/dying-light-the-beast-2.png", "/achievements/dying-light-the-beast/dying-light-the-beast-3.png", "/achievements/dying-light-the-beast/dying-light-the-beast-4.png", "/achievements/dying-light-the-beast/dying-light-the-beast-5.png"]
+    },
+    gallery: ["/video-for-discover-game/dying-light-the-beast/video.mp4", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-1.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-2.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-3.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-4.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-5.jpg"],
   },
   {
     id: 'resident-evil-requiem',
     slug: 'resident-evil-requiem',
-    title: 'Resident Evil Requiem',
-    imageUrl: '/game-covers/resident-evil-requiem.jpg',
-    logoUrl: '/logos/resident-evil-requiem.png',
-    category: 'Base Game',
-    currentPrice: '₫1,999,000',
-    developer: 'Techland',
-    publisher: 'Techland',
-    releaseDate: 'Coming Soon',
+    title: "Resident Evil Requiem",
+    description: "Resident Evil Requiem is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/game-covers/resident-evil-requiem.jpg",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/resident-evil-requiem.png",
+    // chi tiết bổ sung
+    heroImage: "/images/resident-evil-requiem.png",
+    developer: "Capcom",
+    publisher: "Capcom",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
-      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
-      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png"]
+    },
+    gallery: ["/video-for-discover-game/resident-evil-requiem/video.mp4", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-1.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-2.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-3.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-4.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-5.jpg"],
   },
   {
     id: 'subnautica-2',
     slug: 'subnautica-2',
-    title: 'Subnautica 2',
-    imageUrl: '/game-covers/subnautica-2.png',
-    logoUrl: '/logos/subnautica-2.png',
-    category: 'Base Game',
-    currentPrice: '₫1,999,000',
-    developer: 'Techland',
-    publisher: 'Techland',
-    releaseDate: 'Coming Soon',
+    title: "Subnautica 2",
+    description: "Subnautica 2 is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/game-covers/subnautica-2.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/subnautica-2.png",
+    // chi tiết bổ sung
+    heroImage: "/images/subnautica-2.png",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
     specs: {
-      minimum: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" },
-      recommended: { os: "Win 10", cpu: "i7", memory: "16GB", gpu: "RTX 2070", storage: "80GB" }
-    }
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    gallery: ["/video-for-discover-game/subnautica-2/video.mp4", "/images-discover-game/subnautica-2/subnautica-2-1.jpg", "/images-discover-game/subnautica-2/subnautica-2-2.jpg", "/images-discover-game/subnautica-2/subnautica-2-3.jpg", "/images-discover-game/subnautica-2/subnautica-2-4.jpg", "/images-discover-game/subnautica-2/subnautica-2-5.jpg"],
   }
 ];
 
@@ -618,7 +940,7 @@ export const newsList: News[] = [
     date: '2025-11-20',
     description: 'ARC Raiders is a new game that will be released on 2025-11-20.',
     buttonText: 'See In Shop',
-    imageUrl: "/game-covers/arc-raiders.jpg",
+    imageUrl: "/game-covers/arc-raiders.png",
   },
   {
     id: 'where-winds-meet-main',

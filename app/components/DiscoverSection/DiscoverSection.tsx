@@ -105,7 +105,7 @@ export default function DiscoverSection() {
               <div className={styles.discoverImageWrapper}>
                 <img
                   src={game.imageUrl}
-                  alt={game.name}
+                  alt={game.title}
                   className={styles.discoverImage}
                   onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=Discover"; }}
                 />
@@ -115,7 +115,7 @@ export default function DiscoverSection() {
                   aria-label="Add to Wishlist"
                   onClick={(e) => {
                     e.preventDefault(); // Chặn sự kiện click lan ra thẻ Link
-                    alert(`Added ${game.name} to Wishlist!`);
+                    alert(`Added ${game.title} to Wishlist!`);
                   }}
                 >
                   <FaPlus />
@@ -124,7 +124,7 @@ export default function DiscoverSection() {
 
               <div className={styles.discoverInfo}>
                 <span className={styles.gameCategory}>{game.category}</span>
-                <h3 className={styles.discoverTitleText}>{game.name}</h3>
+                <h3 className={styles.discoverTitleText}>{game.title}</h3>
                 <p className={styles.discoverPrice}>{game.currentPrice}</p>
               </div>
             </Link>

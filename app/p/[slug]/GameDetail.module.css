@@ -297,6 +297,37 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+    gap: 4px;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.discountBadge {
+    background-color: #26bbff;
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.originalPrice {
+    color: #9ca3af;
+    text-decoration: line-through;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.finalPrice {
+    color: #f5f5f5;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .priceText {
@@ -307,7 +338,7 @@
 
 .inAppNote {
     font-size: 12px;
-    color: #f5f5f5;
+    color: #9ca3af;
     margin-top: 4px;
 }
 
@@ -320,9 +351,8 @@
 
 .btnGet {
     flex-grow: 1;
-    /* Chiếm hết chỗ trống còn lại */
-    background-color: #0074e4;
-    color: white;
+    background-color: #26bbff;
+    color: #000;
     border: none;
     border-radius: 12px;
     padding: 14px;
@@ -334,12 +364,11 @@
 }
 
 .btnGet:hover {
-    background-color: #005bb5;
+    background-color: #72d3ff;
 }
 
 .btnCart {
     width: 50px;
-    /* Nút hình vuông */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -513,26 +542,22 @@
 
 .achievementGrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* 4 cột như trong ảnh */
-    gap: 16px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
     margin-bottom: 24px;
 }
 
 .achievementItem {
-    background-color: #202020;
-    padding: 16px;
-    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .achievementIconWrapper {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
     overflow: hidden;
     margin-bottom: 12px;
     background-color: #333;
@@ -545,8 +570,8 @@
 }
 
 .achievementName {
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     color: #f5f5f5;
     margin-bottom: 4px;
 
@@ -558,20 +583,21 @@
 }
 
 .achievementXp {
-    font-size: 11px;
+    font-size: 12px;
     color: #9ca3af;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 
 .viewAllLink {
-    color: #0074e4;
-    font-size: 14px;
+    color: #26bbff;
+    font-size: 16px;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    margin-top: 16px;
 }
 
 .viewAllLink:hover {
