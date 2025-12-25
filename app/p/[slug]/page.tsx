@@ -92,7 +92,7 @@ export default function GameDetailPage({ params }: PageProps) {
                         <div className={styles.mediaWrapper}>
                             {isVideo(activeMedia) ? (
                                 <video
-                                    src={activeMedia}
+                                    src={activeMedia || undefined}
                                     className={styles.mainMedia}
                                     controls
                                     autoPlay
@@ -101,7 +101,7 @@ export default function GameDetailPage({ params }: PageProps) {
                                 />
                             ) : (
                                 <img
-                                    src={activeMedia}
+                                    src={activeMedia || undefined}
                                     alt={game.title}
                                     className={styles.mainMedia}
                                     onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/1200x675?text=No+Image"; }}
@@ -120,9 +120,9 @@ export default function GameDetailPage({ params }: PageProps) {
                                         onClick={() => setActiveMedia(item)}
                                     >
                                         {isVideo(item) ? (
-                                            <video src={item} className={styles.mainMedia} muted style={{ objectFit: 'cover' }} /> // Thumbnail video
+                                            <video src={item || undefined} className={styles.mainMedia} muted style={{ objectFit: 'cover' }} /> // Thumbnail video
                                         ) : (
-                                            <img src={item} alt={`Gallery ${index}`} />
+                                            <img src={item || undefined} alt={`Gallery ${index}`} />
                                         )}
                                     </div>
                                 ))}
@@ -356,7 +356,7 @@ export default function GameDetailPage({ params }: PageProps) {
                             {/* 1. CHỖ CHÈN LOGO */}
                             <div className={styles.logoContainer}>
                                 {game.logoUrl ? (
-                                    <img src={game.logoUrl} alt="Game Logo" className={styles.gameLogo} />
+                                    <img src={game.logoUrl || undefined} alt="Game Logo" className={styles.gameLogo} />
                                 ) : (
                                     // Placeholder nếu chưa có logo
                                     <h2 style={{ fontSize: '24px', fontWeight: '800', textAlign: 'center' }}>{game.title}</h2>
@@ -367,7 +367,7 @@ export default function GameDetailPage({ params }: PageProps) {
                             <div className={styles.ratingCard}>
                                 {/* Icon 12+ (Bạn có thể thay bằng ảnh thật) */}
                                 <img
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/IARC_12%2B.svg/1200px-IARC_12%2B.svg.png"
+                                    src={game.ageImage}
                                     alt="12+"
                                     className={styles.ratingIcon}
                                 />

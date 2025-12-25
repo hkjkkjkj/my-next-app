@@ -1,0 +1,96 @@
+.section {
+    margin-bottom: 40px;
+}
+
+.titleHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+}
+
+.controlButton {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.controlButton:hover {
+    background-color: #444;
+}
+
+/* Grid layout for genres matches the image (5 items) */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+.genreCard {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    /* Landscape cards */
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #202020;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+
+.genreCard:hover {
+    transform: translateY(-4px);
+}
+
+.genreImages {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Simulate the 3-image composite if we had 3 images, but standard simple img for now */
+.genreImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.genreCard:hover .genreImage {
+    opacity: 0.5;
+}
+
+.genreTitle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}

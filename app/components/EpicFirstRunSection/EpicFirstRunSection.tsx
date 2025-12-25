@@ -3,12 +3,14 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './EpicFirstRunSection.module.css';
-import { FaChevronLeft, FaChevronRight, FaPlus, FaCrown } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
 import { epicFirstRun } from '@/lib/data';
+import Link from 'next/link'; // [1] Import thêm Link
 
 const VISIBLE_COUNT = 5;
+// [2] Sửa lại thành 16 để khớp với file CSS (nếu CSS bạn để 16px)
 const CARD_GAP = 24;
-const PADDING_X = 32; // Tổng padding trái (16) + phải (16) của sliderViewport
+const PADDING_X = 32;
 
 export default function EpicFirstRunSection() {
 
@@ -21,11 +23,8 @@ export default function EpicFirstRunSection() {
             if (!viewportRef.current) return;
 
             const viewportWidth = viewportRef.current.offsetWidth;
-
-            // Trừ đi padding để lấy không gian thực tế chứa thẻ
-            const availableWidth = viewportWidth - PADDING_X;
-
-            // Tính toán width cho từng card
+            // Trừ padding và 1px sub-pixel
+            const availableWidth = viewportWidth - PADDING_X - 1;
             const width = (availableWidth - CARD_GAP * (VISIBLE_COUNT - 1)) / VISIBLE_COUNT;
 
             setCardWidth(width);
@@ -55,7 +54,6 @@ export default function EpicFirstRunSection() {
 
     return (
         <section className={styles.section}>
-
             {/* Header */}
             <div className={styles.headerRow}>
                 <div className={styles.titleGroup}>
@@ -92,37 +90,44 @@ export default function EpicFirstRunSection() {
                     style={{ transform: `translateX(${translateX}px)` }}
                 >
                     {epicFirstRun.map((game) => (
-                        <div
+                        // [3] Thay thẻ div bằng Link và trỏ tới slug
+                        <Link
+                            href={`/p/${game.slug || '#'}`} // Dùng slug từ data
                             key={game.id}
                             className={styles.card}
-                            // Gán cứng width + flex-basis
-                            style={{ width: `${cardWidth}px`, flex: `0 0 ${cardWidth}px` }}
+                            // Thêm minWidth để đảm bảo thẻ không bị trình duyệt ép nhỏ lại
+                            style={{
+                                width: `${cardWidth}px`,
+                                minWidth: `${cardWidth}px`,
+                                flex: `0 0 ${cardWidth}px`
+                            }}
                         >
                             <div className={styles.imageWrapper}>
                                 <img
-                                    src={game.image}
+                                    src={game.imageUrl || undefined}
                                     alt={game.title}
                                     className={styles.image}
-                                    onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=FirstRun"; }}
+                                    onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=Discover"; }}
                                 />
-                                <a href="#" className={styles.wishlistBtn} aria-label="Add to Wishlist">
+                                {/* Nút thêm wishlist cần preventDefault để không kích hoạt Link cha */}
+                                <button
+                                    className={styles.wishlistBtn}
+                                    aria-label="Add to Wishlist"
+                                    onClick={(e) => {
+                                        e.preventDefault(); // Chặn sự kiện click lan ra thẻ Link
+                                        alert(`Added ${game.title} to Wishlist!`);
+                                    }}
+                                >
                                     <FaPlus />
-                                </a>
+                                </button>
                             </div>
 
                             <div className={styles.info}>
                                 <span className={styles.category}>{game.category}</span>
                                 <h3 className={styles.gameTitle}>{game.title}</h3>
-
-                                {/* Badge First Run */}
-                                <div className={styles.firstRunBadge}>
-                                    <FaCrown className={styles.crownIcon} />
-                                    <span>First Run</span>
-                                </div>
-
-                                <p className={styles.price}>{game.price}</p>
+                                <p className={styles.price}>{game.currentPrice}</p>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

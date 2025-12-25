@@ -1,81 +1,88 @@
 /* app/games/GamesPage.module.css */
 
-/* Style cho toàn bộ trang */
 .pageContainer {
-  font-family: Arial, sans-serif; /* Thêm font chữ cho dễ nhìn */
-  padding: 32px;
-  max-width: 1200px;
-  margin: 0 auto; /* Căn giữa trang */
+  background-color: #121212;
+  /* Dark background matching Epic Store */
+  color: #f5f5f5;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  /* Modern font */
+  padding: 40px 0;
 }
 
-/* Tiêu đề "Danh Sách Game" */
-.title {
-  font-size: 2rem; /* 32px */
-  font-weight: bold;
-  margin-bottom: 24px;
+.contentWrapper {
+  max-width: 1600px;
+  /* Epic Store uses wide layout */
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
-/* Lưới chứa các thẻ game */
-.grid {
+/* Header Sections */
+.headerControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dropdownLabel {
+  color: #9da0a6;
+  font-size: 14px;
+}
+
+/* Main Layout Grid: Main Content (Left) + Sidebar (Right) */
+.mainLayout {
   display: grid;
-  /* Mặc định 1 cột */
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 280px;
+  /* Sidebar fixed width */
+  gap: 48px;
+  position: relative;
+}
+
+/* Games Grid */
+.gamesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  /* Responsive grid */
   gap: 24px;
+  width: 100%;
 }
 
-/* Responsive: 2 cột trên tablet */
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Pagination / Footer of list */
+.listFooter {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
 
-/* Responsive: 3 cột trên desktop */
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* --- Style cho một Game Card --- */
-
-.card {
-  border: 1px solid #e5e7eb; /* Màu xám nhạt */
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-}
-
-.cardTitle {
-  font-size: 1.25rem; /* 20px */
-  font-weight: 600;
-  color: #111827; /* Màu đen đậm */
-}
-
-.cardPrice {
-  font-size: 1.1rem; /* 18px */
-  color: #374151; /* Màu xám đậm */
-  margin-top: 8px;
-}
-
-.cardButton {
-  margin-top: 16px;
-  background-color: #3b82f6; /* Màu xanh dương */
-  color: white;
-  padding: 8px 16px;
+.loadMoreButton {
+  background-color: #2a2a2a;
+  color: #fff;
   border: none;
-  border-radius: 6px;
-  font-weight: 500;
+  padding: 12px 32px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 
-.cardButton:hover {
-  background-color: #2563eb; /* Màu xanh đậm hơn */
+.loadMoreButton:hover {
+  background-color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+    /* Stack sidebar on smaller screens */
+  }
+
+  .gamesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .sidebarWrapper {
+    display: none;
+    /* Hide sidebar on mobile/tablet for now or implement toggle */
+  }
 }

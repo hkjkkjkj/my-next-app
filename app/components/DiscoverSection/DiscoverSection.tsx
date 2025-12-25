@@ -104,7 +104,7 @@ export default function DiscoverSection() {
             >
               <div className={styles.discoverImageWrapper}>
                 <img
-                  src={game.imageUrl}
+                  src={game.imageUrl || undefined}
                   alt={game.title}
                   className={styles.discoverImage}
                   onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=Discover"; }}

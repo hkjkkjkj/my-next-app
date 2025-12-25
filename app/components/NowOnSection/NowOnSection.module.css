@@ -86,6 +86,8 @@
 .sliderViewport {
     overflow: hidden;
     padding: 0 16px;
+    min-height: 400px;
+    /* Fix Layout Shift */
     /* Padding trái phải tổng cộng 32px */
 }
 

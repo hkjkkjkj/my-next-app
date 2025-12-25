@@ -93,6 +93,7 @@ export interface DiscoverItem extends GameDetailsMixin {
   features?: string[];
   achievementsSection?: AchievementsSection;
   followSection?: FollowSection;
+  ageImage?: string;
 }
 
 // Định nghĩa cho một tin tức (dùng cho trang /news sau này) và kế thừa từ GameDetailsMixin
@@ -155,11 +156,24 @@ export interface FeaturedGame extends GameDetailsMixin {
 
 // Định nghĩa cho một Trending và kế thừa từ GameDetailsMixin
 export interface TrendingItem extends GameDetailsMixin {
-  id: string,
-  title: string,
-  category: string,
-  price: string,
-  image: string
+  id: string;
+  title: string;
+  imageUrl: string;
+  category: string;
+  currentPrice: string;
+  originalPrice?: string;
+  discount?: string;
+  logoUrl?: string;
+  ageRating?: string;
+  ageImage?: string;
+  descRating?: string;
+  interactRating?: string;
+  epicRewards?: string;
+  refundType?: string;
+  genre?: string[];
+  features?: string[];
+  achievementsSection?: AchievementsSection;
+  followSection?: FollowSection;
 }
 
 // Định nghĩa cho GameItem (dùng chung cho FeaturedLists và NewReleasesList và TopLists) và kế thừa từ GameDetailsMixin
@@ -178,18 +192,44 @@ export interface GameItem extends GameDetailsMixin {
 export interface TopNewReleases extends GameDetailsMixin {
   id: string;
   title: string;
+  imageUrl: string;
   category: string;
-  price: string;
-  image: string;
+  currentPrice: string;
+  originalPrice?: string;
+  discount?: string;
+  logoUrl?: string;
+  ageRating?: string;
+  ageImage?: string;
+  descRating?: string;
+  interactRating?: string;
+  epicRewards?: string;
+  refundType?: string;
+  genre?: string[];
+  features?: string[];
+  achievementsSection?: AchievementsSection;
+  followSection?: FollowSection;
 }
 
 // Định nghĩa cho EpicFirstRun và kế thừa từ GameDetailsMixin
 export interface EpicFirstRun extends GameDetailsMixin {
   id: string;
   title: string;
-  image: string;
-  price: string;
+  imageUrl: string;
   category: string;
+  currentPrice: string;
+  originalPrice?: string;
+  discount?: string;
+  logoUrl?: string;
+  ageRating?: string;
+  ageImage?: string;
+  descRating?: string;
+  interactRating?: string;
+  epicRewards?: string;
+  refundType?: string;
+  genre?: string[];
+  features?: string[];
+  achievementsSection?: AchievementsSection;
+  followSection?: FollowSection;
 }
 
 // Định nghĩa cho NowOn và kế thừa từ GameDetailsMixin
@@ -436,6 +476,7 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 23% Back",
     refundType: "Self-Refundable",
     ageRating: "16+",
+    ageImage: "/ageimage/IARC_16.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -496,7 +537,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 20% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -530,11 +572,11 @@ export const mainGameList: DiscoverItem[] = [
       links: [
         { platform: "Facebook", url: "https://www.facebook.com/arcraiders" },
         { platform: "Twitter", url: "https://twitter.com/ARCRaidersGame" },
-        { platform: "Instagram", url: "https://www.instagram.com/arcraiders" },
+        { platform: "Instagram", url: "https://www.instagram.com/arcraidersnews/" },
         { platform: "Youtube", url: "https://youtube.com/arcraiders" },
         { platform: "Website", url: "https://arcraiders.com/" },
-        { platform: "Discord", url: "https://discord.com/arcraiders" },
-        { platform: "Reddit", url: "https://www.reddit.com/arcraiders" }
+        { platform: "Discord", url: "https://discord.com/invite/arcraiders" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/ArcRaiders/" }
       ]
     },
     gallery: ["/video-for-discover-game/arc-raiders/video.mp4", "/images-discover-game/arc-raiders/arc-raiders-1.jpg", "/images-discover-game/arc-raiders/arc-raiders-2.jpg", "/images-discover-game/arc-raiders/arc-raiders-3.jpg", "/images-discover-game/arc-raiders/arc-raiders-4.jpg", "/images-discover-game/arc-raiders/arc-raiders-5.jpg"],
@@ -557,7 +599,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 20% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     specs: {
@@ -583,6 +626,19 @@ export const mainGameList: DiscoverItem[] = [
       viewAllLink: "",
       imageAchievements: ["/achievements/where-winds-meet/where-winds-meet-1.png", "/achievements/where-winds-meet/where-winds-meet-2.png", "/achievements/where-winds-meet/where-winds-meet-3.png", "/achievements/where-winds-meet/where-winds-meet-4.png", "/achievements/where-winds-meet/where-winds-meet-5.png"]
     },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/wherewindsmeet" },
+        { platform: "Twitter", url: "https://x.com/WhereWindsMeet_" },
+        { platform: "Instagram", url: "https://www.instagram.com/where_winds_meet/" },
+        { platform: "Youtube", url: "https://www.youtube.com/@WhereWindsMeet" },
+        { platform: "Website", url: "https://www.wherewindsmeetgame.com/" },
+        { platform: "Discord", url: "https://discord.com/invite/xWwyeFNRVe" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/wherewindsmeet_/" }
+      ]
+    },
     gallery: ["/video-for-discover-game/where-winds-meet-main/video.mp4", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-1.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-2.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-3.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-4.jpg", "/images-discover-game/where-winds-meet-main/where-winds-meet-main-5.jpg"],
 
   },
@@ -604,7 +660,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 20% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "16+",
+    ageImage: "/ageimage/IARC_16.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -632,6 +689,19 @@ export const mainGameList: DiscoverItem[] = [
       viewAllLink: "",
       imageAchievements: ["/achievements/jurassic-world-3/jurassic-world-3-1.png", "/achievements/jurassic-world-3/jurassic-world-3-2.png", "/achievements/jurassic-world-3/jurassic-world-3-3.png", "/achievements/jurassic-world-3/jurassic-world-3-4.png", "/achievements/jurassic-world-3/jurassic-world-3-5.png"]
     },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/JurassicWorldEvolution" },
+        { platform: "Twitter", url: "https://x.com/JW_Evolution" },
+        { platform: "Instagram", url: "https://www.instagram.com/jurassicworldevolution/" },
+        { platform: "Youtube", url: "https://www.youtube.com/@JurassicWorldEvolution" },
+        { platform: "Website", url: "https://www.jurassicworldevolution.com/" },
+        { platform: "Discord", url: "https://discord.com/invite/frontierunlocked" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/jurassicworldevo/" }
+      ]
+    },
     gallery: ["/video-for-discover-game/jurassic-world-3/video.mp4", "/images-discover-game/jurassic-world-3/jurassic-world-3-1.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-2.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-3.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-4.jpg", "/images-discover-game/jurassic-world-3/jurassic-world-3-5.jpg"],
   },
   {
@@ -652,7 +722,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 20% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -680,6 +751,19 @@ export const mainGameList: DiscoverItem[] = [
       viewAllLink: "",
       imageAchievements: ["/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png", "/images/achievements/the-midnight-walkers.png"]
     },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/TheMidnightWalkersDev" },
+        { platform: "Twitter", url: "https://x.com/TheMidnightWalkersDev" },
+        { platform: "Instagram", url: "https://www.instagram.com/themidnightwalkers/" },
+        { platform: "Youtube", url: "https://www.youtube.com/@TheMidnightWalkersDev" },
+        { platform: "Website", url: "https://www.onewayticketstudio.com/" },
+        { platform: "Discord", url: "https://discord.com/invite/Themidnightwalkers" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/themidnightwalkers/" }
+      ]
+    },
     gallery: ["/video-for-discover-game/the-midnight-walkers/video.mp4", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-1.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-2.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-3.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-4.jpg", "/images-discover-game/the-midnight-walkers/the-midnight-walkers-5.jpg"],
   },
   {
@@ -700,7 +784,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 65% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -728,6 +813,19 @@ export const mainGameList: DiscoverItem[] = [
       viewAllLink: "",
       imageAchievements: ["/achievements/cyberpunk-2077/cyberpunk-2077-1.png", "/achievements/cyberpunk-2077/cyberpunk-2077-2.png", "/achievements/cyberpunk-2077/cyberpunk-2077-3.png", "/achievements/cyberpunk-2077/cyberpunk-2077-4.png", "/achievements/cyberpunk-2077/cyberpunk-2077-5.png"]
     },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/CDProjectRed" },
+        { platform: "Twitter", url: "https://x.com/CyberpunkGame" },
+        { platform: "Instagram", url: "https://www.instagram.com/CyberpunkGame" },
+        { platform: "Youtube", url: "https://www.youtube.com/@CyberpunkGame" },
+        { platform: "Website", url: "https://www.cyberpunk.net/vn/en/" },
+        { platform: "Discord", url: "https://discord.com/invite/CyberpunkGame" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/CyberpunkTheGame/" }
+      ]
+    },
     gallery: ["/video-for-discover-game/cyberpunk-2077/video.mp4", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-1.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-2.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-3.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-4.jpg", "/images-discover-game/cyberpunk-2077/cyberpunk-2077-5.jpg"],
   },
   {
@@ -748,7 +846,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 30% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -776,6 +875,19 @@ export const mainGameList: DiscoverItem[] = [
       viewAllLink: "",
       imageAchievements: ["/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png", "/images/achievements/black-ops-7.png"]
     },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/CallofDuty" },
+        { platform: "Twitter", url: "https://x.com/callofduty" },
+        { platform: "Instagram", url: "https://www.instagram.com/callofduty" },
+        { platform: "Youtube", url: "https://www.youtube.com/@CallofDuty" },
+        { platform: "Website", url: "https://www.callofduty.com/blackops7" },
+        { platform: "Discord", url: "https://discord.com/invite/callofdutyofficial" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/CODBlackOps7/" }
+      ]
+    },
     gallery: ["/video-for-discover-game/black-ops-7/video.mp4", "/images-discover-game/black-ops-7/black-ops-7-1.jpg", "/images-discover-game/black-ops-7/black-ops-7-2.jpg", "/images-discover-game/black-ops-7/black-ops-7-3.jpg", "/images-discover-game/black-ops-7/black-ops-7-4.jpg", "/images-discover-game/black-ops-7/black-ops-7-5.jpg"],
   },
   {
@@ -796,7 +908,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 20% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -824,6 +937,19 @@ export const mainGameList: DiscoverItem[] = [
       viewAllLink: "",
       imageAchievements: ["/achievements/dying-light-the-beast/dying-light-the-beast-1.png", "/achievements/dying-light-the-beast/dying-light-the-beast-2.png", "/achievements/dying-light-the-beast/dying-light-the-beast-3.png", "/achievements/dying-light-the-beast/dying-light-the-beast-4.png", "/achievements/dying-light-the-beast/dying-light-the-beast-5.png"]
     },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/DyingLightGame/" },
+        { platform: "Twitter", url: "https://x.com/dyinglightgame" },
+        { platform: "Instagram", url: "https://www.instagram.com/dyinglightgame" },
+        { platform: "Youtube", url: "https://www.youtube.com/@DyingLightGameOfficial" },
+        { platform: "Website", url: "https://dyinglightgame.com/the-beast" },
+        { platform: "Discord", url: "https://discord.com/invite/dyinglight" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/dyinglight/" }
+      ]
+    },
     gallery: ["/video-for-discover-game/dying-light-the-beast/video.mp4", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-1.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-2.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-3.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-4.jpg", "/images-discover-game/dying-light-the-beast/dying-light-the-beast-5.jpg"],
   },
   {
@@ -844,7 +970,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 20% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -872,6 +999,19 @@ export const mainGameList: DiscoverItem[] = [
       viewAllLink: "",
       imageAchievements: ["/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png", "/images/achievements/resident-evil-requiem.png"]
     },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/residentevil" },
+        { platform: "Twitter", url: "https://x.com/RE_games" },
+        { platform: "Instagram", url: "https://www.instagram.com/re_games/" },
+        { platform: "Youtube", url: "https://www.youtube.com/@residentevil" },
+        { platform: "Website", url: "https://www.residentevil.com/" },
+        { platform: "Discord", url: "https://discord.com/invite/residentevil" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/residentevil/" }
+      ]
+    },
     gallery: ["/video-for-discover-game/resident-evil-requiem/video.mp4", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-1.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-2.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-3.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-4.jpg", "/images-discover-game/resident-evil-requiem/resident-evil-requiem-5.jpg"],
   },
   {
@@ -892,7 +1032,8 @@ export const mainGameList: DiscoverItem[] = [
     epicRewards: "Earn 20% Back",
     refundType: "Self-Refundable",
     releaseDate: "2022-01-01",
-    ageRating: "12+",
+    ageRating: "16+",
+    ageImage: "/ageimage/IARC_16.png",
     descRating: "Moderate Violence",
     interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
     genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
@@ -919,6 +1060,19 @@ export const mainGameList: DiscoverItem[] = [
       items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
       viewAllLink: "",
       imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
     },
     gallery: ["/video-for-discover-game/subnautica-2/video.mp4", "/images-discover-game/subnautica-2/subnautica-2-1.jpg", "/images-discover-game/subnautica-2/subnautica-2-2.jpg", "/images-discover-game/subnautica-2/subnautica-2-3.jpg", "/images-discover-game/subnautica-2/subnautica-2-4.jpg", "/images-discover-game/subnautica-2/subnautica-2-5.jpg"],
   }
@@ -1020,7 +1174,7 @@ export const promoData: PromosItem[] = [
   {
     id: 'holiday-sale-2025',
     title: 'Holiday Sale 2025',
-    image: '/images/holiday-sale.jpg',
+    image: '/promos/holiday-sale.png',
     type: 'promo',
     description: 'Save up to 75% on selected titles this holiday season.',
     buttonText: 'Learn More'
@@ -1028,7 +1182,7 @@ export const promoData: PromosItem[] = [
   {
     id: 'free-game-week',
     title: 'Free Game of the Week',
-    image: '/images/free-game.jpg',
+    image: '/promos/free-game.png',
     type: 'promo',
     description: 'Claim your free game now before it expires.',
     buttonText: 'Claim Now'
@@ -1079,45 +1233,251 @@ export const featuredGame: FeaturedGame[] = [
 export const trendingGames: TrendingItem[] = [
   {
     id: 'lords-of-the-fallen-ii',
-    title: 'Lords of the Fallen II',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/trending/lords-of-the-fallen-ii.png',
+    slug: 'lords-of-the-fallen-ii',
+    title: "Lords of the Fallen II",
+    description: "Lords of the Fallen II is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/lords-of-the-fallen-ii.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/lords-of-the-fallen.png",
+    // chi tiết bổ sung
+    heroImage: "/images/lords-of-the-fallen-ii.png",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/lords-of-the-fallen-ii/video.mp4", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-1.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-2.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-3.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-4.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-5.jpg"],
   },
   {
     id: 'the-wolf-among-us-2',
-    title: 'The Wolf Among Us 2',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/trending/the-wolf-among-us-2.png',
+    slug: 'the-wolf-among-us-2',
+    title: "The Wolf Among Us 2",
+    description: "The Wolf Among Us 2 is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/trending/the-wolf-among-us-2.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/the-wolf-among-us-2.png",
+    // chi tiết bổ sung
+    heroImage: "/images/the-wolf-among-us-2.png",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/the-wolf-among-us-2/video.mp4", "/images-discover-game/the-wolf-among-us-2/the-wolf-among-us-2-1.jpg", "/images-discover-game/the-wolf-among-us-2/the-wolf-among-us-2-2.jpg", "/images-discover-game/the-wolf-among-us-2/the-wolf-among-us-2-3.jpg", "/images-discover-game/the-wolf-among-us-2/the-wolf-among-us-2-4.jpg", "/images-discover-game/the-wolf-among-us-2/the-wolf-among-us-2-5.jpg"],
   },
   {
     id: 'arknights-endfield',
-    title: 'Arknights: Endfield',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/trending/arknights-endfield.png',
+    slug: 'arknights-endfield',
+    title: "Arknights Endfield",
+    description: "Arknights Endfield is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/trending/arknights-endfield.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/arknights-endfield.png",
+    // chi tiết bổ sung
+    heroImage: "/images/arknights-endfield.png",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/arknights-endfield/video.mp4", "/images-discover-game/arknights-endfield/arknights-endfield-1.jpg", "/images-discover-game/arknights-endfield/arknights-endfield-2.jpg", "/images-discover-game/arknights-endfield/arknights-endfield-3.jpg", "/images-discover-game/arknights-endfield/arknights-endfield-4.jpg", "/images-discover-game/arknights-endfield/arknights-endfield-5.jpg"],
   },
   {
     id: 'assassins-creed-valhalla',
-    title: 'Assassin\'s Creed® Valhalla',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/trending/assassins-creed-valhalla.png',
-  },
-  {
-    id: 'the-legend-of-zelda-tears-of-the-kingdom',
-    title: 'The Legend of Zelda: Tears of the Kingdom',
-    category: 'DLC',
-    price: 'Coming Soon',
-    image: '/trending/the-legend-of-zelda-tears-of-the-kingdom.png',
-  },
-  {
-    id: 'the-legend-of-zelda-tears-of-the-kingdom',
-    title: 'The Legend of Zelda: Tears of the Kingdom',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/trending/the-legend-of-zelda-tears-of-the-kingdom.jpg',
+    slug: 'assassins-creed-valhalla',
+    title: "Assassin's Creed Valhalla",
+    description: "Assassin's Creed Valhalla is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/trending/assassins-creed-valhalla.png",
+    category: "Base Game",
+    currentPrice: "₫599,900",
+    originalPrice: "₫1,299,900",
+    discount: "55%",
+    logoUrl: "/logos/assassins-creed-valhalla.png",
+    // chi tiết bổ sung
+    heroImage: "/images/assassins-creed-valhalla.png",
+    developer: "Ubisoft",
+    publisher: "Ubisoft",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/assassins-creed-valhalla/video.mp4", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-1.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-2.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-3.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-4.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-5.jpg"],
   },
 ];
 
@@ -1153,73 +1513,623 @@ export const comingSoon: GameItem[] = [
 export const topNewReleases: TopNewReleases[] = [
   {
     id: 'lords-of-the-fallen-ii',
-    title: 'Lords of the Fallen II',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/trending/lords-of-the-fallen-ii.png',
+    slug: 'lords-of-the-fallen-ii',
+    title: "Lords of the Fallen II",
+    description: "Lords of the Fallen II is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/lords-of-the-fallen-ii.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/lords-of-the-fallen.png",
+    // chi tiết bổ sung
+    heroImage: "/images/lords-of-the-fallen-ii.png",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/lords-of-the-fallen-ii/video.mp4", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-1.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-2.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-3.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-4.jpg", "/images-discover-game/lords-of-the-fallen-ii/lords-of-the-fallen-ii-5.jpg"],
   },
   {
-    id: 'the-legend-of-zelda-tears-of-the-kingdom',
-    title: 'The Legend of Zelda: Tears of the Kingdom',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/top-new-releases/the-legend-of-zelda-tears-of-the-kingdom.png',
+    id: 'lies-of-p',
+    slug: 'lies-of-p',
+    title: "Lies of P",
+    description: "Lies of P is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/lies-of-p.png",
+    category: "Base Game",
+    currentPrice: "₫599,900",
+    originalPrice: "₫1,299,900",
+    discount: "55%",
+    logoUrl: "/logos/lies-of-p.png",
+    // chi tiết bổ sung
+    heroImage: "/images/lies-of-p.png",
+    developer: "",
+    publisher: "",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/lies-of-p/video.mp4", "/images-discover-game/lies-of-p/lies-of-p-1.jpg", "/images-discover-game/lies-of-p/lies-of-p-2.jpg", "/images-discover-game/lies-of-p/lies-of-p-3.jpg", "/images-discover-game/lies-of-p/lies-of-p-4.jpg", "/images-discover-game/lies-of-p/lies-of-p-5.jpg"],
   },
   {
     id: 'assassins-creed-valhalla',
-    title: 'Assassin\'s Creed® Valhalla',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/trending/assassins-creed-valhalla.png',
+    slug: 'assassins-creed-valhalla',
+    title: "Assassin's Creed Valhalla",
+    description: "Assassin's Creed Valhalla is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/assassins-creed-valhalla.png",
+    category: "Base Game",
+    currentPrice: "₫599,900",
+    originalPrice: "₫1,299,900",
+    discount: "55%",
+    logoUrl: "/logos/assassins-creed-valhalla.png",
+    // chi tiết bổ sung
+    heroImage: "/images/assassins-creed-valhalla.png",
+    developer: "Ubisoft",
+    publisher: "Ubisoft",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/assassins-creed-valhalla/video.mp4", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-1.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-2.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-3.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-4.jpg", "/images-discover-game/assassins-creed-valhalla/assassins-creed-valhalla-5.jpg"],
   },
   {
     id: 'crystal-of-atlantean',
-    title: 'Crystal of Atlantean',
-    category: 'Base Game',
-    price: 'Coming Soon',
-    image: '/top-new-releases/crystal-of-atlantean.png',
+    slug: 'crystal-of-atlantean',
+    title: "Crystal of Atlantean",
+    description: "Crystal of Atlantean is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/crystal-of-atlantean.png",
+    category: "Base Game",
+    currentPrice: "Free",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/crystal-of-atlantean.png",
+    // chi tiết bổ sung
+    heroImage: "/images/crystal-of-atlantean.png",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "16+",
+    ageImage: "/ageimage/IARC_16.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/crystal-of-atlantean/video.mp4", "/images-discover-game/crystal-of-atlantean/crystal-of-atlantean-1.jpg", "/images-discover-game/crystal-of-atlantean/crystal-of-atlantean-2.jpg", "/images-discover-game/crystal-of-atlantean/crystal-of-atlantean-3.jpg", "/images-discover-game/crystal-of-atlantean/crystal-of-atlantean-4.jpg", "/images-discover-game/crystal-of-atlantean/crystal-of-atlantean-5.jpg"],
   },
   {
-    id: 'celeste-1',
-    title: 'Celeste',
-    category: 'Base Game',
-    price: 'Free',
-    image: '/top-new-releases/celeste.png',
+    id: 'celeste',
+    slug: 'celeste',
+    title: "Celeste",
+    description: "Celeste is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/celeste.png",
+    category: "Base Game",
+    currentPrice: "₫299,900",
+    originalPrice: "₫599,900",
+    discount: "50%",
+    logoUrl: "/logos/celeste.png",
+    // chi tiết bổ sung
+    heroImage: "/images/celeste.png",
+    developer: "Maddy Makes Games Inc., Extremely OK Games, Ltd.",
+    publisher: "Maddy Makes Games Inc.",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "7+",
+    ageImage: "/ageimage/IARC_7.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/celeste/video.mp4", "/images-discover-game/celeste/celeste-1.jpg", "/images-discover-game/celeste/celeste-2.jpg", "/images-discover-game/celeste/celeste-3.jpg", "/images-discover-game/celeste/celeste-4.jpg", "/images-discover-game/celeste/celeste-5.jpg"],
   },
   {
     id: 'rusty-lake-hotel',
-    title: 'Rusty Lake Hotel',
-    category: 'Base Game',
-    price: 'Free',
-    image: '/top-new-releases/rusty-lake-hotel.png',
+    slug: 'rusty-lake-hotel',
+    title: "Rusty Lake Hotel",
+    description: "Rusty Lake Hotel is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/rusty-lake-hotel.png",
+    category: "Base Game",
+    currentPrice: "₫129,900",
+    originalPrice: "₫399,900",
+    discount: "70%",
+    logoUrl: "/logos/rusty-lake-hotel.png",
+    // chi tiết bổ sung
+    heroImage: "/images/rusty-lake-hotel.png",
+    developer: "Rusty Lake",
+    publisher: "Rusty Lake",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2025-12-25",
+    ageRating: "7+",
+    ageImage: "/ageimage/IARC_7.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/rusty-lake-hotel/video.mp4", "/images-discover-game/rusty-lake-hotel/rusty-lake-hotel-1.jpg", "/images-discover-game/rusty-lake-hotel/rusty-lake-hotel-2.jpg", "/images-discover-game/rusty-lake-hotel/rusty-lake-hotel-3.jpg", "/images-discover-game/rusty-lake-hotel/rusty-lake-hotel-4.jpg", "/images-discover-game/rusty-lake-hotel/rusty-lake-hotel-5.jpg"],
   },
   {
     id: 'when-the-past-was-around',
-    title: 'When The Past Was Around',
-    category: 'Base Game',
-    price: 'Free',
-    image: '/top-new-releases/when-the-past-was-around.png',
+    slug: 'when-the-past-was-around',
+    title: "When the Past Was Around",
+    description: "When the Past Was Around is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/when-the-past-was-around.png",
+    category: "Base Game",
+    currentPrice: "₫69,900",
+    originalPrice: "₫129,900",
+    discount: "50%",
+    logoUrl: "/logos/when-the-past-was-around.png",
+    // chi tiết bổ sung
+    heroImage: "/images/when-the-past-was-around.png",
+    developer: "Mojiken",
+    publisher: "Toge Production",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_12.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/when-the-past-was-around/video.mp4", "/images-discover-game/when-the-past-was-around/when-the-past-was-around-1.jpg", "/images-discover-game/when-the-past-was-around/when-the-past-was-around-2.jpg", "/images-discover-game/when-the-past-was-around/when-the-past-was-around-3.jpg", "/images-discover-game/when-the-past-was-around/when-the-past-was-around-4.jpg", "/images-discover-game/when-the-past-was-around/when-the-past-was-around-5.jpg"],
   },
   {
     id: 'the-hunter-call-of-the-wild',
-    title: 'theHunter: Call of the Wild™',
-    category: 'Base Game',
-    price: 'Free',
-    image: '/top-new-releases/the-hunter-call-of-the-wild.png',
+    slug: 'the-hunter-call-of-the-wild',
+    title: "The Hunter: Call of the Wild",
+    description: "The Hunter: Call of the Wild is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/the-hunter-call-of-the-wild.png",
+    category: "Base Game",
+    currentPrice: "₫26,000",
+    originalPrice: "₫260,000",
+    discount: "-90%",
+    logoUrl: "/logos/the-hunter-call-of-the-wild.png",
+    // chi tiết bổ sung
+    heroImage: "/images/the-hunter-call-of-the-wild.png",
+    developer: "Expansive Worlds",
+    publisher: "Avalanche Studios",
+    epicRewards: "Earn 25% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_12.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/the-hunter-call-of-the-wild/video.mp4", "/images-discover-game/the-hunter-call-of-the-wild/the-hunter-call-of-the-wild-1.jpg", "/images-discover-game/the-hunter-call-of-the-wild/the-hunter-call-of-the-wild-2.jpg", "/images-discover-game/the-hunter-call-of-the-wild/the-hunter-call-of-the-wild-3.jpg", "/images-discover-game/the-hunter-call-of-the-wild/the-hunter-call-of-the-wild-4.jpg", "/images-discover-game/the-hunter-call-of-the-wild/the-hunter-call-of-the-wild-5.jpg"],
   },
   {
     id: 'florence',
-    title: 'Florence',
-    category: 'Base Game',
-    price: 'Free',
-    image: '/top-new-releases/florence.png',
+    slug: 'florence',
+    title: "Florence",
+    description: "Florence Yeoh feels a little... stuck. Her life is an endless routine of work, sleep, and spending too much time on social media. Then one day, she meets a cello player named Krish who changes everything about how she sees the world and herself.",
+    imageUrl: "/top-new-releases/florence.png",
+    category: "Base Game",
+    currentPrice: "Free",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/florence.png",
+    // chi tiết bổ sung
+    heroImage: "/images/florence.png",
+    developer: "Mountains",
+    publisher: "Annapurna Interactive",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2025-12-25",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_16.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/florence/video.mp4", "/images-discover-game/florence/florence-1.jpg", "/images-discover-game/florence/florence-2.jpg", "/images-discover-game/florence/florence-3.jpg", "/images-discover-game/florence/florence-4.jpg", "/images-discover-game/florence/florence-5.jpg"],
   },
   {
     id: 'stray',
-    title: 'Stray',
-    category: 'Base Game',
-    price: 'Free',
-    image: '/top-new-releases/stray.jpg',
+    slug: 'stray',
+    title: "Stray",
+    description: "Stray is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/top-new-releases/stray.jpg",
+    category: "Base Game",
+    currentPrice: "₫227.500",
+    originalPrice: "₫379.000",
+    discount: "-40%",
+    logoUrl: "/logos/stray.png",
+    // chi tiết bổ sung
+    heroImage: "/images/stray.jpg",
+    developer: "BlueTwelve Studio",
+    publisher: "Annapurna Interactive",
+    epicRewards: "Earn 30% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_16.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/stray/video.mp4", "/images-discover-game/stray/stray-1.jpg", "/images-discover-game/stray/stray-2.jpg", "/images-discover-game/stray/stray-3.jpg", "/images-discover-game/stray/stray-4.jpg", "/images-discover-game/stray/stray-5.jpg"],
   },
 
 ];
@@ -1228,41 +2138,653 @@ export const topNewReleases: TopNewReleases[] = [
 
 // CỘT 1: TOP ADD-ONS
 export const topAddOns: GameItem[] = [
-  { id: 1, title: "Oneiric Shard x6480", image: "/top-lists/oneiric.png", price: "₫2,199,000" },
-  { id: 2, title: "The Diamond Diva Pack", image: "/top-lists/diva.png", price: "₫78,000" },
-  { id: 3, title: "Polar Legends Pack", image: "/top-lists/polar.png", price: "₫389,000" },
-  { id: 4, title: "Agency Renegades Pack", image: "/top-lists/agency.png", price: "₫354,200" },
-  { id: 5, title: "Rocket League® - Season 20...", image: "/top-lists/rocket-season.png", price: "₫347,000" },
+  { id: 1, title: "INAZUMA ELEVEN: Victory Road", image: "/new-releases-list/inazuma.jpg", badge: "Now On Epic", price: "₫1,200,000" },
+  { id: 2, title: "Constance", image: "/new-releases-list/constance.png", badge: "Now On Epic", price: "Free" },
+  { id: 3, title: "Dispatch", image: "/new-releases-list/dispatch.jpg", price: "₫300,000" },
+  { id: 4, title: "DOOM: The Dark Ages", image: "/new-releases-list/doom.png", badge: "Now On Epic", price: "₫1,200,000" },
+  { id: 5, title: "Mouthwashing", image: "/new-releases-list/mouthwashing.png", badge: "Now On Epic", price: "Free" },
 ];
 
 // CỘT 2: TOP FREE TO PLAY
 export const topFreeToPlay: GameItem[] = [
-  { id: 1, title: "Fortnite", image: "/top-lists/fortnite.png", price: "Free" },
-  { id: 2, title: "Rocket League®", image: "/top-lists/rocket-league.png", price: "Free" },
-  { id: 3, title: "Genshin Impact", image: "/top-lists/genshin.png", price: "Free" },
-  { id: 4, title: "Honkai: Star Rail", image: "/top-lists/honkai.png", price: "Free" },
-  { id: 5, title: "Zenless Zone Zero", image: "/top-lists/zenless.png", price: "Free" },
+  { id: 1, title: "KINGDOM HEARTS III + Re Mind...", image: "/new-releases-list/kh3.png", price: "₫1,250,000" },
+  { id: 2, title: "Goat Simulator 3", image: "/new-releases-list/goat3.png", discount: "-60%", originalPrice: "₫385,000", price: "₫154,000" },
+  { id: 3, title: "Hades II", image: "/new-releases-list/hades2.jpg", price: "₫385,000" },
+  { id: 4, title: "Clair Obscur: Expedition 33", image: "/new-releases-list/clair.png", price: "₫770,000" },
+  { id: 5, title: "Titanfall® 2: Ultimate Edition", image: "/new-releases-list/titanfall2.png", discount: "-85%", originalPrice: "₫700,000", price: "₫105,000" },
 ];
 
 // CỘT 3: TOP DEMOS
 export const topDemos: GameItem[] = [
-  { id: 1, title: "Half Sword Demo", image: "/top-lists/half-sword.png", price: "" }, // Demo thường không để giá hoặc Free
-  { id: 2, title: "Cloudheim Demo", image: "/top-lists/cloudheim.png", price: "" },
-  { id: 3, title: "XOCIETY Playtest", image: "/top-lists/xociety.png", price: "" },
-  { id: 4, title: "Truck World: Driving School", image: "/top-lists/truck-world.png", price: "" },
-  { id: 5, title: "Wilder World - Super Early...", image: "/top-lists/wilder-world.png", price: "" },
+  { id: 1, title: "Project Motor Racing", image: "/new-releases-list/motor.png", availability: "Available 11/25/25", price: "₫860,000" },
+  { id: 2, title: "Subnautica 2", image: "/new-releases-list/subnautica2.png", availability: "Available 11/26/25" },
+  { id: 3, title: "Slay the Spire 2", image: "/new-releases-list/slay.jpg", availability: "Available 11/27/25" },
+  { id: 4, title: "Lost Ember: Rekindled Edition", image: "/new-releases-list/lostember.png", availability: "Available 11/27/25" },
+  { id: 5, title: "PUBG: BLINDSPOT", image: "/new-releases-list/blur.png", availability: "Available Nov 2025" },
 ];
 
 // Dữ liệu cho EpicFirstRunSection
 export const epicFirstRun: EpicFirstRun[] = [
-  { id: "reanimal", title: "Reanimal", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/reanimal.png" },
-  { id: "felix-the-reaper", title: "Felix The Reaper", category: "Base Game", price: "₫209,000", image: "/epic-form-epic-first-run/felix-the-reaper.png" },
-  { id: "vampire-the-masquerade-bloodlines-2", title: "Vampire: The Masquerade® - Bloodlines™ 2", category: "Base Game", price: "₫1,375,000", image: "/epic-form-epic-first-run/vampire-the-masquerade.jpg" },
-  { id: "hell-is-us", title: "Hell is Us", category: "Base Game", price: "₫1,190,000", image: "/epic-form-epic-first-run/hell-is-us.png" },
-  { id: "batman-arkham-knight", title: "Batman™ Arkham Knight", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/batman-arkham-knight.png" },
-  { id: "octopath-traveler", title: "OCTOPATH TRAVELER™", category: "Base Game", price: "₫1,200,000", image: "/epic-form-epic-first-run/octopath-traveler.jpg" },
-  { id: "back-4-blood-standard-edition", title: "Back 4 Blood: Standard Edition", category: "Base Game", price: "₫1,470,000", image: "/epic-form-epic-first-run/back-4-blood.jpg" },
-  { id: "naraka-bladepoint", title: "NARAKA: BLADEPOINT", category: "Base Game", price: "Free", image: "/epic-form-epic-first-run/naraka-bladepoint.jpg" },
+  {
+    id: 'back-4-blood',
+    slug: 'back-4-blood',
+    title: "Back 4 Blood: Standard Edition",
+    description: "Back 4 Blood: Standard Edition is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/back-4-blood.jpg",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/back-4-blood.png",
+    // chi tiết bổ sung
+    heroImage: "/images/back-4-blood.jpg",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png", "/images/achievements/lords-of-the-fallen-ii.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/back-4-blood/video.mp4", "/images-discover-game/back-4-blood/back-4-blood-1.jpg", "/images-discover-game/back-4-blood/back-4-blood-2.jpg", "/images-discover-game/back-4-blood/back-4-blood-3.jpg", "/images-discover-game/back-4-blood/back-4-blood-4.jpg", "/images-discover-game/back-4-blood/back-4-blood-5.jpg"],
+  },
+  {
+    id: 'batman-arkham-knight',
+    slug: 'batman-arkham-knight',
+    title: "Batman Arkham Knight",
+    description: "Batman Arkham Knight is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/batman-arkham-knight.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/batman-arkham-knight.png",
+    // chi tiết bổ sung
+    heroImage: "/images/batman-arkham-knight.png",
+    developer: "",
+    publisher: "",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/batman-arkham-knight/video.mp4", "/images-discover-game/batman-arkham-knight/batman-arkham-knight-1.jpg", "/images-discover-game/batman-arkham-knight/batman-arkham-knight-2.jpg", "/images-discover-game/batman-arkham-knight/batman-arkham-knight-3.jpg", "/images-discover-game/batman-arkham-knight/batman-arkham-knight-4.jpg", "/images-discover-game/batman-arkham-knight/batman-arkham-knight-5.jpg"],
+  },
+  {
+    id: 'felix-the-reaper',
+    slug: 'felix-the-reaper',
+    title: "Felix The Reaper",
+    description: "Felix The Reaper is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/felix-the-reaper.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/felix-the-reaper.png",
+    // chi tiết bổ sung
+    heroImage: "/images/felix-the-reaper.png",
+    developer: "Ubisoft",
+    publisher: "Ubisoft",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "7+",
+    ageImage: "/ageimage/IARC_7.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/felix-the-reaper/video.mp4", "/images-discover-game/felix-the-reaper/felix-the-reaper-1.jpg", "/images-discover-game/felix-the-reaper/felix-the-reaper-2.jpg", "/images-discover-game/felix-the-reaper/felix-the-reaper-3.jpg", "/images-discover-game/felix-the-reaper/felix-the-reaper-4.jpg", "/images-discover-game/felix-the-reaper/felix-the-reaper-5.jpg"],
+  },
+  {
+    id: 'hell-is-us',
+    slug: 'hell-is-us',
+    title: "Hell is Us",
+    description: "Hell is Us is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/hell-is-us.png",
+    category: "Base Game",
+    currentPrice: "Free",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/hell-is-us.png",
+    // chi tiết bổ sung
+    heroImage: "/images/hell-is-us.png",
+    developer: "Unknown Worlds",
+    publisher: "Unknown Worlds",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/hell-is-us/video.mp4", "/images-discover-game/hell-is-us/hell-is-us-1.jpg", "/images-discover-game/hell-is-us/hell-is-us-2.jpg", "/images-discover-game/hell-is-us/hell-is-us-3.jpg", "/images-discover-game/hell-is-us/hell-is-us-4.jpg", "/images-discover-game/hell-is-us/hell-is-us-5.jpg"],
+  },
+  {
+    id: 'once-human',
+    slug: 'once-human',
+    title: "Once Human",
+    description: "Once Human is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/once-human.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/once-human.png",
+    // chi tiết bổ sung
+    heroImage: "/images/once-human.png",
+    developer: "Maddy Makes Games Inc., Extremely OK Games, Ltd.",
+    publisher: "Maddy Makes Games Inc.",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/once-human/video.mp4", "/images-discover-game/once-human/once-human-1.jpg", "/images-discover-game/once-human/once-human-2.jpg", "/images-discover-game/once-human/once-human-3.jpg", "/images-discover-game/once-human/once-human-4.jpg", "/images-discover-game/once-human/once-human-5.jpg"],
+  },
+  {
+    id: 'octopath-traveler',
+    slug: 'octopath-traveler',
+    title: "Octopath Traveler II",
+    description: "Octopath Traveler II is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/octopath-traveler.jpg",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/octopath-traveler.png",
+    // chi tiết bổ sung
+    heroImage: "/images/octopath-traveler.png",
+    developer: "Rusty Lake",
+    publisher: "Rusty Lake",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2025-12-25",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_12.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/octopath-traveler/video.mp4", "/images-discover-game/octopath-traveler/octopath-traveler-1.jpg", "/images-discover-game/octopath-traveler/octopath-traveler-2.jpg", "/images-discover-game/octopath-traveler/octopath-traveler-3.jpg", "/images-discover-game/octopath-traveler/octopath-traveler-4.jpg", "/images-discover-game/octopath-traveler/octopath-traveler-5.jpg"],
+  },
+  {
+    id: 'reanimal',
+    slug: 'reanimal',
+    title: "Reanimal",
+    description: "Reanimal is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/reanimal.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/reanimal.png",
+    // chi tiết bổ sung
+    heroImage: "/images/reanimal.png",
+    developer: "Mojiken",
+    publisher: "Toge Production",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "12+",
+    ageImage: "/ageimage/IARC_12.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/reanimal/video.mp4", "/images-discover-game/reanimal/reanimal-1.jpg", "/images-discover-game/reanimal/reanimal-2.jpg", "/images-discover-game/reanimal/reanimal-3.jpg", "/images-discover-game/reanimal/reanimal-4.jpg", "/images-discover-game/reanimal/reanimal-5.jpg"],
+  },
+  {
+    id: 'vampire-the-masquerade',
+    slug: 'vampire-the-masquerade',
+    title: "Vampire: The Masquerade",
+    description: "Vampire: The Masquerade is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/vampire-the-masquerade.jpg",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/vampire-the-masquerade.png",
+    // chi tiết bổ sung
+    heroImage: "/images/vampire-the-masquerade.png",
+    developer: "Expansive Worlds",
+    publisher: "Avalanche Studios",
+    epicRewards: "Earn 25% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/vampire-the-masquerade/video.mp4", "/images-discover-game/vampire-the-masquerade/vampire-the-masquerade-1.jpg", "/images-discover-game/vampire-the-masquerade/vampire-the-masquerade-2.jpg", "/images-discover-game/vampire-the-masquerade/vampire-the-masquerade-3.jpg", "/images-discover-game/vampire-the-masquerade/vampire-the-masquerade-4.jpg", "/images-discover-game/vampire-the-masquerade/vampire-the-masquerade-5.jpg"],
+  },
+  {
+    id: 'doom-the-dark-ages',
+    slug: 'doom-the-dark-ages',
+    title: "DOOM: The Dark Ages",
+    description: "Florence Yeoh feels a little... stuck. Her life is an endless routine of work, sleep, and spending too much time on social media. Then one day, she meets a cello player named Krish who changes everything about how she sees the world and herself.",
+    imageUrl: "/epic-form-epic-first-run/doom-the-dark-ages.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/doom-the-dark-ages.png",
+    // chi tiết bổ sung
+    heroImage: "/images/doom-the-dark-ages.png",
+    developer: "Mountains",
+    publisher: "Annapurna Interactive",
+    epicRewards: "Earn 20% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2025-12-25",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/doom-the-dark-ages/video.mp4", "/images-discover-game/doom-the-dark-ages/doom-the-dark-ages-1.jpg", "/images-discover-game/doom-the-dark-ages/doom-the-dark-ages-2.jpg", "/images-discover-game/doom-the-dark-ages/doom-the-dark-ages-3.jpg", "/images-discover-game/doom-the-dark-ages/doom-the-dark-ages-4.jpg", "/images-discover-game/doom-the-dark-ages/doom-the-dark-ages-5.jpg"],
+  },
+  {
+    id: 'clair-obscur',
+    slug: 'clair-obscur',
+    title: "Clair Obscur: Expedition 33",
+    description: "Clair Obscur: Expedition 33 is an action-packed first-person shooter where players take on the role of a space explorer in a futuristic city.",
+    imageUrl: "/epic-form-epic-first-run/clair-obscur.png",
+    category: "Base Game",
+    currentPrice: "Coming soon",
+    originalPrice: "",
+    discount: "",
+    logoUrl: "/logos/clair-obscur.png",
+    // chi tiết bổ sung
+    heroImage: "/images/clair-obscur.png",
+    developer: "BlueTwelve Studio",
+    publisher: "Annapurna Interactive",
+    epicRewards: "Earn 30% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "FPS", "Cartoony", "Detective", "Indie", "Shooter", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png", "/images/achievements/subnautica-2.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/subnautica" },
+        { platform: "Twitter", url: "https://x.com/subnautica" },
+        { platform: "Instagram", url: "https://www.instagram.com/subnautica" },
+        { platform: "Youtube", url: "https://www.youtube.com/@subnautica" },
+        { platform: "Website", url: "https://subnautica.com/en" },
+        { platform: "Discord", url: "https://discord.com/invite/subnautica" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/subnautica/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/clair-obscur/video.mp4", "/images-discover-game/clair-obscur/clair-obscur-1.jpg", "/images-discover-game/clair-obscur/clair-obscur-2.jpg", "/images-discover-game/clair-obscur/clair-obscur-3.jpg", "/images-discover-game/clair-obscur/clair-obscur-4.jpg", "/images-discover-game/clair-obscur/clair-obscur-5.jpg"],
+  },
 ];
 
 // Dữ liệu cho NowOnSection
@@ -1317,9 +2839,21 @@ export function getGameBySlug(slug: string): any {
   const heroGame = heroData.find((g) => g.slug === slug);
   if (heroGame) return heroGame;
 
-  // Tìm trong mainGameList trước
+  // Tìm trong mainGameList (discover game) trước
   const mainGame = mainGameList.find((g) => g.slug === slug);
   if (mainGame) return mainGame;
+
+  // Tìm trong topNewReleases
+  const newReleaseGame = topNewReleases.find((g) => g.slug === slug);
+  if (newReleaseGame) return newReleaseGame;
+
+  // Tìm trong trendingGames
+  const trendingGame = trendingGames.find((g) => g.slug === slug);
+  if (trendingGame) return trendingGame;
+
+  // Tìm trong epicFirstRun
+  const epicFirstRunGame = epicFirstRun.find((g) => g.slug === slug);
+  if (epicFirstRunGame) return epicFirstRunGame;
 
   // Nếu không tìm thấy ở đâu
   return null;

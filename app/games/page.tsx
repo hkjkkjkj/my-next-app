@@ -1,30 +1,44 @@
-// app/games/page.tsx
-import styles from './GamesPage.module.css'; // <-- Bước 1: Import file CSS
-import { mainGameList, Game } from '@/lib/data';
-// Dữ liệu giả
-const mockGames = [
-  { id: 1, name: 'Cyberpunk 2077', price: '59.99$' },
-  { id: 2, name: 'Elden Ring', price: '69.99$' },
-  { id: 3, name: 'Stardew Valley', price: '14.99$' },
-];
+import styles from './GamesPage.module.css';
+import { mainGameList } from '@/lib/data';
+import GameCard from './components/GameCard';
+import FilterSidebar from './components/FilterSidebar';
+import PopularGenres from './components/PopularGenres';
 
 export default function GamesPage() {
+  // We use mainGameList directly. In a real app, this would be filtered by state.
   return (
-    // Bước 2: Dùng className từ object 'styles'
     <main className={styles.pageContainer}>
-      <h1 className={styles.title}>Danh Sách Game</h1>
+      <div className={styles.contentWrapper}>
 
-      <div className={styles.grid}>
-        {mockGames.map((game) => (
-          // Đây là một "Game Card"
-          <div key={game.id} className={styles.card}>
-            <h2 className={styles.cardTitle}>{game.name}</h2>
-            <p className={styles.cardPrice}>{game.price}</p>
-            <button className={styles.cardButton}>
-              Thêm vào giỏ
-            </button>
+        {/* Top Section: Popular Genres */}
+        <PopularGenres />
+
+        {/* Sorting / View Controls can go here */}
+        <div className={styles.headerControls}>
+          <div className={styles.dropdownLabel}>Show: <b>New Release</b> ▼</div>
+        </div>
+
+        <div className={styles.mainLayout}>
+
+          {/* Left Column: Games Grid */}
+          <div className={styles.gamesColumn}>
+            <div className={styles.gamesGrid}>
+              {mainGameList.map((game, index) => (
+                <GameCard key={game.id || index} game={game} />
+              ))}
+            </div>
+
+            <div className={styles.listFooter}>
+              {/* Pagination placeholder */}
+            </div>
           </div>
-        ))}
+
+          {/* Right Column: Filters */}
+          <div className={styles.sidebarWrapper}>
+            <FilterSidebar />
+          </div>
+
+        </div>
       </div>
     </main>
   );
