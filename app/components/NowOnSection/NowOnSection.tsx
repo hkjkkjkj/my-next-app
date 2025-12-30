@@ -3,14 +3,17 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './NowOnSection.module.css';
-import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaPlus, FaCrow, FaCrown } from 'react-icons/fa';
 import { nowOn } from '@/lib/data';
+import Link from 'next/link'; // [1] Import thêm Link
 
 const VISIBLE_COUNT = 5;
+// [2] Sửa lại thành 16 để khớp với file CSS (nếu CSS bạn để 16px)
 const CARD_GAP = 24;
-const PADDING_X = 32; // Tổng padding trái (16) + phải (16) của sliderViewport
+const PADDING_X = 32;
 
 export default function NowOnSection() {
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardWidth, setCardWidth] = useState(0);
     const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -20,11 +23,8 @@ export default function NowOnSection() {
             if (!viewportRef.current) return;
 
             const viewportWidth = viewportRef.current.offsetWidth;
-
-            // Trừ đi padding để lấy không gian thực tế chứa thẻ
-            const availableWidth = viewportWidth - PADDING_X;
-
-            // Tính toán width cho từng card
+            // Trừ padding và 1px sub-pixel
+            const availableWidth = viewportWidth - PADDING_X - 1;
             const width = (availableWidth - CARD_GAP * (VISIBLE_COUNT - 1)) / VISIBLE_COUNT;
 
             setCardWidth(width);
@@ -54,7 +54,6 @@ export default function NowOnSection() {
 
     return (
         <section className={styles.section}>
-
             {/* Header */}
             <div className={styles.headerRow}>
                 <div className={styles.titleGroup}>
@@ -91,35 +90,48 @@ export default function NowOnSection() {
                     style={{ transform: `translateX(${translateX}px)` }}
                 >
                     {nowOn.map((game) => (
-                        <div
+                        // [3] Thay thẻ div bằng Link và trỏ tới slug
+                        <Link
+                            href={`/p/${game.slug || '#'}`} // Dùng slug từ data
                             key={game.id}
                             className={styles.card}
-                            // Gán cứng width + flex-basis
-                            style={{ width: `${cardWidth}px`, flex: `0 0 ${cardWidth}px` }}
+                            // Thêm minWidth để đảm bảo thẻ không bị trình duyệt ép nhỏ lại
+                            style={{
+                                width: `${cardWidth}px`,
+                                minWidth: `${cardWidth}px`,
+                                flex: `0 0 ${cardWidth}px`
+                            }}
                         >
                             <div className={styles.imageWrapper}>
                                 <img
-                                    src={game.image}
+                                    src={game.imageUrl || undefined}
                                     alt={game.title}
                                     className={styles.image}
-                                    onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=FirstRun"; }}
+                                    onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x400/333/fff?text=Discover"; }}
                                 />
-                                <a href="#" className={styles.wishlistBtn} aria-label="Add to Wishlist">
+                                {/* Nút thêm wishlist cần preventDefault để không kích hoạt Link cha */}
+                                <button
+                                    className={styles.wishlistBtn}
+                                    aria-label="Add to Wishlist"
+                                    onClick={(e) => {
+                                        e.preventDefault(); // Chặn sự kiện click lan ra thẻ Link
+                                        alert(`Added ${game.title} to Wishlist!`);
+                                    }}
+                                >
                                     <FaPlus />
-                                </a>
+                                </button>
                             </div>
 
                             <div className={styles.info}>
                                 <span className={styles.category}>{game.category}</span>
                                 <h3 className={styles.gameTitle}>{game.title}</h3>
-
-                                <div className={styles.NowOnBadge}>
-                                    <span>Now On</span>
-                                </div>
-
-                                <p className={styles.price}>{game.price}</p>
+                                <p className={styles.price}>{game.currentPrice}</p>
                             </div>
-                        </div>
+
+                            <div className={styles.NowOnBadge}>
+                                <span>Now On</span>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -236,10 +236,33 @@ export interface EpicFirstRun extends GameDetailsMixin {
 export interface NowOn extends GameDetailsMixin {
   id: string;
   title: string;
-  image: string;
-  price: string;
+  imageUrl: string;
   category: string;
+  currentPrice: string;
+  originalPrice?: string;
+  discount?: string;
+  logoUrl?: string;
+  ageRating?: string;
+  ageImage?: string;
+  descRating?: string;
+  interactRating?: string;
+  epicRewards?: string;
+  refundType?: string;
+  genre?: string[];
+  features?: string[];
+  achievementsSection?: AchievementsSection;
+  followSection?: FollowSection;
 }
+
+// Định nghĩa cho Store Promotions Section
+export interface StorePromotionItem {
+  id: string;
+  title: string;
+  description: string;
+  buttonText: string;
+  image: string;
+}
+
 
 // --- DỮ LIỆU GIẢ CỦA BẠN ---
 
@@ -2789,25 +2812,620 @@ export const epicFirstRun: EpicFirstRun[] = [
 
 // Dữ liệu cho NowOnSection
 export const nowOn: NowOn[] = [
-  { id: "reanimal", title: "Reanimal", category: "Base Game", price: "Free", image: "/now-on/reanimal.png" },
-  { id: "felix-the-reaper", title: "Felix The Reaper", category: "Base Game", price: "₫209,000", image: "/now-on/felix-the-reaper.png" },
-  { id: "vampire-the-masquerade-bloodlines-2", title: "Vampire: The Masquerade® - Bloodlines™ 2", category: "Base Game", price: "₫1,375,000", image: "/now-on/vampire-the-masquerade.jpg" },
-  { id: "hell-is-us", title: "Hell is Us", category: "Base Game", price: "₫1,190,000", image: "/now-on/hell-is-us.png" },
-  { id: "batman-arkham-knight", title: "Batman™ Arkham Knight", category: "Base Game", price: "Free", image: "/now-on/batman-arkham-knight.png" },
-  { id: "octopath-traveler", title: "OCTOPATH TRAVELER™", category: "Base Game", price: "₫1,200,000", image: "/now-on/octopath-traveler.jpg" },
-  { id: "back-4-blood-standard-edition", title: "Back 4 Blood: Standard Edition", category: "Base Game", price: "₫1,470,000", image: "/now-on/back-4-blood.jpg" },
-  { id: "naraka-bladepoint", title: "NARAKA: BLADEPOINT", category: "Base Game", price: "Free", image: "/now-on/naraka-bladepoint.jpg" },
+  {
+    id: "kingdom-come-deliverance-ii",
+    slug: "kingdom-come-deliverance-ii",
+    title: "Kingdom Come: Deliverance II",
+    description: "A thrilling story-driven action RPG, with a rich open world, set in 15th century Medieval Europe. Experience the ultimate medieval adventure - through the eyes of young Henry - as you embark on a journey of epic proportions.",
+    imageUrl: "/now-on/kingdom-come-deliverance-ii.png",
+    category: "Base Game",
+    currentPrice: "₫499,500",
+    originalPrice: "₫999,000",
+    discount: "50%",
+    logoUrl: "/logos/kingdom-come-deliverance-ii.png",
+    // chi tiết bổ sung
+    heroImage: "/now-on/kingdom-come-deliverance-ii.png",
+    developer: "The Fun Pimps",
+    publisher: "The Fun Pimps Entertainment",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Shooter", "Survival", "Zombie"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/kingdom-come-deliverance-ii-1.png", "/images/achievements/kingdom-come-deliverance-ii-2.png", "/images/achievements/kingdom-come-deliverance-ii-3.png", "/images/achievements/kingdom-come-deliverance-ii-4.png", "/images/achievements/kingdom-come-deliverance-ii-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/7DaysToDie" },
+        { platform: "Twitter", url: "https://twitter.com/7DaysToDie" },
+        { platform: "Instagram", url: "https://www.instagram.com/7daystodie" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/7DaysToDie" },
+        { platform: "Website", url: "https://7daystodie.com/" },
+        { platform: "Discord", url: "https://discord.gg/7DaysToDie" },
+        { platform: "Reddit", url: "" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/kingdom-come-deliverance-ii/video.mp4", "/images-discover-game/kingdom-come-deliverance-ii/kingdom-come-deliverance-ii-1.jpg", "/images-discover-game/kingdom-come-deliverance-ii/kingdom-come-deliverance-ii-2.jpg", "/images-discover-game/kingdom-come-deliverance-ii/kingdom-come-deliverance-ii-3.jpg", "/images-discover-game/kingdom-come-deliverance-ii/kingdom-come-deliverance-ii-4.jpg", "/images-discover-game/kingdom-come-deliverance-ii/kingdom-come-deliverance-ii-5.jpg",]
+  },
+  {
+    id: "persona-5-royal",
+    slug: "persona-5-royal",
+    title: "Persona 5 Royal",
+    description: "Don the mask and join the Phantom Thieves of Hearts as they stage grand heists, infiltrate the minds of the corrupt, and make them change their ways!",
+    imageUrl: "/now-on/persona-5-royal.png",
+    category: "Base Game",
+    currentPrice: "₫414,000",
+    originalPrice: "₫1,380,000",
+    discount: "70%",
+    logoUrl: "/logos/persona-5-royal.png",
+    heroImage: "/now-on/persona-5-royal.png",
+    developer: "Atlus",
+    publisher: "Sega",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "16+",
+    ageImage: "/ageimage/IARC_16.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/persona-5-royal/video.mp4", "/images-discover-game/persona-5-royal/persona-5-royal-1.jpg", "/images-discover-game/persona-5-royal/persona-5-royal-2.jpg", "/images-discover-game/persona-5-royal/persona-5-royal-3.jpg", "/images-discover-game/persona-5-royal/persona-5-royal-4.jpg", "/images-discover-game/persona-5-royal/persona-5-royal-5.jpg",]
+  },
+  {
+    id: "baldurs-gate-3",
+    slug: "baldurs-gate-3",
+    title: "Baldur's Gate 3",
+    description: "Baldur’s Gate 3 is a story-rich, party-based RPG set in the universe of Dungeons & Dragons, where your choices shape a tale of fellowship and betrayal, survival and sacrifice, and the lure of absolute power.",
+    imageUrl: "/now-on/baldurs-gate-3.png",
+    category: "Base Game",
+    currentPrice: "₫414,000",
+    originalPrice: "₫1,380,000",
+    discount: "70%",
+    logoUrl: "/logos/baldurs-gate-3.png",
+    heroImage: "/now-on/baldurs-gate-3.png",
+    developer: "Larian Studios",
+    publisher: "CD Projekt Red",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/baldurs-gate-3/video.mp4", "/images-discover-game/baldurs-gate-3/baldurs-gate-3-1.jpg", "/images-discover-game/baldurs-gate-3/baldurs-gate-3-2.jpg", "/images-discover-game/baldurs-gate-3/baldurs-gate-3-3.jpg", "/images-discover-game/baldurs-gate-3/baldurs-gate-3-4.jpg", "/images-discover-game/baldurs-gate-3/baldurs-gate-3-5.jpg",]
+  },
+  {
+    id: "dead-island-2",
+    slug: "dead-island-2",
+    title: "Dead Island 2",
+    description: "A deadly virus is spreading across Los Angeles, turning its inhabitants into zombies. Bitten, infected, but more than just immune, uncover the truth behind the outbreak and discover who - or what - you are. Survive, evolve and become the ultimate Zombie Slayer.",
+    imageUrl: "/now-on/dead-island-2.png",
+    category: "Base Game",
+    currentPrice: "₫414,000",
+    originalPrice: "₫1,380,000",
+    discount: "70%",
+    logoUrl: "/logos/dead-island-2.png",
+    heroImage: "/now-on/dead-island-2.png",
+    developer: "Larian Studios",
+    publisher: "CD Projekt Red",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/dead-island-2/video.mp4", "/images-discover-game/dead-island-2/dead-island-2-1.jpg", "/images-discover-game/dead-island-2/dead-island-2-2.jpg", "/images-discover-game/dead-island-2/dead-island-2-3.jpg", "/images-discover-game/dead-island-2/dead-island-2-4.jpg", "/images-discover-game/dead-island-2/dead-island-2-5.jpg",]
+  },
+  {
+    id: "hades-ii",
+    slug: "hades-ii",
+    title: "Hades II",
+    description: "",
+    imageUrl: "/now-on/hades-ii.png",
+    category: "Base Game",
+    currentPrice: "₫414,000",
+    originalPrice: "₫1,380,000",
+    discount: "70%",
+    logoUrl: "/logos/hades-ii.png",
+    heroImage: "/now-on/hades-ii.png",
+    developer: "Larian Studios",
+    publisher: "CD Projekt Red",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/hades-ii/video.mp4", "/images-discover-game/hades-ii/hades-ii-1.jpg", "/images-discover-game/hades-ii/hades-ii-2.jpg", "/images-discover-game/hades-ii/hades-ii-3.jpg", "/images-discover-game/hades-ii/hades-ii-4.jpg", "/images-discover-game/hades-ii/hades-ii-5.jpg",]
+  },
+  {
+    id: "final-fantasy-xvi",
+    slug: "final-fantasy-xvi",
+    title: "Final Fantasy XVI",
+    description: "An epic dark fantasy where fates are decided by mighty Eikons and the Dominants who wield them. This is the tale of Clive Rosfield, a tragic warrior who swears revenge on the Dark Eikon Ifrit, a mysterious entity that leaves naught but calamity in its wake.",
+    imageUrl: "/now-on/final-fantasy-xvi.png",
+    category: "Base Game",
+    currentPrice: "₫1.249.000",
+    originalPrice: "₫1.249.000",
+    discount: "0%",
+    logoUrl: "/logos/final-fantasy-xvi.png",
+    heroImage: "/now-on/final-fantasy-xvi.png",
+    developer: "Square Enix",
+    publisher: "Square Enix",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/final-fantasy-xvi/video.mp4", "/images-discover-game/final-fantasy-xvi/final-fantasy-xvi-1.jpg", "/images-discover-game/final-fantasy-xvi/final-fantasy-xvi-2.jpg", "/images-discover-game/final-fantasy-xvi/final-fantasy-xvi-3.jpg", "/images-discover-game/final-fantasy-xvi/final-fantasy-xvi-4.jpg", "/images-discover-game/final-fantasy-xvi/final-fantasy-xvi-5.jpg",]
+  },
+  {
+    id: "the-hundred-line-last-defense-academy",
+    slug: "the-hundred-line-last-defense-academy",
+    title: "The Hundred: Line Last Defense Academy",
+    description: "The Hundred: Line Last Defense Academy is a tactical action game where players control a group of soldiers as they fight against an enemy force. The game features a variety of weapons and equipment, as well as a range of missions and objectives to complete.",
+    imageUrl: "/now-on/the-hundred-line-last-defense-academy.png",
+    category: "Base Game",
+    currentPrice: "₫1.249.000",
+    originalPrice: "₫1.249.000",
+    discount: "0%",
+    logoUrl: "/logos/the-hundred-line-last-defense-academy.png",
+    heroImage: "/now-on/the-hundred-line-last-defense-academy.png",
+    developer: "Square Enix",
+    publisher: "Square Enix",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/the-hundred-line-last-defense-academy/video.mp4", "/images-discover-game/the-hundred-line-last-defense-academy/the-hundred-line-last-defense-academy-1.jpg", "/images-discover-game/the-hundred-line-last-defense-academy/the-hundred-line-last-defense-academy-2.jpg", "/images-discover-game/the-hundred-line-last-defense-academy/the-hundred-line-last-defense-academy-3.jpg", "/images-discover-game/the-hundred-line-last-defense-academy/the-hundred-line-last-defense-academy-4.jpg", "/images-discover-game/the-hundred-line-last-defense-academy/the-hundred-line-last-defense-academy-5.jpg",]
+  },
+  {
+    id: "monster-hunter-wilds",
+    slug: "monster-hunter-wilds",
+    title: "Monster Hunter: Wilds",
+    description: "The unbridled force of nature runs wild and relentless, with environments transforming drastically from one moment to the next. This is a story of monsters and humans and their struggles to live in harmony in a world of duality.",
+    imageUrl: "/now-on/monster-hunter-wilds.png",
+    category: "Base Game",
+    currentPrice: "₫1.249.000",
+    originalPrice: "₫1.249.000",
+    discount: "0%",
+    logoUrl: "/logos/monster-hunter-wilds.png",
+    heroImage: "/now-on/monster-hunter-wilds.png",
+    developer: "Square Enix",
+    publisher: "Square Enix",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/monster-hunter-wilds/video.mp4", "/images-discover-game/monster-hunter-wilds/monster-hunter-wilds-1.jpg", "/images-discover-game/monster-hunter-wilds/monster-hunter-wilds-2.jpg", "/images-discover-game/monster-hunter-wilds/monster-hunter-wilds-3.jpg", "/images-discover-game/monster-hunter-wilds/monster-hunter-wilds-4.jpg", "/images-discover-game/monster-hunter-wilds/monster-hunter-wilds-5.jpg",]
+  },
+  {
+    id: "red-dead-redemption-2",
+    slug: "red-dead-redemption-2",
+    title: "Red Dead Redemption 2",
+    description: "Arthur Morgan and the Van der Linde Gang are outlaws on the run. With federal agents and bounty hunters massing on their heels, the gang must rob, steal, and fight their way across the rugged heartland in order to survive.",
+    imageUrl: "/now-on/red-dead-redemption-2.png",
+    category: "Base Game",
+    currentPrice: "₫1.249.000",
+    originalPrice: "₫1.249.000",
+    discount: "0%",
+    logoUrl: "/logos/red-dead-redemption-2.png",
+    heroImage: "/now-on/red-dead-redemption-2.png",
+    developer: "Rockstar Games",
+    publisher: "Rockstar Games",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/red-dead-redemption-2/video.mp4", "/images-discover-game/red-dead-redemption-2/red-dead-redemption-2-1.jpg", "/images-discover-game/red-dead-redemption-2/red-dead-redemption-2-2.jpg", "/images-discover-game/red-dead-redemption-2/red-dead-redemption-2-3.jpg", "/images-discover-game/red-dead-redemption-2/red-dead-redemption-2-4.jpg", "/images-discover-game/red-dead-redemption-2/red-dead-redemption-2-5.jpg",]
+  },
+  {
+    id: "persona-3-reloaded",
+    slug: "persona-3-reloaded",
+    title: "Persona 3 Reloaded",
+    description: "Dive into the Dark Hour and awaken the depths of your heart. Persona 3 Reload is a captivating reimagining of the genre-defining RPG, reborn for the modern era with cutting-edge graphics and gameplay.",
+    imageUrl: "/now-on/persona-3-reloaded.png",
+    category: "Base Game",
+    currentPrice: "₫1.249.000",
+    originalPrice: "₫1.249.000",
+    discount: "0%",
+    logoUrl: "/logos/persona-3-reloaded.png",
+    heroImage: "/now-on/persona-3-reloaded.png",
+    developer: "Rockstar Games",
+    publisher: "Rockstar Games",
+    epicRewards: "Earn 10% Back",
+    refundType: "Self-Refundable",
+    releaseDate: "2022-01-01",
+    ageRating: "18+",
+    ageImage: "/ageimage/IARC_18.png",
+    descRating: "Moderate Violence",
+    interactRating: "Users Interact, In-Game Purchases (Includes Random Items)",
+    genre: ["Action", "Adventure", "Role-Playing", "Strategy"],
+    features: ["Single Player", "Co-op", "Multiplayer", "Co-op"],
+    specs: {
+      minimum: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      },
+      recommended: {
+        os: "Windows 10/11",
+        cpu: "Intel Core i5-6600K or AMD Ryzen 5 1600",
+        memory: "8 GB RAM",
+        gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 580",
+        storage: "50 GB available space"
+      }
+    },
+    achievementsSection: {
+      isShow: false,
+      title: "Achievements",
+      items: ["Mighty Wolf", "Broken Spear", "The First Find", "Past Secrets", "The Last Stand", "The Final Showdown", "The Final Showdown"],
+      viewAllLink: "",
+      imageAchievements: ["/images/achievements/persona-5-royal-1.png", "/images/achievements/persona-5-royal-2.png", "/images/achievements/persona-5-royal-3.png", "/images/achievements/persona-5-royal-4.png", "/images/achievements/persona-5-royal-5.png"]
+    },
+    followSection: {
+      isShow: true,
+      title: "Follow Us",
+      links: [
+        { platform: "Facebook", url: "https://www.facebook.com/Persona5Royal" },
+        { platform: "Twitter", url: "https://twitter.com/Persona5Royal" },
+        { platform: "Instagram", url: "https://www.instagram.com/persona5royal" },
+        { platform: "Youtube", url: "https://www.youtube.com/c/Persona5Royal" },
+        { platform: "Website", url: "https://persona5royal.com/" },
+        { platform: "Discord", url: "https://discord.gg/Persona5Royal" },
+        { platform: "Reddit", url: "https://www.reddit.com/r/Persona5Royal/" }
+      ]
+    },
+    gallery: ["/video-for-discover-game/persona-3-reloaded/video.mp4", "/images-discover-game/persona-3-reloaded/persona-3-reloaded-1.jpg", "/images-discover-game/persona-3-reloaded/persona-3-reloaded-2.jpg", "/images-discover-game/persona-3-reloaded/persona-3-reloaded-3.jpg", "/images-discover-game/persona-3-reloaded/persona-3-reloaded-4.jpg", "/images-discover-game/persona-3-reloaded/persona-3-reloaded-5.jpg",]
+  }
 ];
 
-// Định nghĩa cho Store Promotions Section
-export interface StorePromotionItem {
-  id: string;
-  title: string;
-  description: string;
-  buttonText: string;
-  image: string;
-}
-
+// dữ liệu cho store promotions
 export const storePromotions: StorePromotionItem[] = [
   {
     id: "sales-specials",
@@ -2821,14 +3439,14 @@ export const storePromotions: StorePromotionItem[] = [
     title: "Free Games",
     description: "Explore free and free-to-play games from our collection. Come back every Thursday for a new free game!",
     buttonText: "Play Now",
-    image: "/store-promotions/free-games.jpg", // Placeholder
+    image: "/store-promotions/free-games.png", // Placeholder
   },
   {
     id: "apps",
     title: "Apps",
     description: "Enjoy some of the best Apps for music, gaming, creating, and more!",
     buttonText: "Browse",
-    image: "/store-promotions/apps.jpg", // Placeholder
+    image: "/store-promotions/apps.png", // Placeholder
   },
 ];
 
@@ -2854,6 +3472,10 @@ export function getGameBySlug(slug: string): any {
   // Tìm trong epicFirstRun
   const epicFirstRunGame = epicFirstRun.find((g) => g.slug === slug);
   if (epicFirstRunGame) return epicFirstRunGame;
+
+  // Tìm trong nowOn
+  const nowOnGame = nowOn.find((g) => g.slug === slug);
+  if (nowOnGame) return nowOnGame;
 
   // Nếu không tìm thấy ở đâu
   return null;

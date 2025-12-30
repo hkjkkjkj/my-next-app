@@ -3,7 +3,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './EpicFirstRunSection.module.css';
-import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaPlus, FaCrow, FaCrown } from 'react-icons/fa';
 import { epicFirstRun } from '@/lib/data';
 import Link from 'next/link'; // [1] Import thêm Link
 
@@ -126,6 +126,11 @@ export default function EpicFirstRunSection() {
                                 <span className={styles.category}>{game.category}</span>
                                 <h3 className={styles.gameTitle}>{game.title}</h3>
                                 <p className={styles.price}>{game.currentPrice}</p>
+                            </div>
+
+                            <div className={styles.firstRunBadge}>
+                                <FaCrown className={styles.crownIcon} />
+                                <span>Epic First Run</span>
                             </div>
                         </Link>
                     ))}

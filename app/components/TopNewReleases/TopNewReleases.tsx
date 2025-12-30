@@ -1,4 +1,4 @@
-// app/components/DiscoverSection/DiscoverSection.tsx
+// app/components/TopNewReleases/TopNewReleases.tsx
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
