@@ -1,0 +1,310 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    color: #f5f5f5;
+}
+
+/* --- Genres Section --- */
+.genresSection {
+    margin-bottom: 40px;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.navControls {
+    display: flex;
+    gap: 12px;
+}
+
+.navBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #333;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.navBtn:hover {
+    background-color: #444;
+}
+
+.genreList {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+}
+
+.genreList::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar Chrome/Safari */
+}
+
+.genreCard {
+    flex: 0 0 200px;
+    /* Fixed width for genre cards */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.genreCard:hover {
+    transform: translateY(-4px);
+}
+
+.genreImage {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+}
+
+.genreName {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+/* --- Main Layout: Sidebar vs Grid --- */
+.mainLayout {
+    display: flex;
+    gap: 40px;
+    position: relative;
+    align-items: flex-start;
+}
+
+/* --- Games Column --- */
+.gamesColumn {
+    flex: 1;
+    /* Takes remaining width */
+    min-width: 0;
+    /* Prevents overflow */
+    overflow: hidden;
+}
+
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Or flex-start if you prefer */
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.sortLabel {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.sortSelect {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.sortSelect option {
+    background-color: #2a2a2a;
+    color: white;
+}
+
+/* --- Game Grid --- */
+.gameGrid {
+    display: grid;
+    /* Force 4 columns on large screens as requested */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+@media (max-width: 1024px) {
+    .gameGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .gameGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .gameGrid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+.gameCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    /* For nested hover effects if needed */
+}
+
+.cardImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    /* Portrait ratio for games */
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #2a2a2a;
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.2s ease;
+}
+
+.gameCard:hover .cardImage {
+    filter: brightness(1.1);
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.baseGameLabel {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #9ca3af;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.gameTitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+.discountBadge {
+    background-color: #0074e4;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.originalPrice {
+    color: #9ca3af;
+    text-decoration: line-through;
+}
+
+.currentPrice {
+    color: white;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mainLayout {
+        flex-direction: column-reverse;
+        /* Put sidebar below or hidden on mobile usually, or swap order */
+    }
+
+    .genreCard {
+        flex: 0 0 160px;
+    }
+}
+
+/* --- Pagination --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.pageNumber {
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.pageNumber:hover {
+    color: white;
+}
+
+.activePage {
+    color: white;
+    font-weight: bold;
+}
+
+.ellipsis {
+    color: #9ca3af;
+    padding: 0 4px;
+}
+
+.nextBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #333;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 8px;
+}
+
+.nextBtn:hover {
+    background-color: #444;
+}
+
+/* --- Disclaimer --- */
+.disclaimer {
+    color: #9ca3af;
+    font-size: 12px;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}

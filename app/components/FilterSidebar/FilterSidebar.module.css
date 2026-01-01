@@ -1,0 +1,239 @@
+.sidebarContainer {
+    width: 280px;
+    flex-shrink: 0;
+    color: #f5f5f5;
+    font-family: sans-serif;
+}
+
+.filtersParamsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.filtersLabel {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.resetBtn {
+    background: none;
+    border: none;
+    color: #0078f2;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* Search input */
+.searchWrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.searchInput {
+    width: 100%;
+    background-color: #202020;
+    border: 1px solid transparent;
+    padding: 10px 10px 10px 36px;
+    color: #f5f5f5;
+    font-size: 14px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.searchInput:focus {
+    background-color: #2a2a2a;
+    border-color: #404040;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 14px;
+}
+
+/* Accordion sections */
+.filterSection {
+    border-bottom: 1px solid #2a2a2a;
+    padding: 16px 0;
+}
+
+.filterHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.filterTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f5f5f5;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.chevron {
+    color: #888;
+    transition: transform 0.2s;
+}
+
+.chevron.open {
+    transform: rotate(180deg);
+}
+
+.filterContent {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Checkbox/Item styles */
+.filterItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.filterItem:hover {
+    color: #fff;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #404040;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #101010;
+    flex-shrink: 0;
+}
+
+.checkbox.checked {
+    background: #0078f2;
+    border-color: #0078f2;
+}
+
+/* Dropdown specific styles just in case needed for select-like filters */
+.selectFilter {
+    background: #202020;
+    color: #fff;
+    border: 1px solid #404040;
+    padding: 8px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Advanced Filter UI Styles */
+
+.countBadge {
+    font-size: 0.75rem;
+    color: #888;
+    margin-left: 0.5rem;
+}
+
+.showMoreBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 0;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    text-decoration: underline;
+    opacity: 0.8;
+    display: block;
+    /* Ensure it's on its own line */
+    text-align: left;
+}
+
+.showMoreBtn:hover {
+    opacity: 1;
+}
+
+.disabledItem {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    /* Match .filterItem padding */
+    gap: 10px;
+    /* Match .filterItem gap */
+    cursor: not-allowed;
+    opacity: 0.4;
+    color: #666;
+    /* Darker color for disabled text */
+}
+
+/* Ensure checkbox inside disabled item looks consistent */
+.disabledItem .checkbox {
+    opacity: 0.5;
+    border-color: #333;
+}
+
+.genreIcon {
+    margin-right: -4px;
+    /* Adjust spacing if gap is too large */
+    color: #aaaaaa;
+    font-size: 1rem;
+    display: flex;
+    /* Fix icon alignment */
+    align-items: center;
+}
+
+.priceSliderContainer {
+    padding: 10px 0;
+}
+
+.priceSliderValue {
+    font-size: 0.9rem;
+    color: #eee;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.priceSlider {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 4px;
+    background: #444;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.priceSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #0070f3;
+    /* Theme color */
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+}
+
+.priceSlider::-webkit-slider-thumb:hover {
+    background: #3291ff;
+}
+
+.divider {
+    height: 1px;
+    background-color: #333;
+    margin: 15px 0;
+}
