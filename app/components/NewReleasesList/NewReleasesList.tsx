@@ -1,13 +1,19 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './NewReleasesList.module.css';
 import { GameItem } from '@/lib/data';
-import { newReleases, topRated, comingSoon } from '@/lib/data';
 
-export default function NewReleasesList() {
+interface NewReleasesListProps {
+    newReleases: GameItem[];
+    topRated: GameItem[];
+    comingSoon: GameItem[];
+}
+
+export default function NewReleasesList({ newReleases, topRated, comingSoon }: NewReleasesListProps) {
 
     // Hàm render item tái sử dụng
     const renderItem = (game: GameItem) => (
-        <a key={game.id} href="#" className={styles.item}>
+        <Link key={game.id} href={game.slug ? `/p/${game.slug}` : '#'} className={styles.item}>
             <div className={styles.imageWrapper}>
                 <img
                     src={game.image}
@@ -41,7 +47,7 @@ export default function NewReleasesList() {
                     {game.price && <span className={styles.finalPrice}>{game.price}</span>}
                 </div>
             </div>
-        </a>
+        </Link>
     );
 
     return (

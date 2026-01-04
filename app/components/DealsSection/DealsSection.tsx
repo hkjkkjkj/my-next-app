@@ -1,15 +1,19 @@
 //app/components/DealSection/DealSection.tsx
 import React from 'react';
 import styles from './DealsSection.module.css';
-import { dealsData } from '@/lib/data';
+import { DealItem } from '@/lib/data';
 
-const DealsSection = () => {
+interface DealsSectionProps {
+    deals: DealItem[];
+}
+
+const DealsSection = ({ deals }: DealsSectionProps) => {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
                 <div className={styles.grid}>
 
-                    {dealsData.map((item) => (
+                    {deals.map((item) => (
                         <div key={item.id} className={styles.card}>
 
                             {/* Wrapper Ảnh */}

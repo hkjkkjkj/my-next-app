@@ -2,46 +2,65 @@
 
 /* 1. Dọn dẹp .heroContainer */
 .heroContainer {
-  position: relative; /* Cần cho việc định vị nội dung */
+  position: relative;
+  /* Cần cho việc định vị nội dung */
   border-radius: 12px;
-  overflow: hidden; /* Đảm bảo ảnh nền bo góc */
+  overflow: hidden;
+  /* Đảm bảo ảnh nền bo góc */
   width: 945px;
-  height: 514px; /* Chiều cao của khối hero */
-  margin: 24px 150px; /* Khoảng cách với Header và lề */
+  height: 514px;
+  /* Chiều cao của khối hero */
+  margin: 24px 150px;
+  /* Khoảng cách với Header và lề */
   display: flex;
-  align-items: flex-end; /* Căn nội dung xuống dưới */
+  align-items: flex-end;
+  /* Căn nội dung xuống dưới */
   padding: 40px;
 }
 
 /* 3. Định nghĩa Keyframes (từ file CSS của bạn) */
 @keyframes kenBurns {
-  0% { transform: scale(1.02); }
-  100% { transform: scale(1.08); }
+  0% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1.08);
+  }
 }
 
 @keyframes fillOverlay {
-  from { background-position: 100% 0; }
-  to { background-position: 0 0; }
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
 }
 
 /* 4. Sửa logic .slide (Xếp chồng, không trượt) */
 .slide {
   position: absolute;
-  inset: 0; /* (Tương đương top:0, left:0, right:0, bottom:0) */
+  inset: 0;
+  /* (Tương đương top:0, left:0, right:0, bottom:0) */
   width: 100%;
   height: 100%;
   display: flex;
   align-items: flex-end;
   padding: 40px;
-  
+
   /* Mặc định là trong suốt */
   opacity: 0;
   /* Hiệu ứng mờ dần (Fade) 1 giây */
-  transition: opacity 1s ease-in-out; 
+  transition: opacity 1s ease-in-out;
 }
+
 .slide.active {
-  opacity: 1; /* Slide active sẽ hiện ra */
-  z-index: 2; /* Nằm trên các slide khác */
+  opacity: 1;
+  /* Slide active sẽ hiện ra */
+  z-index: 2;
+  /* Nằm trên các slide khác */
 }
 
 /* 5. Áp dụng Ken Burns cho ảnh nền */
@@ -55,6 +74,7 @@
   background-position: center;
   z-index: 1;
 }
+
 /* Chỉ chạy animation khi slide active */
 /*.slide.active .background {
   animation: kenBurns 7s ease forwards;
@@ -98,21 +118,25 @@
   transform: translateX(0);
   transition-delay: 0.2s;
 }
+
 .slide.active .title {
   opacity: 1;
   transform: translateX(0);
   transition-delay: 0.2s;
 }
+
 .slide.active .date {
   opacity: 1;
   transform: translateX(0);
   transition-delay: 0.3s;
 }
+
 .slide.active .description {
   opacity: 1;
   transform: translateX(0);
   transition-delay: 0.4s;
 }
+
 .slide.active .buttonGroup {
   opacity: 1;
   transform: translateX(0);
@@ -122,45 +146,99 @@
 
 /* --- CÁC STYLE CÒN LẠI (GIỮ NGUYÊN) --- */
 .title {
-  font-size: 3.5rem; font-weight: 900; margin-bottom: 10px;
-  letter-spacing: -1px; line-height: 1;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  line-height: 1;
 }
+
 .heroLogo {
-  width: 100%; max-width: 350px; height: auto; margin-bottom: 16px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  margin-bottom: 16px;
 }
+
 .date {
-  font-size: 0.9rem; font-weight: 600; color: #E0E0EE; margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #E0E0EE;
+  margin-bottom: 20px;
 }
+
 .description {
-  font-size: 1rem; color: #E0E0E0; line-height: 1.6; margin-bottom: 30px;
+  font-size: 1rem;
+  color: #E0E0E0;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
+
 .buttonGroup {
-  display: flex; align-items: center; gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
+
 .saveButton {
-  background-color: #FAFAFA; color: #121212; border: none;
-  border-radius: 5px; padding: 14px 28px; font-size: 1rem;
-  font-weight: 700; cursor: pointer; transition: opacity 0.2s;
+  background-color: #FAFAFA;
+  color: #121212;
+  border: none;
+  border-radius: 5px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
-.saveButton:hover { opacity: 0.85; }
-.wishlistButton, .previewButton {
-  display: flex; align-items: center; gap: 8px; background-color: transparent;
-  color: #FAFAFA; border: 1px solid rgba(250, 250, 250, 0.7);
-  border-radius: 5px; padding: 14px 24px; font-size: 1rem;
-  font-weight: 700; cursor: pointer; transition: background-color 0.2s;
+
+.saveButton:hover {
+  opacity: 0.85;
 }
-.wishlistButton:hover, .previewButton:hover {
+
+.wishlistButton,
+.previewButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #FAFAFA;
+  border: 1px solid rgba(250, 250, 250, 0.7);
+  border-radius: 5px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.wishlistButton:hover,
+.previewButton:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.wishlistIcon, .previewIcon { font-size: 1.1rem; }
 
-.prevButton, .nextButton {
-  background-color: rgba(0, 0, 0, 0.4); color: white; border: none;
-  border-radius: 50%; width: 40px; height: 40px; display: flex;
-  align-items: center; justify-content: center; cursor: pointer;
-  transition: background-color 0.2s; font-size: 1.2rem;
+.wishlistIcon,
+.previewIcon {
+  font-size: 1.1rem;
 }
-.prevButton:hover, .nextButton:hover {
+
+.prevButton,
+.nextButton {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1.2rem;
+}
+
+.prevButton:hover,
+.nextButton:hover {
   background-color: rgba(0, 0, 0, 0.7);
 }
-

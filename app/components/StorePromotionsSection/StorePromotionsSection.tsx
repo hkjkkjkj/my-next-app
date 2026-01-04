@@ -1,13 +1,17 @@
 "use client";
 
 import styles from './StorePromotionsSection.module.css';
-import { storePromotions } from '@/lib/data';
+import { StorePromotionItem } from '@/lib/data';
 
-export default function StorePromotionsSection() {
+interface StorePromotionsSectionProps {
+    promotions: StorePromotionItem[];
+}
+
+export default function StorePromotionsSection({ promotions }: StorePromotionsSectionProps) {
     return (
         <section className={styles.section}>
             <div className={styles.grid}>
-                {storePromotions.map((item) => (
+                {promotions.map((item) => (
                     <div key={item.id} className={styles.card}>
                         <div className={styles.imageWrapper}>
                             <img

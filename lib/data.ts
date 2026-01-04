@@ -181,11 +181,18 @@ export interface GameItem extends GameDetailsMixin {
   id: number;
   title: string;
   image: string;
+  imageUrl?: string; // Add imageUrl for compatibility
   price?: string;
+  currentPrice?: string; // Add currentPrice for compatibility
   originalPrice?: string;
   discount?: string;
   badge?: string;
   availability?: string;
+
+  // Filtering props
+  genre?: string[];
+  features?: string[];
+  category?: string;
 }
 
 // Định nghĩa cho Top New Releases và kế thừa từ GameDetailsMixin

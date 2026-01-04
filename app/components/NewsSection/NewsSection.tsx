@@ -3,15 +3,19 @@
 
 import { useEffect, useRef, useState } from 'react';
 import styles from './NewSection.module.css'; // Import file CSS vừa tạo
-import { newsList } from '@/lib/data';
+import { News } from '@/lib/data';
 
-const NewsSection = () => {
+interface NewsSectionProps {
+    news: News[];
+}
+
+const NewsSection = ({ news }: NewsSectionProps) => {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
                 <div className={styles.grid}>
 
-                    {newsList.map((item) => (
+                    {news.map((item) => (
                         <div key={item.id} className={styles.card}>
 
                             {/* Hình ảnh */}

@@ -1,23 +1,47 @@
 /* app/HomePage.module.css */
 
-/* 1. Lớp này BÂY GIỜ CHỈ cung cấp PADDING */
-.pageContainer {
-  padding: 24px 32px;
-  /* Bỏ 'display: grid' và 'gap' ra khỏi đây */
+.appContainer {
+  min-height: 100vh;
+  background-color: #121212;
+  color: #f5f5f5;
 }
 
-.gridContainer {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 24px;
-}
-
-/* Phần chính (chứa Hero) */
 .mainContent {
-  /* không cần style gì thêm */
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  /* Căn lề 2 bên */
 }
 
-/* Phần sidebar */
-.sidebar {
-  /* không cần style gì thêm */
+/* Container cho Hero và Sidebar nằm ngang */
+.topSection {
+  display: flex;
+  gap: 30px;
+  /* Khoảng cách giữa Hero và Sidebar */
+  margin-bottom: 40px;
+}
+
+.heroSectionWrapper {
+  flex: 1;
+  /* Chiếm phần lớn diện tích */
+  min-width: 0;
+  /* Tránh overflow flex items */
+}
+
+.sidebarWrapper {
+  width: 280px;
+  /* Chiều rộng cố định cho sidebar */
+  flex-shrink: 0;
+  /* padding-top: 10px; -> Removed for alignment */
+}
+
+.contentGrid {
+  /* Các phần còn lại full width */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.feedWrapper {
+  width: 100%;
 }

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { mainGameList, topNewReleases, epicFirstRun, nowOn, trendingGames } from '@/lib/data';
+import { GameItem } from '@/lib/data';
 
 // Master lists for "Dim instead of hide"
 export const MASTER_GENRES = ["Action", "Adventure", "RPG", "Strategy", "Shooter", "Racing", "Sports", "Simulation", "Indie", "Horror", "Platformer", "Fighting", "Open World", "Survival"];
@@ -15,10 +15,7 @@ const parsePrice = (priceStr: string | undefined): number => {
     return isNaN(num) ? -1 : num;
 };
 
-// Combine all games to check for price existence
-const allGames = mainGameList.concat(topNewReleases, epicFirstRun, nowOn, trendingGames);
-
-export const useFilterSidebarLogic = () => {
+export const useFilterSidebarLogic = (initialGames: GameItem[]) => {
     const [openSections, setOpenSections] = useState<Record<string, boolean>>({
         genre: true,
         features: true,
@@ -38,7 +35,7 @@ export const useFilterSidebarLogic = () => {
             price_group: {}
         };
 
-        allGames.forEach(game => {
+        initialGames.forEach(game => {
             // Genre
             (game.genre || []).forEach(item => {
                 c.genre[item] = (c.genre[item] || 0) + 1;
@@ -58,7 +55,7 @@ export const useFilterSidebarLogic = () => {
 
     // Filter Logic
     const filteredGames = useMemo(() => {
-        return allGames.filter(game => {
+        return initialGames.filter(game => {
             // 1. Search Term
             if (searchTerm && !game.title.toLowerCase().includes(searchTerm.toLowerCase())) {
                 return false;

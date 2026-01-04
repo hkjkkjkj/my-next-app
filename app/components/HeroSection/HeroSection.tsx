@@ -2,11 +2,13 @@
 "use client";
 
 import styles from './HeroSection.module.css';
-import { heroData } from '../../../lib/data';
+// import { heroData } from '../../../lib/data'; // REMOVED static import
+import { HeroBanner } from '@/lib/data'; // Import interface
 import { FaPlus, FaEye, } from 'react-icons/fa';
 import Link from 'next/link';
 
 interface HeroSectionProps {
+  heroData: HeroBanner[]; // Added prop
   currentSlide: number;
   handleNext: () => void;
   handlePrev: () => void;
@@ -14,6 +16,7 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({
+  heroData, // Added prop
   currentSlide,
   handleNext,
   handlePrev,

@@ -4,14 +4,18 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './TrendingSection.module.css';
 import { FaPlus } from 'react-icons/fa';
-import { trendingGames } from '@/lib/data';
+import { TrendingItem } from '@/lib/data';
 import Link from 'next/link';
 
 const VISIBLE_COUNT = 4;
 const CARD_GAP = 24;
 const PADDING_X = 32;
 
-export default function TrendingSection() {
+interface TrendingSectionProps {
+    games: TrendingItem[];
+}
+
+export default function TrendingSection({ games }: TrendingSectionProps) {
 
     const [cardWidth, setCardWidth] = useState(0);
     const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -57,7 +61,7 @@ export default function TrendingSection() {
             {/* Slider / Grid Viewport */}
             <div className={styles.sliderViewport} ref={viewportRef}>
                 <div className={styles.sliderTrack}>
-                    {trendingGames.slice(0, VISIBLE_COUNT).map((game) => (
+                    {games.slice(0, VISIBLE_COUNT).map((game) => (
                         <Link
                             href={`/p/${game.slug || '#'}`}
                             key={game.id}
@@ -90,7 +94,19 @@ export default function TrendingSection() {
                             <div className={styles.info}>
                                 <span className={styles.category}>{game.category}</span>
                                 <h3 className={styles.gameTitle}>{game.title}</h3>
-                                <p className={styles.price}>{game.currentPrice}</p>
+                                <div className={styles.priceContainer}>
+                                    {game.originalPrice && game.discount ? (
+                                        <>
+                                            <span className={styles.discountBadge}>{game.discount}</span>
+                                            <div className={styles.priceGroup}>
+                                                <span className={styles.originalPrice}>{game.originalPrice}</span>
+                                                <span className={styles.currentPrice}>{game.currentPrice}</span>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <p className={styles.price}>{game.currentPrice}</p>
+                                    )}
+                                </div>
                             </div>
                         </Link>
                     ))}

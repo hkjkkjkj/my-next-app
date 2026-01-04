@@ -1,15 +1,19 @@
 import React from 'react';
 import styles from './PromosSection.module.css';
-import { promoData } from '@/lib/data';
+import { PromosItem } from '@/lib/data';
 
-const PromosSection = () => {
+interface PromosSectionProps {
+    promos: PromosItem[];
+}
+
+const PromosSection = ({ promos }: PromosSectionProps) => {
 
     return (
         <section className={styles.section}>
             <div className={styles.container}>
                 <div className={styles.grid}>
 
-                    {promoData.map((item) => (
+                    {promos.map((item) => (
                         <div key={item.id} className={styles.card}>
 
                             {/* Hình ảnh */}

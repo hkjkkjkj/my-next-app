@@ -1,13 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './FreeGamesSection.module.css';
-import { freeData } from '@/lib/data';
+import { FreeItem } from '@/lib/data';
 
 interface FreeGamesSectionProps {
     title?: string;
+    games: FreeItem[];
 }
 
-const FreeGamesSection = ({ title = "Free Games" }: FreeGamesSectionProps) => {
+const FreeGamesSection = ({ title = "Free Games", games = [] }: FreeGamesSectionProps) => {
 
     return (
         <section className={styles.section}>
@@ -34,7 +35,7 @@ const FreeGamesSection = ({ title = "Free Games" }: FreeGamesSectionProps) => {
 
                     {/* Danh sách Game */}
                     <div className={styles.grid}>
-                        {freeData.map((game) => (
+                        {games.map((game) => (
                             <div key={game.id} className={styles.card}>
 
                                 {/* Container chứa ảnh và thanh trạng thái */}

@@ -2,17 +2,18 @@
 "use client";
 
 import styles from './Sidebar.module.css';
-import { sidebarGames } from '@/lib/data';
-// 1. Xóa import 'useHeroSlider'
+// import { sidebarGames } from '@/lib/data'; // REMOVED static import
+import { SidebarGame } from '@/lib/data'; // Import interface
 
 // 2. Định nghĩa kiểu dữ liệu cho props
 interface SidebarProps {
+  sidebarGames: SidebarGame[]; // Added prop
   currentSlide: number;
   handleThumbnailClick: (index: number) => void;
 }
 
 // 3. Nhận props làm tham số
-export default function Sidebar({ currentSlide, handleThumbnailClick }: SidebarProps) {
+export default function Sidebar({ sidebarGames, currentSlide, handleThumbnailClick }: SidebarProps) {
 
   // 4. Xóa logic gọi 'useHeroSlider'
 

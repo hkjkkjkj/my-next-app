@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './TopListsSection.module.css';
-import { comingSoon, GameItem } from '@/lib/data';
-import { topAddOns, topFreeToPlay, topDemos } from '@/lib/data';
+import { GameItem } from '@/lib/data';
 
-export default function TopListsSection() {
+interface TopListsSectionProps {
+    topAddOns: GameItem[];
+    topFreeToPlay: GameItem[];
+    topDemos: GameItem[];
+}
+
+export default function TopListsSection({ topAddOns, topFreeToPlay, topDemos }: TopListsSectionProps) {
 
     // Hàm render item tái sử dụng
     const renderItem = (game: GameItem) => (

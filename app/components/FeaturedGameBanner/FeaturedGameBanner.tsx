@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './FeaturedGameBanner.module.css';
-import { featuredGame } from '../../../lib/data';
+import { FeaturedGame } from '@/lib/data';
 
-export default function FeaturedGameBanner() {
-    const game = featuredGame[0];
+interface FeaturedGameBannerProps {
+    game: FeaturedGame | null;
+}
 
+export default function FeaturedGameBanner({ game }: FeaturedGameBannerProps) {
     if (!game) return null;
 
     return (

@@ -169,6 +169,31 @@
   flex-direction: column;
 }
 
+.priceContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.currentPrice {
+  font-size: 14px;
+  color: var(--epic-light-gray);
+}
+
+.originalPrice {
+  font-size: 12px;
+  color: var(--epic-dim-gray);
+  text-decoration: line-through;
+}
+
+.discountBadge {
+  font-size: 12px;
+  color: #fff;
+  background-color: #0074e4;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
 .gameCategory {
   color: var(--epic-dim-gray);
   font-size: 11px;

@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './FeaturedLists.module.css';
-import { topSellers, mostPlayed, topUpcoming, } from '@/lib/data';
 import { GameItem } from '@/lib/data';
 
-export default function FeaturedLists() {
+interface FeaturedListsProps {
+    topSellers: GameItem[];
+    mostPlayed: GameItem[];
+    topUpcoming: GameItem[];
+}
+
+export default function FeaturedLists({ topSellers, mostPlayed, topUpcoming }: FeaturedListsProps) {
 
     // Hàm render item tái sử dụng
     const renderItem = (game: GameItem) => (

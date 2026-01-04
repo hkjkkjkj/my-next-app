@@ -4,15 +4,20 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './DiscoverSection.module.css';
 import { FaChevronLeft, FaChevronRight, FaPlus } from 'react-icons/fa';
-import { mainGameList } from '@/lib/data';
-import Link from 'next/link'; // [1] Import thêm Link
+// import { mainGameList } from '@/lib/data'; // REMOVED static import
+import { DiscoverItem } from '@/lib/data'; // Import interface
+import Link from 'next/link';
 
 const VISIBLE_COUNT = 5;
 // [2] Sửa lại thành 16 để khớp với file CSS (nếu CSS bạn để 16px)
 const CARD_GAP = 24;
 const PADDING_X = 32;
 
-export default function DiscoverSection() {
+interface DiscoverSectionProps {
+  discoverItems: DiscoverItem[];
+}
+
+export default function DiscoverSection({ discoverItems }: DiscoverSectionProps) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
@@ -38,7 +43,7 @@ export default function DiscoverSection() {
     };
   }, []);
 
-  const maxIndex = Math.max(0, mainGameList.length - VISIBLE_COUNT);
+  const maxIndex = Math.max(0, discoverItems.length - VISIBLE_COUNT);
   const canGoPrev = currentIndex > 0;
   const canGoNext = currentIndex < maxIndex;
 
@@ -89,7 +94,7 @@ export default function DiscoverSection() {
           className={styles.sliderTrack}
           style={{ transform: `translateX(${translateX}px)` }}
         >
-          {mainGameList.map((game) => (
+          {discoverItems.map((game) => (
             // [3] Thay thẻ div bằng Link và trỏ tới slug
             <Link
               href={`/p/${game.slug || '#'}`} // Dùng slug từ data
@@ -125,7 +130,15 @@ export default function DiscoverSection() {
               <div className={styles.discoverInfo}>
                 <span className={styles.gameCategory}>{game.category}</span>
                 <h3 className={styles.discoverTitleText}>{game.title}</h3>
-                <p className={styles.discoverPrice}>{game.currentPrice}</p>
+                <div className={styles.priceContainer}>
+                  <p className={styles.currentPrice}>{game.currentPrice}</p>
+                  {game.originalPrice && (
+                    <p className={styles.originalPrice}>{game.originalPrice}</p>
+                  )}
+                  {game.discount && (
+                    <span className={styles.discountBadge}>{game.discount}</span>
+                  )}
+                </div>
               </div>
             </Link>
           ))}
