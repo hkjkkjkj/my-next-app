@@ -1,0 +1,88 @@
+.container {
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.userTrigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.userTrigger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #0078F2;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #FAFAFA;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    background-color: #202020;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    padding: 8px 0;
+    margin-top: 5px;
+    border: 1px solid #333;
+}
+
+.userInfo {
+    padding: 16px 20px;
+}
+
+.dropdownName {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.dropdownEmail {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.divider {
+    height: 1px;
+    background-color: #333;
+    margin: 8px 0;
+}
+
+.menuItem {
+    display: block;
+    padding: 10px 20px;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.menuItem:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}

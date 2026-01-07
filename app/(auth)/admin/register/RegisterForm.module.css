@@ -1,0 +1,223 @@
+/* app/register/RegisterForm.module.css - Epic Games Style */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a0a0a;
+    padding: 40px 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 480px;
+    background-color: #18181b;
+    border: 1px solid #2a2a2e;
+    border-radius: 4px;
+    padding: 48px 40px 32px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.3px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #a0a0a0;
+    text-align: center;
+    margin: 0 0 32px 0;
+    line-height: 1.5;
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.input,
+.select {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #2a2a2e;
+    border: 1px solid #3a3a3e;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input::placeholder {
+    color: #6a6a6e;
+}
+
+.input:focus,
+.select:focus {
+    border-color: #0078f2;
+    background-color: #323237;
+}
+
+.select {
+    cursor: pointer;
+}
+
+.hint {
+    font-size: 12px;
+    color: #6a6a6e;
+    margin: 0;
+}
+
+/* Checkbox */
+.checkboxGroup {
+    margin: 4px 0;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #a0a0a0;
+    line-height: 1.5;
+}
+
+.checkbox {
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #0078f2;
+    flex-shrink: 0;
+}
+
+/* Terms */
+.terms {
+    font-size: 12px;
+    color: #6a6a6e;
+    line-height: 1.6;
+    margin: 8px 0;
+}
+
+.link {
+    color: #0078f2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: #0086ff;
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.submitButton {
+    width: 100%;
+    padding: 14px 24px;
+    background-color: #0078f2;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 8px;
+}
+
+.submitButton:hover {
+    background-color: #0086ff;
+}
+
+.submitButton:active {
+    background-color: #006ad1;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #2a2a2e;
+}
+
+.footerText {
+    color: #a0a0a0;
+    font-size: 13px;
+}
+
+.footerLink {
+    color: #0078f2;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footerLink:hover {
+    color: #0086ff;
+    text-decoration: underline;
+}
+
+/* Bottom Links */
+.bottomLinks {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.bottomLink {
+    color: #6a6a6e;
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.bottomLink:hover {
+    color: #a0a0a0;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 580px) {
+    .card {
+        padding: 36px 24px 24px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .formRow {
+        grid-template-columns: 1fr;
+    }
+}

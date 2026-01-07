@@ -1,0 +1,4 @@
+Found: cronos -> /images/cronos-the-new-dawn.jpg
+Found: celeste -> /top-new-releases/celeste.png
+Found: crystal -> /top-new-releases/crystal-of-atlantean.png
+Found: clair-obscur -> /epic-form-epic-first-run/clair-obscur.png

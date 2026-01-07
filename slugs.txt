@@ -1,0 +1,6 @@
+--- SLUG CHECK ---
+black-ops-7 | Black Ops 7 | /images/black-ops-7.png
+constance | Constance | /new-releases-list/constance.png
+cronos-the-new-dawn | CRONOS THE NEW DAWN | /images/cronos-the-new-dawn.jpg
+crosshair-x | Crosshair X | /thumbnails/crosshair.png
+cyberpunk-2077 | Cyberpunk 2077 | /images/cyberpunk-2077.png

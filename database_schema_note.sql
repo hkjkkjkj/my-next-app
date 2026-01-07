@@ -1,0 +1,20 @@
+-- DATABASE SCHEMA NOTE
+-- =====================
+-- The `games` table currently has `id` column storing SLUGS instead of numeric IDs
+-- This is why edit links use slug-based routes: /admin/games/[slug]/edit
+--
+-- CURRENT SCHEMA (problematic):
+-- games.id = VARCHAR containing slug (e.g., 'anno-117-pax-romana')
+--
+-- RECOMMENDED SCHEMA (ideal):
+-- games.id = INT AUTO_INCREMENT (numeric primary key)
+-- games.slug = VARCHAR UNIQUE (for URLs)
+--
+-- TO FIX (if you want numeric IDs in the future):
+-- 1. Back up your data first!
+-- 2. Create new table with correct schema
+-- 3. Migrate data
+-- 4. Update all foreign keys in other tables
+--
+-- For now, the app works fine with slug-based IDs.
+-- Edit route: /admin/games/[slug]/edit

@@ -1,0 +1,285 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: #1a1a1a;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.closeBtn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 1;
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.header {
+    padding: 32px 32px 16px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #f5f5f5;
+}
+
+.gameInfo {
+    font-size: 14px;
+    color: #999;
+}
+
+.priceSection {
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0a0a0a;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.priceSection span {
+    font-size: 16px;
+    color: #999;
+}
+
+.price {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #0078f2 !important;
+}
+
+.paymentMethods {
+    padding: 24px 32px;
+}
+
+.paymentMethods h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #f5f5f5;
+}
+
+.methodGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.methodBtn {
+    padding: 16px;
+    background: #2a2a2a;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: #999;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.methodBtn:hover {
+    background: #333;
+    border-color: #444;
+}
+
+.methodBtn.active {
+    background: rgba(0, 120, 242, 0.1);
+    border-color: #0078f2;
+    color: #0078f2;
+}
+
+.methodBtn span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.paymentDetails {
+    padding: 24px 32px;
+    min-height: 280px;
+    border-top: 1px solid #2a2a2a;
+}
+
+.qrSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.instruction {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+}
+
+.qrCodeWrapper {
+    padding: 16px;
+    background: white;
+    border-radius: 12px;
+}
+
+.qrCode {
+    width: 200px;
+    height: 200px;
+    display: block;
+}
+
+.qrInfo {
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
+
+.cardSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cardLogos {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 8px;
+    color: #999;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 16px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #f5f5f5;
+    font-size: 14px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #0078f2;
+}
+
+.cardRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 12px;
+}
+
+.otherMethod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+}
+
+.otherMethod p {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    max-width: 300px;
+}
+
+.actions {
+    padding: 24px 32px;
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid #2a2a2a;
+}
+
+.cancelBtn,
+.confirmBtn {
+    flex: 1;
+    padding: 14px 24px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.cancelBtn {
+    background: #2a2a2a;
+    color: #f5f5f5;
+}
+
+.cancelBtn:hover:not(:disabled) {
+    background: #333;
+}
+
+.confirmBtn {
+    background: #0078f2;
+    color: white;
+}
+
+.confirmBtn:hover:not(:disabled) {
+    background: #0066d4;
+}
+
+.cancelBtn:disabled,
+.confirmBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

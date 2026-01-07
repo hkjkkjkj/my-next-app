@@ -1,0 +1,329 @@
+/* Re-write existing CSS with updates for new form */
+.container {
+    padding: 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #888;
+}
+
+.addBtn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.search {
+    margin-bottom: 24px;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: white;
+}
+
+/* Table */
+.table {
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.table th {
+    background: #252525;
+    color: #bbb;
+    font-weight: 500;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.actionBtns {
+    display: flex;
+    gap: 8px;
+}
+
+.editBtn,
+.removeBtn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.editBtn {
+    background: #444;
+    color: white;
+}
+
+.removeBtn {
+    background: #dc3545;
+    color: white;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: #222;
+    padding: 24px;
+    border-radius: 12px;
+    width: 600px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.gameList {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 16px;
+}
+
+.gameItem {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #333;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    gap: 12px;
+}
+
+.gameThumb {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.gameInfo {
+    flex: 1;
+}
+
+.gameTitle {
+    font-weight: 500;
+}
+
+.gameSlug {
+    font-size: 12px;
+    color: #888;
+}
+
+.addGameBtn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Edit Form */
+.editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sectionHeader {
+    font-size: 16px;
+    color: #007bff;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+
+.formRow {
+    display: flex;
+    gap: 16px;
+}
+
+.formRow .formGroup {
+    flex: 1;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formGroup label {
+    font-size: 13px;
+    color: #bbb;
+}
+
+.input,
+.textarea {
+    padding: 10px;
+    background: #333;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: white;
+}
+
+.textarea {
+    resize: vertical;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.cancelBtn,
+.saveBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cancelBtn {
+    background: #444;
+    color: white;
+}
+
+.saveBtn {
+    background: #007bff;
+    color: white;
+}
+
+/* File Upload Styles */
+.fileUploadWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fileInput {
+    padding: 8px;
+    background: #333;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    width: 100%;
+}
+
+.fileInput::-webkit-file-upload-button {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.uploading {
+    color: #007bff;
+    font-size: 12px;
+}
+
+.preview {
+    margin-top: 8px;
+    padding: 8px;
+    background: #2a2a2e;
+    border-radius: 6px;
+}
+
+.previewImage {
+    max-width: 100%;
+    max-height: 100px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.urlText {
+    font-size: 10px;
+    color: #666;
+    word-break: break-all;
+    margin: 0;
+}
+
+/* Gallery Styles */
+.galleryRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    background: #2a2a2e;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.miniThumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #444;
+}

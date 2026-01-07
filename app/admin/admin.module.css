@@ -1,0 +1,20 @@
+/* app/(admin)/admin.module.css */
+
+.adminContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 32px;
+    margin-left: 260px;
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        margin-left: 0;
+        padding: 20px;
+    }
+}

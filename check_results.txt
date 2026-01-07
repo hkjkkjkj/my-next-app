@@ -1,0 +1,36 @@
+--- PATH CHECK ---
+
+Game: ANNO 117: PAX ROMANA
+  Db Path: /images/anno-117-pax-romana.jpg
+  Abs Path: C:\Users\pykeo\my-next-app\public\images\anno-117-pax-romana.jpg
+  Exists: YES
+
+Game: ARC RAIDERS
+  Db Path: /images/arc-raiders.jpg
+  Abs Path: C:\Users\pykeo\my-next-app\public\images\arc-raiders.jpg
+  Exists: YES
+
+Game: Arknights Endfield
+  Db Path: /images/arknights-endfield.png
+  Abs Path: C:\Users\pykeo\my-next-app\public\images\arknights-endfield.png
+  Exists: NO
+
+Game: Assassin's Creed Valhalla
+  Db Path: /images/assassins-creed-valhalla.png
+  Abs Path: C:\Users\pykeo\my-next-app\public\images\assassins-creed-valhalla.png
+  Exists: NO
+
+Game: Back 4 Blood: Standard Edition
+  Db Path: /images/back-4-blood.jpg
+  Abs Path: C:\Users\pykeo\my-next-app\public\images\back-4-blood.jpg
+  Exists: NO
+
+Game: Batman Arkham Knight
+  Db Path: /images/batman-arkham-knight.png
+  Abs Path: C:\Users\pykeo\my-next-app\public\images\batman-arkham-knight.png
+  Exists: NO
+
+Game: Battlefield 6
+  Db Path: /thumbnails/battlefield.png
+  Abs Path: C:\Users\pykeo\my-next-app\public\thumbnails\battlefield.png
+  Exists: YES

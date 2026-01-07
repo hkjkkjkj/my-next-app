@@ -1,10 +1,21 @@
 // app/components/Header/Header.tsx
 import styles from './Header.module.css';
+import Link from 'next/link';
+import { getSession } from '@/lib/session';
+import { getUserData } from '@/lib/auth-actions';
+import UserMenu from './UserMenu';
 
-export default function Header() {
+export default async function Header() {
+  const session = await getSession();
+  let user = null;
+
+  if (session && session.userId) {
+    user = await getUserData(session.userId);
+  }
+
   return (
     <header className={styles.headerContainer}>
-      
+
       {/* --- PHẦN BÊN TRÁI --- */}
       <div className={styles.leftSection}>
 
@@ -23,13 +34,23 @@ export default function Header() {
       <div className={styles.rightSection}>
         <a href="#" className={styles.navLink}>Wishlist</a>
         <a href="#" className={styles.navLink}>Cart</a>
-        
-        {/* Thông tin user (tạm thời) */}
-        <span className={styles.userBalance}>1337DVD</span>
-        
+
+        {/* Nút đăng nhập HOẶC User Dropdown */}
+        {user ? (
+          <UserMenu
+            fullName={user.full_name || 'User'}
+            email={user.email}
+            firstName={user.first_name}
+            lastName={user.last_name}
+          />
+        ) : (
+          <Link href="/login" className={styles.downloadButton}>Login</Link>
+        )}
+
+        {/* Nút Download */}
         <button className={styles.downloadButton}>Download</button>
       </div>
-      
+
     </header>
   );
 }

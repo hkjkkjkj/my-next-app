@@ -553,6 +553,7 @@ export async function getGameBySlug(slug: string): Promise<any> {
                 -- but user asked about LOGO specifically. Let's fix LOGO first.
                 
                 COALESCE(
+                    g.price,
                     d.price,
                     ti.price,
                     efr.price,
@@ -561,18 +562,16 @@ export async function getGameBySlug(slug: string): Promise<any> {
                 ) as current_price,
                 
                 COALESCE(
+                    g.original_price,
                     d.original_price,
                     ti.original_price,
-                    efr.original_price,
-                    no.original_price,
                     tnr.original_price
                 ) as original_price,
 
                  COALESCE(
+                    g.discount,
                     d.discount,
                     ti.discount,
-                    efr.discount,
-                    no.discount,
                     tnr.discount
                 ) as discount,
 
@@ -649,7 +648,9 @@ export async function getAllGames(): Promise<GameItem[]> {
                 cs.image_url,          -- coming_soon (uses 'image_url' column)
                 g.hero_image           -- games table (last resort)
             ) as final_image,
-            d.price as current_price, d.original_price, d.discount,
+            COALESCE(g.price, d.price) as current_price, 
+            COALESCE(g.original_price, d.original_price) as original_price, 
+            COALESCE(g.discount, d.discount) as discount,
             CAST('[]' AS JSON) as genre_json, 
             CAST('[]' AS JSON) as features_json,
             d.category
@@ -672,6 +673,8 @@ export async function getAllGames(): Promise<GameItem[]> {
         title: row.title,
         image: row.final_image,
         imageUrl: row.final_image,
+        hero_image: row.hero_image, // For GamesList (snake_case)
+        heroImage: row.hero_image,  // For GameItem interface (camelCase)
         currentPrice: row.current_price,
         originalPrice: row.original_price,
         discount: row.discount,

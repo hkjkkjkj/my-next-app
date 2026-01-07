@@ -1,0 +1,88 @@
+.container {
+    background-color: #121212;
+    min-height: 100vh;
+    color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    background-color: #202020;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 4px;
+    /* Epic usually uses sharp or slightly rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.group {
+    flex: 1;
+}
+
+.actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logoutBtn {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.logoutBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}

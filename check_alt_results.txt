@@ -1,0 +1,6 @@
+--- ALT PATH CHECK ---
+trending/arknights-endfield.png: YES
+trending/assassins-creed-valhalla.png: YES
+epic-form-epic-first-run/back-4-blood.jpg: YES
+epic-form-epic-first-run/batman-arkham-knight.png: YES
+images/arknights-endfield.png: NO
